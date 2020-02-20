@@ -1,4 +1,35 @@
 type User {
   id: ID! @id
-  name: String!
+  avatar: String!
+  username: String!
+  country: String!
+  city: String!
+  sentNotes: [Note]! @relation(link: TABLE, name: "SentNote")
+  favoriteNotes: [Note]! @relation(link: TABLE, name: "FavoriteNote")
+  interests: [Interest!]! @relation(link: TABLE)
+}
+
+type Note {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  message: String!
+  author: User! @relation(link: TABLE, name: "NoteAuthor")
+  seenBy: [User]! @relation(link: TABLE, name: "NoteViewer")
+  topic: [Interest!]! @relation(link: TABLE)
+  responses: [NoteResponse]! @relation(link: TABLE)
+  fontFamily: String!
+  fontColor: String!
+  backgroundColor: String!
+}
+
+type NoteResponse {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  message: String!
+  author: User! @relation(link: TABLE, name: "NoteResponseAuthor")
+}
+
+type Interest {
+  id: ID! @id
+  title: String!
 }
