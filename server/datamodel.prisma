@@ -13,7 +13,7 @@ type Note {
   id: ID! @id
   createdAt: DateTime! @createdAt
   message: String!
-  owner: User! @relation(link: TABLE, name: "NoteOwner")
+  author: User! @relation(link: TABLE, name: "NoteAuthor")
   seenBy: [User]! @relation(link: TABLE, name: "NoteViewer")
   topic: [Interest!]! @relation(link: TABLE)
   responses: [NoteResponse]! @relation(link: TABLE)
@@ -26,7 +26,7 @@ type NoteResponse {
   id: ID! @id
   createdAt: DateTime! @createdAt
   message: String!
-  owner: User! @relation(link: TABLE, name: "NoteResponseOwner")
+  author: User! @relation(link: TABLE, name: "NoteResponseAuthor")
 }
 
 type Interest {
