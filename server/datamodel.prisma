@@ -16,9 +16,17 @@ type Note {
   owner: User! @relation(link: TABLE, name: "NoteOwner")
   seenBy: [User]! @relation(link: TABLE, name: "NoteViewer")
   topic: [Interest!]! @relation(link: TABLE)
+  responses: [NoteResponse]! @relation(link: TABLE)
   fontFamily: String!
   fontColor: String!
   backgroundColor: String!
+}
+
+type NoteResponse {
+  id: ID! @id
+  createdAt: DateTime! @createdAt
+  message: String!
+  owner: User! @relation(link: TABLE, name: "NoteResponseOwner")
 }
 
 type Interest {
