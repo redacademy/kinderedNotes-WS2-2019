@@ -1,30 +1,30 @@
 import React from 'react'
-import {Notes, Profile, Write} from './screens/index'
-import {createStackNavigator} from '@react-navigation/stack'
+import {Notes, Profile, Write} from './screens'
 import {NavigationContainer} from '@react-navigation/native'
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 
-const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator()
 
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Notes">
-        <Stack.Screen
+      <Tab.Navigator initialRouteName="Notes">
+        <Tab.Screen
           name="Notes"
           component={Notes}
           options={{title: 'Notes'}}
         />
-        <Stack.Screen
+        <Tab.Screen
           name="Profile"
           component={Profile}
           options={{title: 'Profile'}}
         />
-        <Stack.Screen
+        <Tab.Screen
           name="Write"
           component={Write}
           options={{title: 'Write'}}
         />
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   )
 }
