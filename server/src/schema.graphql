@@ -1,0 +1,53 @@
+type Query {
+  feed: [Note]!
+  users: [User]!
+  note(id: ID!): Note
+  me: User
+}
+
+type Mutation {
+  signup(password: String!, username: String!): AuthPayload!
+  login(username: String!, password: String!): AuthPayload!
+  createNote(message: String!): Note!
+}
+
+type Subscription {
+  feedSubscription: Note
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}
+
+type User {
+  id: ID!
+  username: String!
+  password: String!
+  sentNotes: [Note!]!
+}
+
+type Note {
+  id: ID!
+  message: String!
+  createdAt: String!
+  author: User!
+  seenBy: [User]!
+  topic: [Interest!]!
+  responses: [NoteResponse]!
+  fontFamily: String!
+  fontColor: String!
+  backgroundColor: String!
+}
+
+type NoteResponse {
+  id: ID!
+  createdAt: String!
+  message: String!
+  author: User!
+}
+
+type Interest {
+  id: ID!
+  title: String!
+}
