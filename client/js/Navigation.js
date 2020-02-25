@@ -4,18 +4,20 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
 import {Text, View} from 'react-native'
+import NoteTab from './components/notesTabs'
 
 function NotesScreen({navigation}) {
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Home screen</Text>
-    </View>
+    // <View
+    //   style={{
+    //     flex: 1,
+    //     justifyContent: 'center',
+    //     alignItems: 'center',
+    //   }}
+    // >
+    //   <Text>Home screen</Text>
+    // </View>
+    <NoteTab />
   )
 }
 function ProfileScreen({navigation}) {
@@ -58,7 +60,10 @@ const WriteStack = createStackNavigator()
 function WriteStackScreen() {
   return (
     <WriteStack.Navigator>
-      <WriteStack.Screen name="Write" component={WriteScreen} />
+      <WriteStack.Screen
+        name="Write a kind note"
+        component={WriteScreen}
+      />
     </WriteStack.Navigator>
   )
 }
