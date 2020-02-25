@@ -58,7 +58,10 @@ const WriteStack = createStackNavigator()
 function WriteStackScreen() {
   return (
     <WriteStack.Navigator>
-      <WriteStack.Screen name="Write" component={WriteScreen} />
+      <WriteStack.Screen
+        name="Write a kind note"
+        component={WriteScreen}
+      />
     </WriteStack.Navigator>
   )
 }
