@@ -1,3 +1,2 @@
-# kinderedNotes-WS2-2019
+# kindredNotes-WS2-2019
 
-test
