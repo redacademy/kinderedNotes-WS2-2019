@@ -6,9 +6,7 @@ import {Note} from '../components'
 const Write = () => {
   return (
     <SafeAreaView>
-      <ScrollView>
-        <Note />
-      </ScrollView>
+      <Note />
     </SafeAreaView>
   )
 }

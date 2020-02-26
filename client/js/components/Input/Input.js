@@ -9,7 +9,7 @@ const Input = () => {
         type="text"
         name="note-message"
         placeholder={placeholder}
-        placeholderTextColor="#000"
+        placeholderTextColor="#888B8D"
         onChangeText={text => setPlaceholder(text)}
       />
     </View>
