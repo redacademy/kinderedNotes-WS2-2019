@@ -1,25 +1,6 @@
 import React, {useState} from 'react'
-import {
-  Text,
-  SafeAreaView,
-  ScrollView,
-  TextInput,
-  View,
-} from 'react-native'
-
-const Input = () => {
-  const [placeholder, setPlaceholder] = useState('Write a kind note')
-  return (
-    <View>
-      <TextInput
-        type="text"
-        name="note-message"
-        value={placeholder}
-        onChangeText={text => setPlaceholder(text)}
-      />
-    </View>
-  )
-}
+import {SafeAreaView, ScrollView, TextInput, View} from 'react-native'
+import {Input} from '../../components'
 
 const Note = () => {
   return (
