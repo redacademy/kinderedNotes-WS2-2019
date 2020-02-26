@@ -1,9 +1,7 @@
-// import React from 'react'
-// import SquareGrid from "react-native-square-grid"
-
-import React, {Component} from 'react'
+import React, {Image} from 'react'
 import {View, StyleSheet, Text} from 'react-native'
 import SquareGrid from 'react-native-square-grid'
+import Envelope from './envelope'
 
 var NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six']
 
@@ -15,7 +13,7 @@ var styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'purple',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -25,7 +23,6 @@ var styles = StyleSheet.create({
   },
 })
 
-// Best viewed in landscape
 export default function Grid(props) {
   return (
     <SquareGrid
@@ -36,12 +33,12 @@ export default function Grid(props) {
     />
   )
 }
-
 function renderItem(item) {
   return (
     <View style={styles.item}>
       <View style={styles.content}>
         <Text style={styles.text}>{item}</Text>
+        {/* <Envelope /> */}
       </View>
     </View>
   )

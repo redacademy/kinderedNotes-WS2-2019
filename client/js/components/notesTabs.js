@@ -12,7 +12,6 @@ function ReceivedScreen() {
         alignItems: 'center',
       }}
     >
-      <Text>Received</Text>
       <Grid />
     </View>
   )
@@ -27,7 +26,7 @@ function SentScreen() {
         alignItems: 'center',
       }}
     >
-      <Text>Sent</Text>
+      <Grid />
     </View>
   )
 }
