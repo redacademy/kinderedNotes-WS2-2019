@@ -1,7 +1,7 @@
 import React from 'react'
 import {Text, View} from 'react-native'
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
-import Grid from './grid'
+import {Grid} from '../../components'
 
 function ReceivedScreen() {
   return (
