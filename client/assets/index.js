@@ -1,3 +1,7 @@
 export const MessageNote = require('./icons/Message_Note.svg')
 export const Nav_Notes = require('./icons/Nav_Notes.svg')
 export const Nav_Profile = require('./icons/Nav_Notes.svg')
+export const Nav_Write = require('./icons/Nav_Write.svg')
+export const Nav_Note_LineIcon = require('./icons/Nav_Note_LineIcon.svg')
+export const Nav_Profile_LineIcon = require('./icons/Nav_Notes_LineIcon.svg')
+export const Nav_Edit_LineIcon = require('./icons/Nav_Edit_LineIcon.svg')
