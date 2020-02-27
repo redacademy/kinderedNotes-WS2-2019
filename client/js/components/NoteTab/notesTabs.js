@@ -1,6 +1,7 @@
 import React from 'react'
 import {Text, View} from 'react-native'
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs'
+import Grid from './grid'
 
 function ReceivedScreen() {
   return (
@@ -11,7 +12,7 @@ function ReceivedScreen() {
         alignItems: 'center',
       }}
     >
-      <Text>Received</Text>
+      <Grid />
     </View>
   )
 }
@@ -25,7 +26,7 @@ function SentScreen() {
         alignItems: 'center',
       }}
     >
-      <Text>Sent</Text>
+      <Grid />
     </View>
   )
 }
