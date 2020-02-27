@@ -7,6 +7,7 @@ type User {
   city: String!
   sentNotes: [Note]! @relation(link: TABLE, name: "SentNote")
   favoriteNotes: [Note]! @relation(link: TABLE, name: "FavoriteNote")
+  viewedNotes: [Note]! @relation(link: TABLE, name: "ViewedNote")
   interests: [Interest!]! @relation(link: TABLE)
 }
 
@@ -15,7 +16,6 @@ type Note {
   createdAt: DateTime! @createdAt
   message: String!
   author: User! @relation(link: TABLE, name: "NoteAuthor")
-  seenBy: [User]! @relation(link: TABLE, name: "NoteViewer")
   topic: [Interest!]! @relation(link: TABLE)
   responses: [NoteResponse]! @relation(link: TABLE)
   fontFamily: String!

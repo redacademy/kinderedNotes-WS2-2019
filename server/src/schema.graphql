@@ -25,6 +25,9 @@ type User {
   username: String!
   password: String!
   sentNotes: [Note!]!
+  viewedNotes: [Note]!
+  favoriteNotes: [Note]!
+  interests: [Interest!]!
 }
 
 type Note {
@@ -32,7 +35,6 @@ type Note {
   message: String!
   createdAt: String!
   author: User!
-  seenBy: [User]!
   topic: [Interest!]!
   responses: [NoteResponse]!
   fontFamily: String!
