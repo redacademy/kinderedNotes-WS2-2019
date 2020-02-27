@@ -14,7 +14,12 @@ const NotesStack = createStackNavigator()
 
 function NotesStackScreen() {
   return (
-    <NotesStack.Navigator>
+    <NotesStack.Navigator
+      screenOptions={{
+        headerTintColor: '#48a9c6',
+        headerStyle: {backgroundColor: '#eaf5f8', height: 130},
+      }}
+    >
       <NotesStack.Screen name="Notes" component={Notes} />
     </NotesStack.Navigator>
   )
@@ -23,8 +28,13 @@ const WriteStack = createStackNavigator()
 
 function WriteStackScreen() {
   return (
-    <WriteStack.Navigator>
-      <WriteStack.Screen name="Write" component={Write} />
+    <WriteStack.Navigator
+      screenOptions={{
+        headerTintColor: '#48a9c6',
+        headerStyle: {backgroundColor: '#eaf5f8', height: 130},
+      }}
+    >
+      <WriteStack.Screen name="Write a kind note" component={Write} />
     </WriteStack.Navigator>
   )
 }
@@ -33,7 +43,12 @@ const ProfileStack = createStackNavigator()
 
 function ProfileStackScreen() {
   return (
-    <ProfileStack.Navigator>
+    <ProfileStack.Navigator
+      screenOptions={{
+        headerTintColor: '#48a9c6',
+        headerStyle: {backgroundColor: '#eaf5f8', height: 130},
+      }}
+    >
       <ProfileStack.Screen name="Profile" component={Profile} />
     </ProfileStack.Navigator>
   )
