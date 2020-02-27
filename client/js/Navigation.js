@@ -3,6 +3,12 @@ import {Notes, Profile, Write} from './screens'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
+import Nav_Notes from '../assets/icons/Nav_Notes'
+import Nav_Write from '../assets/icons/Nav_Write'
+import Nav_Profile from '../assets/icons/Nav_Profile'
+import Nav_Note_LineIcon from '../assets/icons/Nav_Note_LineIcon'
+import Nav_Profile_LineIcon from '../assets/icons/Nav_Profile_LineIcon'
+import Nav_Edit_LineIcon from '../assets/icons/Nav_Edit_LineIcon'
 
 const NotesStack = createStackNavigator()
 
@@ -41,18 +47,26 @@ export default function App() {
       <Tab.Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({focused, color, size}) => {
-            // let iconName
-            // if (route.name === 'Notes') {
-            //   iconName = focused
-            //     ? 'ios-information-circle'
-            //     : 'ios-information-circle-outline'
-            // } else if (route.name === 'Settings') {
-            //   iconName = focused ? 'ios-list-box' : 'ios-list'
-            // }
-            // // You can return any component that you like here!
-            // return (
-            //   <Ionicons name={iconName} size={size} color={color} />
-            // )
+            const {name} = route
+            if (name === 'Notes') {
+              if (color === 'gray') {
+                return <Nav_Note_LineIcon />
+              } else {
+                return <Nav_Notes />
+              }
+            } else if (name === 'Write') {
+              if (color === 'gray') {
+                return <Nav_Edit_LineIcon />
+              } else {
+                return <Nav_Write />
+              }
+            } else if (name === 'Profile') {
+              if (color === 'gray') {
+                return <Nav_Profile_LineIcon />
+              } else {
+                return <Nav_Profile />
+              }
+            }
           },
         })}
         tabBarOptions={{

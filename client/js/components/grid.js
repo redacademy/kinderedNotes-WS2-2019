@@ -1,14 +1,13 @@
 import React, {Image} from 'react'
 import {View, StyleSheet, Text} from 'react-native'
 import SquareGrid from 'react-native-square-grid'
-import Envelope from './envelope'
+import Message_Note from '../../assets/icons/Message_Note.svg'
 
 var NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six']
 
 var styles = StyleSheet.create({
   item: {
     flex: 1,
-    alignSelf: 'stretch',
     padding: 16,
   },
   content: {
@@ -38,7 +37,7 @@ function renderItem(item) {
     <View style={styles.item}>
       <View style={styles.content}>
         <Text style={styles.text}>{item}</Text>
-        {/* <Envelope /> */}
+        {/* <Message_Note /> */}
       </View>
     </View>
   )
