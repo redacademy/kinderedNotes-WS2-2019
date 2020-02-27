@@ -1,6 +1,6 @@
-import React, {useState} from 'react'
-import {SafeAreaView, ScrollView, TextInput, View} from 'react-native'
-import {Input} from '../../components'
+import React from 'react'
+import {View} from 'react-native'
+import {Button, Input} from '../../components'
 import styles from './Note.styles'
 
 const Note = () => {
@@ -9,6 +9,7 @@ const Note = () => {
       <View style={styles.noteContainer}>
         <Input />
       </View>
+      <Button>Post</Button>
     </View>
   )
 }
