@@ -5,9 +5,7 @@ type User {
   username: String!
   country: String!
   city: String!
-  sentNotes: [Note]! @relation(link: TABLE, name: "SentNote")
   favoriteNotes: [Note]! @relation(link: TABLE, name: "FavoriteNote")
-  viewedNotes: [Note]! @relation(link: TABLE, name: "ViewedNote")
   interests: [Interest!]! @relation(link: TABLE)
 }
 
@@ -18,6 +16,7 @@ type Note {
   author: User! @relation(link: TABLE, name: "NoteAuthor")
   topic: [Interest!]! @relation(link: TABLE)
   responses: [NoteResponse]! @relation(link: TABLE)
+  viewers: [User]! @relation(link: TABLE, name: "Viewers")
   fontFamily: String!
   fontColor: String!
   backgroundColor: String!
