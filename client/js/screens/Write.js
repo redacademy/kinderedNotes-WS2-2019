@@ -1,6 +1,6 @@
 import React from 'react'
 import {SafeAreaView, View} from 'react-native'
-import {Note, Button, styles} from '../components'
+import {Input, Note, Button, styles} from '../components'
 import {Header} from '../components/Typography'
 
 const Write = () => {
@@ -9,6 +9,7 @@ const Write = () => {
       <View style={styles.noteArea}>
         <Note />
         <Header>Tag related topics</Header>
+        <Input placeholder="Anxiety" />
         <Button>Post</Button>
       </View>
     </SafeAreaView>
