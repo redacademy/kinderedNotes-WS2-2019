@@ -5,6 +5,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     height: '100%',
   },
+  noteArea: {
+    width: 300,
+    alignSelf: 'center',
+  },
 })
 
 export default styles

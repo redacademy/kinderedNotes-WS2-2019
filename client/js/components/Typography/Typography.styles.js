@@ -2,7 +2,8 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   header: {
-    color: '#636e74',
+    color: '#3e3e3e',
+    fontWeight: '500',
   },
 })
 
