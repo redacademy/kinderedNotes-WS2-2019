@@ -9,7 +9,7 @@ const Note = () => {
       <View style={styles.noteContainer}>
         <Input />
       </View>
-      <Button>Post</Button>
+      {/* <Button>Post</Button> */}
     </View>
   )
 }

@@ -1,12 +1,12 @@
 import React from 'react'
 import {SafeAreaView} from 'react-native'
-import {ScrollView} from 'react-native-gesture-handler'
-import {Note} from '../components'
+import {Note, Button, styles} from '../components'
 
 const Write = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Note />
+      <Button>Post</Button>
     </SafeAreaView>
   )
 }

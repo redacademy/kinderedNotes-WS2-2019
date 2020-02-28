@@ -4,8 +4,6 @@ const styles = StyleSheet.create({
   container: {
     display: 'flex',
     alignItems: 'center',
-    backgroundColor: '#FFF',
-    height: '100%',
   },
   noteContainer: {
     position: 'relative',
