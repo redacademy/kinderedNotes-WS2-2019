@@ -1,7 +1,7 @@
 type Query {
-  feed: [Note]!
-  users: [User]!
+  users: [User]
   note(id: ID!): Note
+  inbox: [Note]
   me: User
 }
 
@@ -9,10 +9,14 @@ type Mutation {
   signup(password: String!, username: String!): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
   createNote(message: String!): Note!
+  viewNote(id: String!): Note!
+  favoriteNote(id: String!): Note!
+  createNoteResponse(id: String!, message: String!): Note!
+  updateInterests(interests: [String!]!): User!
 }
 
 type Subscription {
-  feedSubscription: Note
+  inboxSub: Note
 }
 
 type AuthPayload {
@@ -24,9 +28,7 @@ type User {
   id: ID!
   username: String!
   password: String!
-  sentNotes: [Note!]!
-  viewedNotes: [Note]!
-  favoriteNotes: [Note]!
+  favoriteNotes: [Note]
   interests: [Interest!]!
 }
 
@@ -35,8 +37,10 @@ type Note {
   message: String!
   createdAt: String!
   author: User!
+  # TODO: rename to plural `topics`
   topic: [Interest!]!
-  responses: [NoteResponse]!
+  responses: [NoteResponse]
+  viewers: [User]
   fontFamily: String!
   fontColor: String!
   backgroundColor: String!

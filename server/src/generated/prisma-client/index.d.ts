@@ -244,6 +244,14 @@ export type InterestOrderByInput =
   | "title_ASC"
   | "title_DESC";
 
+export type NoteResponseOrderByInput =
+  | "id_ASC"
+  | "id_DESC"
+  | "createdAt_ASC"
+  | "createdAt_DESC"
+  | "message_ASC"
+  | "message_DESC";
+
 export type UserOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -258,22 +266,14 @@ export type UserOrderByInput =
   | "city_ASC"
   | "city_DESC";
 
-export type NoteResponseOrderByInput =
-  | "id_ASC"
-  | "id_DESC"
-  | "createdAt_ASC"
-  | "createdAt_DESC"
-  | "message_ASC"
-  | "message_DESC";
-
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
 export interface NoteUpdateInput {
   message?: Maybe<String>;
   author?: Maybe<UserUpdateOneRequiredInput>;
-  seenBy?: Maybe<UserUpdateManyInput>;
   topic?: Maybe<InterestUpdateManyInput>;
   responses?: Maybe<NoteResponseUpdateManyInput>;
+  viewers?: Maybe<UserUpdateManyInput>;
   fontFamily?: Maybe<String>;
   fontColor?: Maybe<String>;
   backgroundColor?: Maybe<String>;
@@ -287,14 +287,51 @@ export interface InterestUpdateManyMutationInput {
   title?: Maybe<String>;
 }
 
-export interface InterestUpdateManyWithWhereNestedInput {
-  where: InterestScalarWhereInput;
-  data: InterestUpdateManyDataInput;
+export interface NoteResponseScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  message?: Maybe<String>;
+  message_not?: Maybe<String>;
+  message_in?: Maybe<String[] | String>;
+  message_not_in?: Maybe<String[] | String>;
+  message_lt?: Maybe<String>;
+  message_lte?: Maybe<String>;
+  message_gt?: Maybe<String>;
+  message_gte?: Maybe<String>;
+  message_contains?: Maybe<String>;
+  message_not_contains?: Maybe<String>;
+  message_starts_with?: Maybe<String>;
+  message_not_starts_with?: Maybe<String>;
+  message_ends_with?: Maybe<String>;
+  message_not_ends_with?: Maybe<String>;
+  AND?: Maybe<NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput>;
+  OR?: Maybe<NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput>;
+  NOT?: Maybe<NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput>;
 }
 
-export interface NoteResponseUpdateDataInput {
-  message?: Maybe<String>;
-  author?: Maybe<UserUpdateOneRequiredInput>;
+export interface UserUpdateWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateDataInput;
 }
 
 export interface NoteUpdateWithWhereUniqueNestedInput {
@@ -302,9 +339,24 @@ export interface NoteUpdateWithWhereUniqueNestedInput {
   data: NoteUpdateDataInput;
 }
 
-export interface NoteResponseUpdateWithWhereUniqueNestedInput {
-  where: NoteResponseWhereUniqueInput;
-  data: NoteResponseUpdateDataInput;
+export interface UserUpdateManyInput {
+  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+  update?: Maybe<
+    | UserUpdateWithWhereUniqueNestedInput[]
+    | UserUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | UserUpsertWithWhereUniqueNestedInput[]
+    | UserUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
+  updateMany?: Maybe<
+    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface NoteResponseSubscriptionWhereInput {
@@ -328,9 +380,9 @@ export interface NoteCreateInput {
   id?: Maybe<ID_Input>;
   message: String;
   author: UserCreateOneInput;
-  seenBy?: Maybe<UserCreateManyInput>;
   topic?: Maybe<InterestCreateManyInput>;
   responses?: Maybe<NoteResponseCreateManyInput>;
+  viewers?: Maybe<UserCreateManyInput>;
   fontFamily: String;
   fontColor: String;
   backgroundColor: String;
@@ -360,7 +412,6 @@ export interface UserCreateInput {
   username: String;
   country: String;
   city: String;
-  sentNotes?: Maybe<NoteCreateManyInput>;
   favoriteNotes?: Maybe<NoteCreateManyInput>;
   interests?: Maybe<InterestCreateManyInput>;
 }
@@ -403,15 +454,15 @@ export interface NoteWhereInput {
   message_ends_with?: Maybe<String>;
   message_not_ends_with?: Maybe<String>;
   author?: Maybe<UserWhereInput>;
-  seenBy_every?: Maybe<UserWhereInput>;
-  seenBy_some?: Maybe<UserWhereInput>;
-  seenBy_none?: Maybe<UserWhereInput>;
   topic_every?: Maybe<InterestWhereInput>;
   topic_some?: Maybe<InterestWhereInput>;
   topic_none?: Maybe<InterestWhereInput>;
   responses_every?: Maybe<NoteResponseWhereInput>;
   responses_some?: Maybe<NoteResponseWhereInput>;
   responses_none?: Maybe<NoteResponseWhereInput>;
+  viewers_every?: Maybe<UserWhereInput>;
+  viewers_some?: Maybe<UserWhereInput>;
+  viewers_none?: Maybe<UserWhereInput>;
   fontFamily?: Maybe<String>;
   fontFamily_not?: Maybe<String>;
   fontFamily_in?: Maybe<String[] | String>;
@@ -546,18 +597,6 @@ export interface InterestWhereInput {
   NOT?: Maybe<InterestWhereInput[] | InterestWhereInput>;
 }
 
-export interface UserCreateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-}
-
-export interface NoteUpdateManyMutationInput {
-  message?: Maybe<String>;
-  fontFamily?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
-}
-
 export interface NoteResponseCreateManyInput {
   create?: Maybe<NoteResponseCreateInput[] | NoteResponseCreateInput>;
   connect?: Maybe<
@@ -565,7 +604,7 @@ export interface NoteResponseCreateManyInput {
   >;
 }
 
-export interface NoteUpdateManyDataInput {
+export interface NoteUpdateManyMutationInput {
   message?: Maybe<String>;
   fontFamily?: Maybe<String>;
   fontColor?: Maybe<String>;
@@ -578,35 +617,24 @@ export interface NoteResponseCreateInput {
   author: UserCreateOneInput;
 }
 
+export interface NoteUpdateManyDataInput {
+  message?: Maybe<String>;
+  fontFamily?: Maybe<String>;
+  fontColor?: Maybe<String>;
+  backgroundColor?: Maybe<String>;
+}
+
+export interface UserCreateManyInput {
+  create?: Maybe<UserCreateInput[] | UserCreateInput>;
+  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
+}
+
 export type NoteResponseWhereUniqueInput = AtLeastOne<{
   id: Maybe<ID_Input>;
 }>;
 
-export interface NoteResponseUpdateManyInput {
-  create?: Maybe<NoteResponseCreateInput[] | NoteResponseCreateInput>;
-  update?: Maybe<
-    | NoteResponseUpdateWithWhereUniqueNestedInput[]
-    | NoteResponseUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | NoteResponseUpsertWithWhereUniqueNestedInput[]
-    | NoteResponseUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput>;
-  connect?: Maybe<
-    NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput
-  >;
-  set?: Maybe<NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput>;
-  disconnect?: Maybe<
-    NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput
-  >;
-  deleteMany?: Maybe<
-    NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput
-  >;
-  updateMany?: Maybe<
-    | NoteResponseUpdateManyWithWhereNestedInput[]
-    | NoteResponseUpdateManyWithWhereNestedInput
-  >;
+export interface NoteResponseUpdateManyDataInput {
+  message?: Maybe<String>;
 }
 
 export interface NoteUpsertWithWhereUniqueNestedInput {
@@ -632,236 +660,8 @@ export interface UserUpdateDataInput {
   username?: Maybe<String>;
   country?: Maybe<String>;
   city?: Maybe<String>;
-  sentNotes?: Maybe<NoteUpdateManyInput>;
   favoriteNotes?: Maybe<NoteUpdateManyInput>;
   interests?: Maybe<InterestUpdateManyInput>;
-}
-
-export interface NoteResponseScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  message?: Maybe<String>;
-  message_not?: Maybe<String>;
-  message_in?: Maybe<String[] | String>;
-  message_not_in?: Maybe<String[] | String>;
-  message_lt?: Maybe<String>;
-  message_lte?: Maybe<String>;
-  message_gt?: Maybe<String>;
-  message_gte?: Maybe<String>;
-  message_contains?: Maybe<String>;
-  message_not_contains?: Maybe<String>;
-  message_starts_with?: Maybe<String>;
-  message_not_starts_with?: Maybe<String>;
-  message_ends_with?: Maybe<String>;
-  message_not_ends_with?: Maybe<String>;
-  AND?: Maybe<NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput>;
-  OR?: Maybe<NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput>;
-  NOT?: Maybe<NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput>;
-}
-
-export interface NoteUpdateManyInput {
-  create?: Maybe<NoteCreateInput[] | NoteCreateInput>;
-  update?: Maybe<
-    | NoteUpdateWithWhereUniqueNestedInput[]
-    | NoteUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | NoteUpsertWithWhereUniqueNestedInput[]
-    | NoteUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
-  connect?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
-  set?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
-  disconnect?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
-  deleteMany?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
-  updateMany?: Maybe<
-    NoteUpdateManyWithWhereNestedInput[] | NoteUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface InterestUpdateInput {
-  title?: Maybe<String>;
-}
-
-export interface InterestUpdateManyDataInput {
-  title?: Maybe<String>;
-}
-
-export interface NoteSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<NoteWhereInput>;
-  AND?: Maybe<NoteSubscriptionWhereInput[] | NoteSubscriptionWhereInput>;
-  OR?: Maybe<NoteSubscriptionWhereInput[] | NoteSubscriptionWhereInput>;
-  NOT?: Maybe<NoteSubscriptionWhereInput[] | NoteSubscriptionWhereInput>;
-}
-
-export interface NoteUpdateDataInput {
-  message?: Maybe<String>;
-  author?: Maybe<UserUpdateOneRequiredInput>;
-  seenBy?: Maybe<UserUpdateManyInput>;
-  topic?: Maybe<InterestUpdateManyInput>;
-  responses?: Maybe<NoteResponseUpdateManyInput>;
-  fontFamily?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
-}
-
-export interface UserUpdateInput {
-  password?: Maybe<String>;
-  avatar?: Maybe<String>;
-  username?: Maybe<String>;
-  country?: Maybe<String>;
-  city?: Maybe<String>;
-  sentNotes?: Maybe<NoteUpdateManyInput>;
-  favoriteNotes?: Maybe<NoteUpdateManyInput>;
-  interests?: Maybe<InterestUpdateManyInput>;
-}
-
-export interface UserUpdateManyInput {
-  create?: Maybe<UserCreateInput[] | UserCreateInput>;
-  update?: Maybe<
-    | UserUpdateWithWhereUniqueNestedInput[]
-    | UserUpdateWithWhereUniqueNestedInput
-  >;
-  upsert?: Maybe<
-    | UserUpsertWithWhereUniqueNestedInput[]
-    | UserUpsertWithWhereUniqueNestedInput
-  >;
-  delete?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  connect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  set?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  disconnect?: Maybe<UserWhereUniqueInput[] | UserWhereUniqueInput>;
-  deleteMany?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
-  updateMany?: Maybe<
-    UserUpdateManyWithWhereNestedInput[] | UserUpdateManyWithWhereNestedInput
-  >;
-}
-
-export interface NoteResponseUpdateManyMutationInput {
-  message?: Maybe<String>;
-}
-
-export interface UserUpdateWithWhereUniqueNestedInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateDataInput;
-}
-
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface UserUpsertWithWhereUniqueNestedInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface NoteScalarWhereInput {
-  id?: Maybe<ID_Input>;
-  id_not?: Maybe<ID_Input>;
-  id_in?: Maybe<ID_Input[] | ID_Input>;
-  id_not_in?: Maybe<ID_Input[] | ID_Input>;
-  id_lt?: Maybe<ID_Input>;
-  id_lte?: Maybe<ID_Input>;
-  id_gt?: Maybe<ID_Input>;
-  id_gte?: Maybe<ID_Input>;
-  id_contains?: Maybe<ID_Input>;
-  id_not_contains?: Maybe<ID_Input>;
-  id_starts_with?: Maybe<ID_Input>;
-  id_not_starts_with?: Maybe<ID_Input>;
-  id_ends_with?: Maybe<ID_Input>;
-  id_not_ends_with?: Maybe<ID_Input>;
-  createdAt?: Maybe<DateTimeInput>;
-  createdAt_not?: Maybe<DateTimeInput>;
-  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
-  createdAt_lt?: Maybe<DateTimeInput>;
-  createdAt_lte?: Maybe<DateTimeInput>;
-  createdAt_gt?: Maybe<DateTimeInput>;
-  createdAt_gte?: Maybe<DateTimeInput>;
-  message?: Maybe<String>;
-  message_not?: Maybe<String>;
-  message_in?: Maybe<String[] | String>;
-  message_not_in?: Maybe<String[] | String>;
-  message_lt?: Maybe<String>;
-  message_lte?: Maybe<String>;
-  message_gt?: Maybe<String>;
-  message_gte?: Maybe<String>;
-  message_contains?: Maybe<String>;
-  message_not_contains?: Maybe<String>;
-  message_starts_with?: Maybe<String>;
-  message_not_starts_with?: Maybe<String>;
-  message_ends_with?: Maybe<String>;
-  message_not_ends_with?: Maybe<String>;
-  fontFamily?: Maybe<String>;
-  fontFamily_not?: Maybe<String>;
-  fontFamily_in?: Maybe<String[] | String>;
-  fontFamily_not_in?: Maybe<String[] | String>;
-  fontFamily_lt?: Maybe<String>;
-  fontFamily_lte?: Maybe<String>;
-  fontFamily_gt?: Maybe<String>;
-  fontFamily_gte?: Maybe<String>;
-  fontFamily_contains?: Maybe<String>;
-  fontFamily_not_contains?: Maybe<String>;
-  fontFamily_starts_with?: Maybe<String>;
-  fontFamily_not_starts_with?: Maybe<String>;
-  fontFamily_ends_with?: Maybe<String>;
-  fontFamily_not_ends_with?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  fontColor_not?: Maybe<String>;
-  fontColor_in?: Maybe<String[] | String>;
-  fontColor_not_in?: Maybe<String[] | String>;
-  fontColor_lt?: Maybe<String>;
-  fontColor_lte?: Maybe<String>;
-  fontColor_gt?: Maybe<String>;
-  fontColor_gte?: Maybe<String>;
-  fontColor_contains?: Maybe<String>;
-  fontColor_not_contains?: Maybe<String>;
-  fontColor_starts_with?: Maybe<String>;
-  fontColor_not_starts_with?: Maybe<String>;
-  fontColor_ends_with?: Maybe<String>;
-  fontColor_not_ends_with?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
-  backgroundColor_not?: Maybe<String>;
-  backgroundColor_in?: Maybe<String[] | String>;
-  backgroundColor_not_in?: Maybe<String[] | String>;
-  backgroundColor_lt?: Maybe<String>;
-  backgroundColor_lte?: Maybe<String>;
-  backgroundColor_gt?: Maybe<String>;
-  backgroundColor_gte?: Maybe<String>;
-  backgroundColor_contains?: Maybe<String>;
-  backgroundColor_not_contains?: Maybe<String>;
-  backgroundColor_starts_with?: Maybe<String>;
-  backgroundColor_not_starts_with?: Maybe<String>;
-  backgroundColor_ends_with?: Maybe<String>;
-  backgroundColor_not_ends_with?: Maybe<String>;
-  AND?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
-  OR?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
-  NOT?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
 }
 
 export interface UserScalarWhereInput {
@@ -954,42 +754,65 @@ export interface UserScalarWhereInput {
   NOT?: Maybe<UserScalarWhereInput[] | UserScalarWhereInput>;
 }
 
+export interface NoteUpdateManyInput {
+  create?: Maybe<NoteCreateInput[] | NoteCreateInput>;
+  update?: Maybe<
+    | NoteUpdateWithWhereUniqueNestedInput[]
+    | NoteUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | NoteUpsertWithWhereUniqueNestedInput[]
+    | NoteUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
+  connect?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
+  set?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
+  disconnect?: Maybe<NoteWhereUniqueInput[] | NoteWhereUniqueInput>;
+  deleteMany?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
+  updateMany?: Maybe<
+    NoteUpdateManyWithWhereNestedInput[] | NoteUpdateManyWithWhereNestedInput
+  >;
+}
+
+export interface InterestUpdateInput {
+  title?: Maybe<String>;
+}
+
 export interface NoteResponseUpdateManyWithWhereNestedInput {
   where: NoteResponseScalarWhereInput;
   data: NoteResponseUpdateManyDataInput;
 }
 
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
+export interface NoteSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<NoteWhereInput>;
+  AND?: Maybe<NoteSubscriptionWhereInput[] | NoteSubscriptionWhereInput>;
+  OR?: Maybe<NoteSubscriptionWhereInput[] | NoteSubscriptionWhereInput>;
+  NOT?: Maybe<NoteSubscriptionWhereInput[] | NoteSubscriptionWhereInput>;
 }
 
-export interface InterestCreateInput {
-  id?: Maybe<ID_Input>;
-  title: String;
+export interface NoteUpdateDataInput {
+  message?: Maybe<String>;
+  author?: Maybe<UserUpdateOneRequiredInput>;
+  topic?: Maybe<InterestUpdateManyInput>;
+  responses?: Maybe<NoteResponseUpdateManyInput>;
+  viewers?: Maybe<UserUpdateManyInput>;
+  fontFamily?: Maybe<String>;
+  fontColor?: Maybe<String>;
+  backgroundColor?: Maybe<String>;
 }
 
-export interface UserUpdateManyDataInput {
+export interface UserUpdateInput {
   password?: Maybe<String>;
   avatar?: Maybe<String>;
   username?: Maybe<String>;
   country?: Maybe<String>;
   city?: Maybe<String>;
-}
-
-export interface InterestSubscriptionWhereInput {
-  mutation_in?: Maybe<MutationType[] | MutationType>;
-  updatedFields_contains?: Maybe<String>;
-  updatedFields_contains_every?: Maybe<String[] | String>;
-  updatedFields_contains_some?: Maybe<String[] | String>;
-  node?: Maybe<InterestWhereInput>;
-  AND?: Maybe<
-    InterestSubscriptionWhereInput[] | InterestSubscriptionWhereInput
-  >;
-  OR?: Maybe<InterestSubscriptionWhereInput[] | InterestSubscriptionWhereInput>;
-  NOT?: Maybe<
-    InterestSubscriptionWhereInput[] | InterestSubscriptionWhereInput
-  >;
+  favoriteNotes?: Maybe<NoteUpdateManyInput>;
+  interests?: Maybe<InterestUpdateManyInput>;
 }
 
 export interface InterestUpdateManyInput {
@@ -1013,9 +836,117 @@ export interface InterestUpdateManyInput {
   >;
 }
 
-export interface NoteResponseUpdateInput {
+export interface NoteResponseUpdateManyMutationInput {
   message?: Maybe<String>;
-  author?: Maybe<UserUpdateOneRequiredInput>;
+}
+
+export interface InterestUpdateWithWhereUniqueNestedInput {
+  where: InterestWhereUniqueInput;
+  data: InterestUpdateDataInput;
+}
+
+export interface UserUpsertNestedInput {
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
+}
+
+export interface InterestUpdateDataInput {
+  title?: Maybe<String>;
+}
+
+export interface NoteScalarWhereInput {
+  id?: Maybe<ID_Input>;
+  id_not?: Maybe<ID_Input>;
+  id_in?: Maybe<ID_Input[] | ID_Input>;
+  id_not_in?: Maybe<ID_Input[] | ID_Input>;
+  id_lt?: Maybe<ID_Input>;
+  id_lte?: Maybe<ID_Input>;
+  id_gt?: Maybe<ID_Input>;
+  id_gte?: Maybe<ID_Input>;
+  id_contains?: Maybe<ID_Input>;
+  id_not_contains?: Maybe<ID_Input>;
+  id_starts_with?: Maybe<ID_Input>;
+  id_not_starts_with?: Maybe<ID_Input>;
+  id_ends_with?: Maybe<ID_Input>;
+  id_not_ends_with?: Maybe<ID_Input>;
+  createdAt?: Maybe<DateTimeInput>;
+  createdAt_not?: Maybe<DateTimeInput>;
+  createdAt_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_not_in?: Maybe<DateTimeInput[] | DateTimeInput>;
+  createdAt_lt?: Maybe<DateTimeInput>;
+  createdAt_lte?: Maybe<DateTimeInput>;
+  createdAt_gt?: Maybe<DateTimeInput>;
+  createdAt_gte?: Maybe<DateTimeInput>;
+  message?: Maybe<String>;
+  message_not?: Maybe<String>;
+  message_in?: Maybe<String[] | String>;
+  message_not_in?: Maybe<String[] | String>;
+  message_lt?: Maybe<String>;
+  message_lte?: Maybe<String>;
+  message_gt?: Maybe<String>;
+  message_gte?: Maybe<String>;
+  message_contains?: Maybe<String>;
+  message_not_contains?: Maybe<String>;
+  message_starts_with?: Maybe<String>;
+  message_not_starts_with?: Maybe<String>;
+  message_ends_with?: Maybe<String>;
+  message_not_ends_with?: Maybe<String>;
+  fontFamily?: Maybe<String>;
+  fontFamily_not?: Maybe<String>;
+  fontFamily_in?: Maybe<String[] | String>;
+  fontFamily_not_in?: Maybe<String[] | String>;
+  fontFamily_lt?: Maybe<String>;
+  fontFamily_lte?: Maybe<String>;
+  fontFamily_gt?: Maybe<String>;
+  fontFamily_gte?: Maybe<String>;
+  fontFamily_contains?: Maybe<String>;
+  fontFamily_not_contains?: Maybe<String>;
+  fontFamily_starts_with?: Maybe<String>;
+  fontFamily_not_starts_with?: Maybe<String>;
+  fontFamily_ends_with?: Maybe<String>;
+  fontFamily_not_ends_with?: Maybe<String>;
+  fontColor?: Maybe<String>;
+  fontColor_not?: Maybe<String>;
+  fontColor_in?: Maybe<String[] | String>;
+  fontColor_not_in?: Maybe<String[] | String>;
+  fontColor_lt?: Maybe<String>;
+  fontColor_lte?: Maybe<String>;
+  fontColor_gt?: Maybe<String>;
+  fontColor_gte?: Maybe<String>;
+  fontColor_contains?: Maybe<String>;
+  fontColor_not_contains?: Maybe<String>;
+  fontColor_starts_with?: Maybe<String>;
+  fontColor_not_starts_with?: Maybe<String>;
+  fontColor_ends_with?: Maybe<String>;
+  fontColor_not_ends_with?: Maybe<String>;
+  backgroundColor?: Maybe<String>;
+  backgroundColor_not?: Maybe<String>;
+  backgroundColor_in?: Maybe<String[] | String>;
+  backgroundColor_not_in?: Maybe<String[] | String>;
+  backgroundColor_lt?: Maybe<String>;
+  backgroundColor_lte?: Maybe<String>;
+  backgroundColor_gt?: Maybe<String>;
+  backgroundColor_gte?: Maybe<String>;
+  backgroundColor_contains?: Maybe<String>;
+  backgroundColor_not_contains?: Maybe<String>;
+  backgroundColor_starts_with?: Maybe<String>;
+  backgroundColor_not_starts_with?: Maybe<String>;
+  backgroundColor_ends_with?: Maybe<String>;
+  backgroundColor_not_ends_with?: Maybe<String>;
+  AND?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
+  OR?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
+  NOT?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
+}
+
+export interface InterestUpsertWithWhereUniqueNestedInput {
+  where: InterestWhereUniqueInput;
+  update: InterestUpdateDataInput;
+  create: InterestCreateInput;
+}
+
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
 }
 
 export interface InterestScalarWhereInput {
@@ -1052,19 +983,81 @@ export interface InterestScalarWhereInput {
   NOT?: Maybe<InterestScalarWhereInput[] | InterestScalarWhereInput>;
 }
 
-export interface InterestUpsertWithWhereUniqueNestedInput {
-  where: InterestWhereUniqueInput;
-  update: InterestUpdateDataInput;
-  create: InterestCreateInput;
+export interface InterestCreateInput {
+  id?: Maybe<ID_Input>;
+  title: String;
 }
 
-export interface InterestUpdateDataInput {
+export interface InterestUpdateManyWithWhereNestedInput {
+  where: InterestScalarWhereInput;
+  data: InterestUpdateManyDataInput;
+}
+
+export interface InterestSubscriptionWhereInput {
+  mutation_in?: Maybe<MutationType[] | MutationType>;
+  updatedFields_contains?: Maybe<String>;
+  updatedFields_contains_every?: Maybe<String[] | String>;
+  updatedFields_contains_some?: Maybe<String[] | String>;
+  node?: Maybe<InterestWhereInput>;
+  AND?: Maybe<
+    InterestSubscriptionWhereInput[] | InterestSubscriptionWhereInput
+  >;
+  OR?: Maybe<InterestSubscriptionWhereInput[] | InterestSubscriptionWhereInput>;
+  NOT?: Maybe<
+    InterestSubscriptionWhereInput[] | InterestSubscriptionWhereInput
+  >;
+}
+
+export interface InterestUpdateManyDataInput {
   title?: Maybe<String>;
 }
 
-export interface InterestUpdateWithWhereUniqueNestedInput {
-  where: InterestWhereUniqueInput;
-  data: InterestUpdateDataInput;
+export interface NoteResponseUpdateInput {
+  message?: Maybe<String>;
+  author?: Maybe<UserUpdateOneRequiredInput>;
+}
+
+export interface NoteResponseUpsertWithWhereUniqueNestedInput {
+  where: NoteResponseWhereUniqueInput;
+  update: NoteResponseUpdateDataInput;
+  create: NoteResponseCreateInput;
+}
+
+export interface NoteResponseUpdateDataInput {
+  message?: Maybe<String>;
+  author?: Maybe<UserUpdateOneRequiredInput>;
+}
+
+export interface NoteResponseUpdateWithWhereUniqueNestedInput {
+  where: NoteResponseWhereUniqueInput;
+  data: NoteResponseUpdateDataInput;
+}
+
+export interface NoteResponseUpdateManyInput {
+  create?: Maybe<NoteResponseCreateInput[] | NoteResponseCreateInput>;
+  update?: Maybe<
+    | NoteResponseUpdateWithWhereUniqueNestedInput[]
+    | NoteResponseUpdateWithWhereUniqueNestedInput
+  >;
+  upsert?: Maybe<
+    | NoteResponseUpsertWithWhereUniqueNestedInput[]
+    | NoteResponseUpsertWithWhereUniqueNestedInput
+  >;
+  delete?: Maybe<NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput>;
+  connect?: Maybe<
+    NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput
+  >;
+  set?: Maybe<NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput>;
+  disconnect?: Maybe<
+    NoteResponseWhereUniqueInput[] | NoteResponseWhereUniqueInput
+  >;
+  deleteMany?: Maybe<
+    NoteResponseScalarWhereInput[] | NoteResponseScalarWhereInput
+  >;
+  updateMany?: Maybe<
+    | NoteResponseUpdateManyWithWhereNestedInput[]
+    | NoteResponseUpdateManyWithWhereNestedInput
+  >;
 }
 
 export interface NoteUpdateManyWithWhereNestedInput {
@@ -1157,9 +1150,6 @@ export interface UserWhereInput {
   city_not_starts_with?: Maybe<String>;
   city_ends_with?: Maybe<String>;
   city_not_ends_with?: Maybe<String>;
-  sentNotes_every?: Maybe<NoteWhereInput>;
-  sentNotes_some?: Maybe<NoteWhereInput>;
-  sentNotes_none?: Maybe<NoteWhereInput>;
   favoriteNotes_every?: Maybe<NoteWhereInput>;
   favoriteNotes_some?: Maybe<NoteWhereInput>;
   favoriteNotes_none?: Maybe<NoteWhereInput>;
@@ -1182,14 +1172,18 @@ export interface UserSubscriptionWhereInput {
   NOT?: Maybe<UserSubscriptionWhereInput[] | UserSubscriptionWhereInput>;
 }
 
-export interface NoteResponseUpsertWithWhereUniqueNestedInput {
-  where: NoteResponseWhereUniqueInput;
-  update: NoteResponseUpdateDataInput;
-  create: NoteResponseCreateInput;
+export interface UserUpsertWithWhereUniqueNestedInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateDataInput;
+  create: UserCreateInput;
 }
 
-export interface NoteResponseUpdateManyDataInput {
-  message?: Maybe<String>;
+export interface UserUpdateManyDataInput {
+  password?: Maybe<String>;
+  avatar?: Maybe<String>;
+  username?: Maybe<String>;
+  country?: Maybe<String>;
+  city?: Maybe<String>;
 }
 
 export interface NodeNode {
@@ -1271,29 +1265,37 @@ export interface PageInfoSubscription
   endCursor: () => Promise<AsyncIterator<String>>;
 }
 
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  node: User;
-  updatedFields: String[];
-  previousValues: UserPreviousValues;
+export interface NoteResponse {
+  id: ID_Output;
+  createdAt: DateTimeOutput;
+  message: String;
 }
 
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
+export interface NoteResponsePromise
+  extends Promise<NoteResponse>,
     Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  message: () => Promise<String>;
+  author: <T = UserPromise>() => T;
 }
 
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
+export interface NoteResponseSubscription
+  extends Promise<AsyncIterator<NoteResponse>>,
     Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  message: () => Promise<AsyncIterator<String>>;
+  author: <T = UserSubscription>() => T;
+}
+
+export interface NoteResponseNullablePromise
+  extends Promise<NoteResponse | null>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  createdAt: () => Promise<DateTimeOutput>;
+  message: () => Promise<String>;
+  author: <T = UserPromise>() => T;
 }
 
 export interface InterestEdge {
@@ -1353,15 +1355,6 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   username: () => Promise<String>;
   country: () => Promise<String>;
   city: () => Promise<String>;
-  sentNotes: <T = FragmentableArray<Note>>(args?: {
-    where?: NoteWhereInput;
-    orderBy?: NoteOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
   favoriteNotes: <T = FragmentableArray<Note>>(args?: {
     where?: NoteWhereInput;
     orderBy?: NoteOrderByInput;
@@ -1391,15 +1384,6 @@ export interface UserSubscription
   username: () => Promise<AsyncIterator<String>>;
   country: () => Promise<AsyncIterator<String>>;
   city: () => Promise<AsyncIterator<String>>;
-  sentNotes: <T = Promise<AsyncIterator<NoteSubscription>>>(args?: {
-    where?: NoteWhereInput;
-    orderBy?: NoteOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
   favoriteNotes: <T = Promise<AsyncIterator<NoteSubscription>>>(args?: {
     where?: NoteWhereInput;
     orderBy?: NoteOrderByInput;
@@ -1429,15 +1413,6 @@ export interface UserNullablePromise
   username: () => Promise<String>;
   country: () => Promise<String>;
   city: () => Promise<String>;
-  sentNotes: <T = FragmentableArray<Note>>(args?: {
-    where?: NoteWhereInput;
-    orderBy?: NoteOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
   favoriteNotes: <T = FragmentableArray<Note>>(args?: {
     where?: NoteWhereInput;
     orderBy?: NoteOrderByInput;
@@ -1546,15 +1521,6 @@ export interface NotePromise extends Promise<Note>, Fragmentable {
   createdAt: () => Promise<DateTimeOutput>;
   message: () => Promise<String>;
   author: <T = UserPromise>() => T;
-  seenBy: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
   topic: <T = FragmentableArray<Interest>>(args?: {
     where?: InterestWhereInput;
     orderBy?: InterestOrderByInput;
@@ -1567,6 +1533,15 @@ export interface NotePromise extends Promise<Note>, Fragmentable {
   responses: <T = FragmentableArray<NoteResponse>>(args?: {
     where?: NoteResponseWhereInput;
     orderBy?: NoteResponseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  viewers: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1585,15 +1560,6 @@ export interface NoteSubscription
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   message: () => Promise<AsyncIterator<String>>;
   author: <T = UserSubscription>() => T;
-  seenBy: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
   topic: <T = Promise<AsyncIterator<InterestSubscription>>>(args?: {
     where?: InterestWhereInput;
     orderBy?: InterestOrderByInput;
@@ -1612,6 +1578,15 @@ export interface NoteSubscription
     first?: Int;
     last?: Int;
   }) => T;
+  viewers: <T = Promise<AsyncIterator<UserSubscription>>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
   fontFamily: () => Promise<AsyncIterator<String>>;
   fontColor: () => Promise<AsyncIterator<String>>;
   backgroundColor: () => Promise<AsyncIterator<String>>;
@@ -1624,15 +1599,6 @@ export interface NoteNullablePromise
   createdAt: () => Promise<DateTimeOutput>;
   message: () => Promise<String>;
   author: <T = UserPromise>() => T;
-  seenBy: <T = FragmentableArray<User>>(args?: {
-    where?: UserWhereInput;
-    orderBy?: UserOrderByInput;
-    skip?: Int;
-    after?: String;
-    before?: String;
-    first?: Int;
-    last?: Int;
-  }) => T;
   topic: <T = FragmentableArray<Interest>>(args?: {
     where?: InterestWhereInput;
     orderBy?: InterestOrderByInput;
@@ -1645,6 +1611,15 @@ export interface NoteNullablePromise
   responses: <T = FragmentableArray<NoteResponse>>(args?: {
     where?: NoteResponseWhereInput;
     orderBy?: NoteResponseOrderByInput;
+    skip?: Int;
+    after?: String;
+    before?: String;
+    first?: Int;
+    last?: Int;
+  }) => T;
+  viewers: <T = FragmentableArray<User>>(args?: {
+    where?: UserWhereInput;
+    orderBy?: UserOrderByInput;
     skip?: Int;
     after?: String;
     before?: String;
@@ -1743,37 +1718,29 @@ export interface InterestSubscriptionPayloadSubscription
   previousValues: <T = InterestPreviousValuesSubscription>() => T;
 }
 
-export interface NoteResponse {
-  id: ID_Output;
-  createdAt: DateTimeOutput;
-  message: String;
+export interface UserSubscriptionPayload {
+  mutation: MutationType;
+  node: User;
+  updatedFields: String[];
+  previousValues: UserPreviousValues;
 }
 
-export interface NoteResponsePromise
-  extends Promise<NoteResponse>,
+export interface UserSubscriptionPayloadPromise
+  extends Promise<UserSubscriptionPayload>,
     Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  message: () => Promise<String>;
-  author: <T = UserPromise>() => T;
+  mutation: () => Promise<MutationType>;
+  node: <T = UserPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = UserPreviousValuesPromise>() => T;
 }
 
-export interface NoteResponseSubscription
-  extends Promise<AsyncIterator<NoteResponse>>,
+export interface UserSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
     Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  message: () => Promise<AsyncIterator<String>>;
-  author: <T = UserSubscription>() => T;
-}
-
-export interface NoteResponseNullablePromise
-  extends Promise<NoteResponse | null>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  createdAt: () => Promise<DateTimeOutput>;
-  message: () => Promise<String>;
-  author: <T = UserPromise>() => T;
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = UserSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
 export interface UserConnection {

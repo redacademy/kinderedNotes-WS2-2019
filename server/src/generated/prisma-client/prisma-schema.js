@@ -241,9 +241,9 @@ type Note {
   createdAt: DateTime!
   message: String!
   author: User!
-  seenBy(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   topic(where: InterestWhereInput, orderBy: InterestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Interest!]
   responses(where: NoteResponseWhereInput, orderBy: NoteResponseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [NoteResponse!]
+  viewers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
   fontFamily: String!
   fontColor: String!
   backgroundColor: String!
@@ -259,9 +259,9 @@ input NoteCreateInput {
   id: ID
   message: String!
   author: UserCreateOneInput!
-  seenBy: UserCreateManyInput
   topic: InterestCreateManyInput
   responses: NoteResponseCreateManyInput
+  viewers: UserCreateManyInput
   fontFamily: String!
   fontColor: String!
   backgroundColor: String!
@@ -603,9 +603,9 @@ input NoteSubscriptionWhereInput {
 input NoteUpdateDataInput {
   message: String
   author: UserUpdateOneRequiredInput
-  seenBy: UserUpdateManyInput
   topic: InterestUpdateManyInput
   responses: NoteResponseUpdateManyInput
+  viewers: UserUpdateManyInput
   fontFamily: String
   fontColor: String
   backgroundColor: String
@@ -614,9 +614,9 @@ input NoteUpdateDataInput {
 input NoteUpdateInput {
   message: String
   author: UserUpdateOneRequiredInput
-  seenBy: UserUpdateManyInput
   topic: InterestUpdateManyInput
   responses: NoteResponseUpdateManyInput
+  viewers: UserUpdateManyInput
   fontFamily: String
   fontColor: String
   backgroundColor: String
@@ -702,15 +702,15 @@ input NoteWhereInput {
   message_ends_with: String
   message_not_ends_with: String
   author: UserWhereInput
-  seenBy_every: UserWhereInput
-  seenBy_some: UserWhereInput
-  seenBy_none: UserWhereInput
   topic_every: InterestWhereInput
   topic_some: InterestWhereInput
   topic_none: InterestWhereInput
   responses_every: NoteResponseWhereInput
   responses_some: NoteResponseWhereInput
   responses_none: NoteResponseWhereInput
+  viewers_every: UserWhereInput
+  viewers_some: UserWhereInput
+  viewers_none: UserWhereInput
   fontFamily: String
   fontFamily_not: String
   fontFamily_in: [String!]
@@ -799,7 +799,6 @@ type User {
   username: String!
   country: String!
   city: String!
-  sentNotes(where: NoteWhereInput, orderBy: NoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Note!]
   favoriteNotes(where: NoteWhereInput, orderBy: NoteOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Note!]
   interests(where: InterestWhereInput, orderBy: InterestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Interest!]
 }
@@ -817,7 +816,6 @@ input UserCreateInput {
   username: String!
   country: String!
   city: String!
-  sentNotes: NoteCreateManyInput
   favoriteNotes: NoteCreateManyInput
   interests: InterestCreateManyInput
 }
@@ -975,7 +973,6 @@ input UserUpdateDataInput {
   username: String
   country: String
   city: String
-  sentNotes: NoteUpdateManyInput
   favoriteNotes: NoteUpdateManyInput
   interests: InterestUpdateManyInput
 }
@@ -986,7 +983,6 @@ input UserUpdateInput {
   username: String
   country: String
   city: String
-  sentNotes: NoteUpdateManyInput
   favoriteNotes: NoteUpdateManyInput
   interests: InterestUpdateManyInput
 }
@@ -1132,9 +1128,6 @@ input UserWhereInput {
   city_not_starts_with: String
   city_ends_with: String
   city_not_ends_with: String
-  sentNotes_every: NoteWhereInput
-  sentNotes_some: NoteWhereInput
-  sentNotes_none: NoteWhereInput
   favoriteNotes_every: NoteWhereInput
   favoriteNotes_some: NoteWhereInput
   favoriteNotes_none: NoteWhereInput
