@@ -1,7 +1,9 @@
 const User = {
-  sentNotes: ({id}, args, context) => {
-    return context.prisma.user({id}).notes()
-  },
+  interests: ({id}, args, context) =>
+    context.prisma.user({id}).interests(),
+
+  favoriteNotes: ({id}, args, context) =>
+    context.prisma.user({id}).favoriteNotes(),
 }
 
 module.exports = {

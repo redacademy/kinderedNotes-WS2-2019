@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const {getUserId} = require('../../utils')
 
 const auth = {
   async signup(parent, args, context) {
@@ -10,6 +11,16 @@ const auth = {
       avatar: 'hi',
       country: 'CA',
       city: 'VAN',
+      interests: {
+        create: [
+          {
+            title: 'Banana',
+          },
+          {
+            title: 'Apples',
+          },
+        ],
+      },
     })
 
     return {
@@ -34,6 +45,19 @@ const auth = {
       token: jwt.sign({userId: user.id}, process.env.APP_SECRET),
       user,
     }
+  },
+
+  async updateInterests(parent, {interests}, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: {id: userId},
+      data: {
+        interests: {
+          upsert: interests.map(i => ({title: i})),
+        },
+      },
+    })
   },
 }
 
