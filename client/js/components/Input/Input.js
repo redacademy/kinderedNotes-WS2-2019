@@ -1,16 +1,9 @@
 import React from 'react'
-import {TextInput, View} from 'react-native'
+import {TextInput} from 'react-native'
+import styles from './Input.styles'
 
-const Input = props => (
-  <View>
-    <TextInput
-      type="text"
-      name="note-message"
-      placeholder="Write a kind note"
-      placeholderTextColor="#888B8D"
-      {...props}
-    />
-  </View>
+const Input = ({placeholder, ...props}) => (
+  <TextInput placeholder={placeholder} style={styles.input} {...props} />
 )
 
 export default Input
