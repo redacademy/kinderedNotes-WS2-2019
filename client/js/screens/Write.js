@@ -1,12 +1,14 @@
 import React from 'react'
 import {SafeAreaView} from 'react-native'
-import {ScrollView} from 'react-native-gesture-handler'
 import {Note} from '../components'
+import {useCreateNote} from '../hooks'
 
 const Write = () => {
+  const [createNote] = useCreateNote()
+
   return (
     <SafeAreaView>
-      <Note />
+      <Note onSubmit={createNote} />
     </SafeAreaView>
   )
 }

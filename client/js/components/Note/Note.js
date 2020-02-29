@@ -1,15 +1,23 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {View} from 'react-native'
 import {Button, Input} from '../../components'
 import styles from './Note.styles'
 
-const Note = () => {
+const Note = ({onSubmit}) => {
+  const [messageInput, setMessageInput] = useState('')
+  const submitNote = () =>
+    onSubmit({
+      variables: {
+        message: messageInput,
+      },
+    })
+
   return (
     <View style={styles.container}>
       <View style={styles.noteContainer}>
-        <Input />
+        <Input value={messageInput} onChangeText={setMessageInput} />
       </View>
-      <Button>Post</Button>
+      <Button onPress={submitNote}>Post</Button>
     </View>
   )
 }
