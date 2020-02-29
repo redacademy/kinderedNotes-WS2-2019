@@ -1,16 +1,14 @@
 import React from 'react'
 import {View} from 'react-native'
-import {Button, Message} from '../../components'
+import {Message} from '../../components'
 import styles from './Note.styles'
 
-const Note = () => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.noteContainer}>
-        <Message />
-      </View>
+const Note = ({value, onChangeText}) => (
+  <View style={styles.container}>
+    <View style={styles.noteContainer}>
+      <Message value={value} onChangeText={onChangeText} />
     </View>
-  )
-}
+  </View>
+)
 
 export default Note

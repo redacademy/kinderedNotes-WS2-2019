@@ -1,11 +1,12 @@
 import {gql} from 'apollo-boost'
 
-const FEED = gql`
+const INBOX = gql`
   {
-    feed {
+    inbox {
       id
+      message
     }
   }
 `
 
-export {FEED}
+export {INBOX}
