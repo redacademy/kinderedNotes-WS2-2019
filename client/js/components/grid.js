@@ -1,44 +1,38 @@
-import React, {Image} from 'react'
-import {View, StyleSheet, Text} from 'react-native'
-import SquareGrid from 'react-native-square-grid'
-import Message_Note from '../../assets/icons/Message_Note.svg'
+import React from 'react'
+import {StyleSheet, View, FlatList} from 'react-native'
+import MessageNote from '../../assets/icons/Message_Note'
 
-var NUMBERS = ['one', 'two', 'three', 'four', 'five', 'six']
+const TEMP_D = [{id: 1}, {id: 2}, {id: 3}]
 
-var styles = StyleSheet.create({
-  item: {
-    flex: 1,
-    padding: 16,
-  },
-  content: {
-    flex: 1,
-    backgroundColor: 'purple',
-    alignItems: 'center',
+const Grid = () => (
+  <View style={styles.MainContainer}>
+    <FlatList
+      data={TEMP_D}
+      renderItem={({item}) => (
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            margin: 1,
+            backgroundColor: '#48a9c6',
+            alignItems: 'center',
+          }}
+        >
+          <MessageNote width="100" />
+        </View>
+      )}
+      numColumns={3}
+      keyExtractor={(item, index) => index.toString()}
+    />
+  </View>
+)
+
+const styles = StyleSheet.create({
+  MainContainer: {
     justifyContent: 'center',
-  },
-  text: {
-    color: 'white',
-    fontSize: 32,
+    flex: 1,
+    paddingTop: 30,
   },
 })
 
-export default function Grid(props) {
-  return (
-    <SquareGrid
-      rows={2}
-      columns={3}
-      items={NUMBERS}
-      renderItem={renderItem}
-    />
-  )
-}
-function renderItem(item) {
-  return (
-    <View style={styles.item}>
-      <View style={styles.content}>
-        <Text style={styles.text}>{item}</Text>
-        {/* <Message_Note /> */}
-      </View>
-    </View>
-  )
-}
+export default Grid
