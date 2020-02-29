@@ -1,15 +1,14 @@
 import React from 'react'
 import {View} from 'react-native'
-import {Button, Input} from '../../components'
+import {Button, Message} from '../../components'
 import styles from './Note.styles'
 
 const Note = () => {
   return (
     <View style={styles.container}>
       <View style={styles.noteContainer}>
-        <Input />
+        <Message />
       </View>
-      <Button>Post</Button>
     </View>
   )
 }
