@@ -2,7 +2,7 @@ type User {
   id: ID! @id
   password: String!
   avatar: String!
-  username: String!
+  username: String! @unique
   country: String!
   city: String!
   favoriteNotes: [Note]! @relation(link: TABLE, name: "FavoriteNote")
