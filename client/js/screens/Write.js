@@ -3,8 +3,10 @@ import {SafeAreaView} from 'react-native'
 import {Note} from '../components'
 import {useCreateNote} from '../hooks'
 
-const Write = () => {
-  const [createNote] = useCreateNote()
+const Write = ({navigation}) => {
+  const [createNote] = useCreateNote(() =>
+    navigation.navigate('Notes'),
+  )
 
   return (
     <SafeAreaView>

@@ -5,12 +5,14 @@ import styles from './Note.styles'
 
 const Note = ({onSubmit}) => {
   const [messageInput, setMessageInput] = useState('')
-  const submitNote = () =>
+  const submitNote = () => {
     onSubmit({
       variables: {
         message: messageInput,
       },
     })
+    setMessageInput('')
+  }
 
   return (
     <View style={styles.container}>

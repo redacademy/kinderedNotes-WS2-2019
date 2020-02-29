@@ -1,17 +1,29 @@
 import {useState} from 'react'
 import {Animated} from 'react-native'
 
-const useSiteTransition = () => {
-  const [opacity] = useState(new Animated.Value(1))
-  const FADE_DURATION = 3000
+const FADE_DURATION = 3000
 
-  const fadeOut = () =>
-    Animated.timing(opacity, {
-      toValue: 0,
+const useSiteTransition = () => {
+  const [authScreenOpacity] = useState(new Animated.Value(1))
+
+  const fadeAuth = val =>
+    Animated.timing(authScreenOpacity, {
+      toValue: val,
       duration: FADE_DURATION,
     }).start()
 
-  return {opacity, fadeOut, FADE_DURATION}
+  const fadeDefault = val =>
+    Animated.timing(authScreenOpacity, {
+      toValue: val,
+      duration: FADE_DURATION,
+    }).start()
+
+  return {
+    authScreenOpacity,
+    fadeDefault,
+    fadeAuth,
+    FADE_DURATION,
+  }
 }
 
 export default useSiteTransition

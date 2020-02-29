@@ -1,12 +1,17 @@
 import {useMutation} from '@apollo/react-hooks'
 import {CREATE_NOTE} from '../context'
 
-const useCreateNote = () => {
+const useCreateNote = onCreate => {
   const [createNote, {data: createdNoteData, error}] = useMutation(
     CREATE_NOTE,
   )
 
-  return [createNote, error, createdNoteData]
+  const handleCreateNote = args => {
+    createNote(args)
+    onCreate()
+  }
+
+  return [handleCreateNote, error, createdNoteData]
 }
 
 export default useCreateNote

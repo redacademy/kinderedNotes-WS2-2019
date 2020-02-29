@@ -10,7 +10,11 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
   const [isTransitioningScreen, setIsTransitioningScreen] = useState(
     false,
   )
-  const {opacity, fadeOut, FADE_DURATION} = useSiteTransition()
+  const {
+    authScreenOpacity,
+    fadeAuth,
+    FADE_DURATION,
+  } = useSiteTransition()
 
   useEffect(() => {
     if (
@@ -19,7 +23,7 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
       !isTransitioningScreen
     ) {
       setIsTransitioningScreen(true)
-      fadeOut()
+      fadeAuth(0)
       setTimeout(() => {
         setActiveScreen('DEFAULT')
         setIsTransitioningScreen(false)
@@ -31,7 +35,7 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
     isTransitioningScreen,
     setActiveScreen,
     setIsTransitioningScreen,
-    fadeOut,
+    fadeAuth,
     FADE_DURATION,
   ])
 
@@ -40,7 +44,7 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
   }
 
   return (
-    <Animated.View style={{...style, opacity}}>
+    <Animated.View style={{...style, opacity: authScreenOpacity}}>
       <AuthView />
     </Animated.View>
   )
