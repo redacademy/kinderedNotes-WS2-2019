@@ -1,17 +1,21 @@
 import React from 'react'
 import {StatusBar} from 'react-native'
 import {ApolloProvider} from '@apollo/react-hooks'
-import Navigation from './Navigation'
 import {Login} from './screens'
-import {client, AuthContextProvider, AuthContext} from './context'
+import {client, AuthContextProvider} from './context'
+import {SiteTransitionWrapper} from './navigation'
+
+// TODO: refactor to `navigation/routes.js`
+import Navigation from './Navigation'
 
 const App = () => (
   <ApolloProvider client={client}>
     <AuthContextProvider>
       <StatusBar barStyle="dark-content" />
-      <AuthContext.Consumer>
-        {({user}) => (user ? <Navigation /> : <Login />)}
-      </AuthContext.Consumer>
+      <SiteTransitionWrapper
+        AuthView={Login}
+        DefaultView={Navigation}
+      />
     </AuthContextProvider>
   </ApolloProvider>
 )

@@ -12,6 +12,7 @@ const useAuth = () => {
 
   const logout = () => {
     setUser(null)
+    setLocalUser(null)
   }
 
   const toggleIsLogin = () => setIsLogin(s => !s)

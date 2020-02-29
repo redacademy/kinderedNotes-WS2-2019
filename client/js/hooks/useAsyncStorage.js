@@ -5,10 +5,6 @@ const useAsyncStorage = key => {
   const [value, setValue] = useState()
 
   const set = async newValue => {
-    if (value) {
-      return value
-    }
-
     try {
       const retval = await AsyncStorage.setItem(
         key,
