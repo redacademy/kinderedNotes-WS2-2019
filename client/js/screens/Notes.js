@@ -3,18 +3,7 @@ import {Text, SafeAreaView, TouchableOpacity} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import {useQuery} from '@apollo/react-hooks'
 import {INBOX} from '../context/apollo'
-import {useAuth} from '../hooks'
-
-// FIXME: user is functionally logged out on hard reload
-const TEMP_LOGOUT = () => {
-  const {logout} = useAuth()
-
-  return (
-    <TouchableOpacity onPress={logout}>
-      <Text>log out</Text>
-    </TouchableOpacity>
-  )
-}
+import Grid from '../components/grid'
 
 const Notes = () => {
   const {loading, error, data} = useQuery(INBOX)
@@ -30,11 +19,8 @@ const Notes = () => {
 
         {loading && <Text>Loading inbox...</Text>}
 
-        {!error && data && (
-          <Text>{data.inbox.map(d => JSON.stringify(d))}</Text>
-        )}
+        {!error && data && <Grid data={data.inbox} />}
       </ScrollView>
-      <TEMP_LOGOUT />
     </SafeAreaView>
   )
 }

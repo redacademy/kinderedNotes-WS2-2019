@@ -2,12 +2,10 @@ import React from 'react'
 import {StyleSheet, View, FlatList} from 'react-native'
 import MessageNote from '../../assets/icons/Message_Note'
 
-const TEMP_D = [{id: 1}, {id: 2}, {id: 3}]
-
-const Grid = () => (
+const Grid = ({data}) => (
   <View style={styles.MainContainer}>
     <FlatList
-      data={TEMP_D}
+      data={data}
       renderItem={({item}) => (
         <View
           style={{
