@@ -1,13 +1,18 @@
 import React from 'react'
 import {StatusBar} from 'react-native'
-import Navigation from './Navigation'
 import {ApolloProvider} from '@apollo/react-hooks'
-import {client} from './context'
+import Navigation from './Navigation'
+import {Login} from './screens'
+import {client, AuthContextProvider, AuthContext} from './context'
 
 const App = () => (
   <ApolloProvider client={client}>
-    <StatusBar barStyle="dark-content" />
-    <Navigation />
+    <AuthContextProvider>
+      <StatusBar barStyle="dark-content" />
+      <AuthContext.Consumer>
+        {({user}) => (user ? <Navigation /> : <Login />)}
+      </AuthContext.Consumer>
+    </AuthContextProvider>
   </ApolloProvider>
 )
 

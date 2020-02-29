@@ -17,9 +17,19 @@ const Query = {
 
     return context.prisma.notes({
       where: {
-        topic_some: {
-          title_in: interests.map(d => d.title),
-        },
+        AND: [
+          {
+            author: {
+              id_not: userId,
+            },
+          },
+
+          {
+            topic_some: {
+              title_in: interests.map(d => d.title),
+            },
+          },
+        ],
       },
     })
   },

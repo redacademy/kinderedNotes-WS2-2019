@@ -1,27 +1,26 @@
 import React from 'react'
 import {useQuery} from '@apollo/react-hooks'
-import {Text} from 'react-native'
-import {SafeAreaView} from 'react-native'
+import {Text, SafeAreaView} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
-import {FEED} from '../context/apollo'
+import {INBOX} from '../context/apollo'
 
 const Notes = () => {
-  const {loading, error, data} = useQuery(FEED)
+  const {loading, error, data} = useQuery(INBOX)
 
   return (
     <SafeAreaView>
       <ScrollView>
-        <Text>notes page</Text>
-
         {error && (
           <Text>
             Something went wrong. Please restart the App to try again.
           </Text>
         )}
 
-        {loading && <Text>Loading...</Text>}
+        {loading && <Text>Loading inbox...</Text>}
 
-        {!error && data && <Text>{data.feed.map(d => d.id)}</Text>}
+        {!error && data && (
+          <Text>{data.inbox.map(d => JSON.stringify(d))}</Text>
+        )}
       </ScrollView>
     </SafeAreaView>
   )

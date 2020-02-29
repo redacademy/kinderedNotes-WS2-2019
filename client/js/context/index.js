@@ -1,3 +1,11 @@
-import client, {FEED} from './apollo'
+import client, {INBOX, SIGN_UP, LOG_IN} from './apollo'
+import AuthContext, {AuthContextProvider} from './auth'
 
-export {client, FEED}
+export {
+  client,
+  INBOX,
+  SIGN_UP,
+  LOG_IN,
+  AuthContext,
+  AuthContextProvider,
+}
