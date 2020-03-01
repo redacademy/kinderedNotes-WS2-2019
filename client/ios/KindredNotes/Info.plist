@@ -51,6 +51,17 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Nunito-SemiBold.otf</string>
+		<string>Nunito-Regular.otf</string>
+		<string>Nunito-Medium.otf</string>
+		<string>Nunito-Light.otf</string>
+		<string>Nunito-ExtraLight.otf</string>
+		<string>Nunito-ExtraBold.otf</string>
+		<string>Nunito-Bold.otf</string>
+		<string>Nunito-Black.otf</string>
+	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

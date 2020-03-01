@@ -17,6 +17,14 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* KindredNotesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* KindredNotesTests.m */; };
+		5A49BAB6240B252500DD19FE /* Nunito-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAB2240B24F000DD19FE /* Nunito-Black.otf */; };
+		5A49BAB7240B252500DD19FE /* Nunito-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAB0240B24F000DD19FE /* Nunito-Bold.otf */; };
+		5A49BAB8240B252500DD19FE /* Nunito-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAB5240B24F000DD19FE /* Nunito-ExtraBold.otf */; };
+		5A49BAB9240B252500DD19FE /* Nunito-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAB4240B24F000DD19FE /* Nunito-ExtraLight.otf */; };
+		5A49BABA240B252500DD19FE /* Nunito-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAAF240B24F000DD19FE /* Nunito-Light.otf */; };
+		5A49BABB240B252500DD19FE /* Nunito-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAAE240B24EF00DD19FE /* Nunito-Medium.otf */; };
+		5A49BABC240B252500DD19FE /* Nunito-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAB3240B24F000DD19FE /* Nunito-Regular.otf */; };
+		5A49BABD240B252500DD19FE /* Nunito-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 5A49BAB1240B24F000DD19FE /* Nunito-SemiBold.otf */; };
 		7B0D67E6AD35EDB77871BEE6 /* libPods-KindredNotes-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 67ACB2149EB2391206D3D6D8 /* libPods-KindredNotes-tvOS.a */; };
 		CF02D053F4300F57C029F994 /* libPods-KindredNotes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DBF8AE7E834626E5560B6EA /* libPods-KindredNotes.a */; };
 		F62076E3825A2CCFEB4B8444 /* libPods-KindredNotesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C8F3EAE2226CDB20C0EFA2 /* libPods-KindredNotesTests.a */; };
@@ -57,6 +65,14 @@
 		4A75C28DDD3B1A47C23CEF3C /* Pods-KindredNotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KindredNotes.debug.xcconfig"; path = "Target Support Files/Pods-KindredNotes/Pods-KindredNotes.debug.xcconfig"; sourceTree = "<group>"; };
 		4DBF8AE7E834626E5560B6EA /* libPods-KindredNotes.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KindredNotes.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		540C9635633DBF6BECC302D9 /* Pods-KindredNotes-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KindredNotes-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-KindredNotes-tvOSTests/Pods-KindredNotes-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		5A49BAAE240B24EF00DD19FE /* Nunito-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Medium.otf"; path = "../../../../../../../Downloads/fonts/Nunito-Medium.otf"; sourceTree = "<group>"; };
+		5A49BAAF240B24F000DD19FE /* Nunito-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Light.otf"; path = "../../../../../../../Downloads/fonts/Nunito-Light.otf"; sourceTree = "<group>"; };
+		5A49BAB0240B24F000DD19FE /* Nunito-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Bold.otf"; path = "../../../../../../../Downloads/fonts/Nunito-Bold.otf"; sourceTree = "<group>"; };
+		5A49BAB1240B24F000DD19FE /* Nunito-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-SemiBold.otf"; path = "../../../../../../../Downloads/fonts/Nunito-SemiBold.otf"; sourceTree = "<group>"; };
+		5A49BAB2240B24F000DD19FE /* Nunito-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Black.otf"; path = "../../../../../../../Downloads/fonts/Nunito-Black.otf"; sourceTree = "<group>"; };
+		5A49BAB3240B24F000DD19FE /* Nunito-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-Regular.otf"; path = "../../../../../../../Downloads/fonts/Nunito-Regular.otf"; sourceTree = "<group>"; };
+		5A49BAB4240B24F000DD19FE /* Nunito-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraLight.otf"; path = "../../../../../../../Downloads/fonts/Nunito-ExtraLight.otf"; sourceTree = "<group>"; };
+		5A49BAB5240B24F000DD19FE /* Nunito-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-ExtraBold.otf"; path = "../../../../../../../Downloads/fonts/Nunito-ExtraBold.otf"; sourceTree = "<group>"; };
 		5C90F08A79D4B437532E2AEC /* Pods-KindredNotes-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KindredNotes-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-KindredNotes-tvOS/Pods-KindredNotes-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		67ACB2149EB2391206D3D6D8 /* libPods-KindredNotes-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KindredNotes-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FCA4407495065E7FCE620E2 /* Pods-KindredNotes-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KindredNotes-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-KindredNotes-tvOSTests/Pods-KindredNotes-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +165,29 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5A49BAAC240B247C00DD19FE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = ../Resources;
+			sourceTree = "<group>";
+		};
+		5A49BAAD240B24A700DD19FE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5A49BAB2240B24F000DD19FE /* Nunito-Black.otf */,
+				5A49BAB0240B24F000DD19FE /* Nunito-Bold.otf */,
+				5A49BAB5240B24F000DD19FE /* Nunito-ExtraBold.otf */,
+				5A49BAB4240B24F000DD19FE /* Nunito-ExtraLight.otf */,
+				5A49BAAF240B24F000DD19FE /* Nunito-Light.otf */,
+				5A49BAAE240B24EF00DD19FE /* Nunito-Medium.otf */,
+				5A49BAB3240B24F000DD19FE /* Nunito-Regular.otf */,
+				5A49BAB1240B24F000DD19FE /* Nunito-SemiBold.otf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +198,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				5A49BAAD240B24A700DD19FE /* Resources */,
 				13B07FAE1A68108700A75B9A /* KindredNotes */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* KindredNotesTests */,
@@ -185,6 +225,7 @@
 		F3B81D7CB0497070E9BB2EB6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				5A49BAAC240B247C00DD19FE /* Resources */,
 				4A75C28DDD3B1A47C23CEF3C /* Pods-KindredNotes.debug.xcconfig */,
 				830DF7D45257962901A7CE8C /* Pods-KindredNotes.release.xcconfig */,
 				5C90F08A79D4B437532E2AEC /* Pods-KindredNotes-tvOS.debug.xcconfig */,
@@ -194,7 +235,6 @@
 				85498BE39F9F046FDB89DE47 /* Pods-KindredNotesTests.debug.xcconfig */,
 				C6D150D1E7B5703646F919DD /* Pods-KindredNotesTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -308,6 +348,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -336,6 +377,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A49BAB6240B252500DD19FE /* Nunito-Black.otf in Resources */,
+				5A49BAB7240B252500DD19FE /* Nunito-Bold.otf in Resources */,
+				5A49BAB8240B252500DD19FE /* Nunito-ExtraBold.otf in Resources */,
+				5A49BAB9240B252500DD19FE /* Nunito-ExtraLight.otf in Resources */,
+				5A49BABA240B252500DD19FE /* Nunito-Light.otf in Resources */,
+				5A49BABB240B252500DD19FE /* Nunito-Medium.otf in Resources */,
+				5A49BABC240B252500DD19FE /* Nunito-Regular.otf in Resources */,
+				5A49BABD240B252500DD19FE /* Nunito-SemiBold.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
