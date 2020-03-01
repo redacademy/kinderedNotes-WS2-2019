@@ -4,7 +4,13 @@ import {TagsContext} from '../context'
 const useTags = () => {
   const {tags, setTags} = useContext(TagsContext)
 
-  return {tags, setTags}
+  const deleteTag = i => {
+    const tagsCopy = [...tags]
+    tagsCopy.splice(i, 1)
+    setTags(tagsCopy)
+  }
+
+  return {tags, setTags, deleteTag}
 }
 
 export default useTags

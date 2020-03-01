@@ -7,7 +7,7 @@ const TagsInput = ({placeholder}) => {
 
   // TODO: style input
   // TODO: render placeholder
-  // TODO: validate tag on input (eg. no duplicate)
+  // TODO: validate tag on input (eg. no duplicate, max length)
 
   return (
     <Tags
