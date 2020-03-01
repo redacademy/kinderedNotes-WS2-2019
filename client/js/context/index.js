@@ -1,5 +1,6 @@
 import client, {INBOX, SIGN_UP, LOG_IN, CREATE_NOTE} from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
+import TagsContext, {TagsContextProvider} from './tags'
 
 export {
   client,
@@ -9,4 +10,6 @@ export {
   CREATE_NOTE,
   AuthContext,
   AuthContextProvider,
+  TagsContext,
+  TagsContextProvider,
 }

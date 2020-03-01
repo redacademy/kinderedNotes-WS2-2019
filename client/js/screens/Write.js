@@ -1,8 +1,15 @@
 import React, {useState} from 'react'
 import {SafeAreaView, View} from 'react-native'
-import {Note, Input, Button, styles} from '../components'
+import {
+  Note,
+  TagsInput,
+  TagsList,
+  Button,
+  styles,
+} from '../components'
 import {Header} from '../components/Typography'
 import {useCreateNote} from '../hooks'
+import {TagsContextProvider} from '../context'
 
 const Write = ({navigation}) => {
   const [messageInput, setMessageInput] = useState('')
@@ -23,7 +30,10 @@ const Write = ({navigation}) => {
       <View style={styles.noteArea}>
         <Note value={messageInput} onChangeText={setMessageInput} />
         <Header>Tag related topics</Header>
-        <Input placeholder="Anxiety" />
+        <TagsContextProvider>
+          <TagsInput placeholder="Anxiety" />
+          <TagsList />
+        </TagsContextProvider>
         <Button onPress={submitNote}>Post</Button>
       </View>
     </SafeAreaView>

@@ -33,6 +33,7 @@
     "react-native-square-grid": "^1.0.5",
     "react-native-svg": "^11.0.1",
     "react-native-tab-view": "^2.13.0",
+    "react-native-tags": "^2.1.0",
     "react-tag-box": "^1.6.0"
   },
   "devDependencies": {
