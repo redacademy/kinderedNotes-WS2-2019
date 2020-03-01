@@ -6,6 +6,8 @@ const Note = {
 
   responses: ({id}, args, context) =>
     context.prisma.note({id}).responses(),
+
+  topic: ({id}, args, context) => context.prisma.note({id}).topic(),
 }
 
 module.exports = {

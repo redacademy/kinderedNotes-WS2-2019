@@ -7,7 +7,7 @@ const TagsInput = ({placeholder}) => {
   const {tags, setTags} = useTags()
   const [tagInput, setTagInput] = useState('')
 
-  // TODO: validate tag on input (eg. no duplicate, max length)
+  // TODO: validate tag on input (eg. no duplicates, max length, max tags amount)
 
   const handleChangeText = input => {
     if (input === ' ' && tagInput === '') {
