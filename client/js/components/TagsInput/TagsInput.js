@@ -1,19 +1,37 @@
-import React from 'react'
-import Tags from 'react-native-tags'
+import React, {useState} from 'react'
 import {useTags} from '../../hooks'
+import {Input} from '../index'
+import {formatTagInput} from './utils'
 
 const TagsInput = ({placeholder}) => {
   const {tags, setTags} = useTags()
+  const [tagInput, setTagInput] = useState('')
 
-  // TODO: style input
-  // TODO: render placeholder
   // TODO: validate tag on input (eg. no duplicate, max length)
 
+  const handleChangeText = input => {
+    if (input === ' ' && tagInput === '') {
+      return
+    }
+
+    const lastInput = input[input.length - 1]
+
+    if (lastInput === ' ') {
+      setTags([formatTagInput(input), ...tags])
+      setTagInput('')
+    } else if (lastInput === ',') {
+      setTags([formatTagInput(input.slice(0, -1)), ...tags])
+      setTagInput('')
+    } else {
+      setTagInput(input)
+    }
+  }
+
   return (
-    <Tags
-      onChangeTags={tag => tag.length && setTags([tag, ...tags])}
-      containerStyle={{justifyContent: 'center'}}
-      inputStyle={{backgroundColor: 'white'}}
+    <Input
+      placeholder={placeholder}
+      onChangeText={handleChangeText}
+      value={tagInput}
     />
   )
 }
