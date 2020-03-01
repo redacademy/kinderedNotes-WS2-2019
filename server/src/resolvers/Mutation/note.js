@@ -1,7 +1,7 @@
 const {getUserId} = require('../../utils')
 
 const note = {
-  async createNote(parent, {message}, context) {
+  async createNote(parent, {message, tags}, context) {
     const userId = getUserId(context)
     return context.prisma.createNote({
       message,
@@ -10,7 +10,7 @@ const note = {
       backgroundColor: '#fff',
       author: {connect: {id: userId}},
       topic: {
-        create: [{title: 'Banana'}],
+        create: tags.map(tag => ({title: tag})),
       },
     })
   },

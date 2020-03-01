@@ -9,7 +9,7 @@ type Mutation {
   # TODO: use email for auth
   signup(password: String!, username: String!): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
-  createNote(message: String!): Note!
+  createNote(message: String!, tags: [String!]!): Note!
   viewNote(id: String!): Note!
   favoriteNote(id: String!): Note!
   createNoteResponse(id: String!, message: String!): Note!
