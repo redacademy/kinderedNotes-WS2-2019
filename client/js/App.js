@@ -1,7 +1,7 @@
-import React from 'react'
-import {StatusBar} from 'react-native'
+import React, {useState} from 'react'
+import {StatusBar, SafeAreaView} from 'react-native'
 import {ApolloProvider} from '@apollo/react-hooks'
-import {Login} from './screens'
+import {Login, Walkthrough} from './screens'
 import {
   client,
   AuthContextProvider,
@@ -12,18 +12,30 @@ import {SiteTransitionWrapper} from './navigation'
 // TODO: refactor to `navigation/routes.js`
 import Navigation from './Navigation'
 
-const App = () => (
-  <ApolloProvider client={client}>
-    <AuthContextProvider>
-      <StatusBar barStyle="dark-content" />
-      <TagsContextProvider>
-        <SiteTransitionWrapper
-          AuthView={Login}
-          DefaultView={Navigation}
-        />
-      </TagsContextProvider>
-    </AuthContextProvider>
-  </ApolloProvider>
-)
+const App = () => {
+  const [isFirstTimeUser, setIsFirstTimeUser] = useState(true)
+
+  if (isFirstTimeUser) {
+    return (
+      <SafeAreaView>
+        <Walkthrough onComplete={() => setIsFirstTimeUser(false)} />
+      </SafeAreaView>
+    )
+  }
+
+  return (
+    <ApolloProvider client={client}>
+      <AuthContextProvider>
+        <StatusBar barStyle="dark-content" />
+        <TagsContextProvider>
+          <SiteTransitionWrapper
+            AuthView={Login}
+            DefaultView={Navigation}
+          />
+        </TagsContextProvider>
+      </AuthContextProvider>
+    </ApolloProvider>
+  )
+}
 
 export default App
