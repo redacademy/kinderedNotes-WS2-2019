@@ -7,6 +7,7 @@ const Note = ({value, onChangeText}) => (
   <View style={styles.container}>
     <View style={styles.noteContainer}>
       <Message value={value} onChangeText={onChangeText} />
+      <View style={styles.noteOptions}></View>
     </View>
   </View>
 )

@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     marginTop: 45,
     marginBottom: 35,
   },
+  noteOptions: {
+    position: 'absolute',
+    bottom: 30,
+  },
 })
 
 export default styles
