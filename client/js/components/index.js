@@ -1,3 +1,4 @@
+import AuthForm from './AuthForm'
 import Button from './Button'
 import ColorPalette from './ColorPalette'
 import FontToggle from './FontToggle'
@@ -13,6 +14,7 @@ import TagsList from './TagsList'
 import styles from './Layout/Layout.styles'
 
 export {
+  AuthForm,
   Button,
   ColorPalette,
   FontToggle,
