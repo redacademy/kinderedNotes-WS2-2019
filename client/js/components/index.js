@@ -1,11 +1,9 @@
 import Button from './Button'
 import ColorPalette from './ColorPalette'
 import FontToggle from './FontToggle'
-import Grid from './grid'
 import Input from './Input'
 import Note from './Note/Note'
 import NoteColor from './NoteColor.js'
-import NoteTab from './NoteTab/notesTabs'
 import NotesGrid from './NotesGrid'
 import ReceivedNotesGrid from './ReceivedNotesGrid'
 import SentNotesGrid from './SentNotesGrid'
@@ -18,11 +16,9 @@ export {
   Button,
   ColorPalette,
   FontToggle,
-  Grid,
   Input,
   Note,
   NoteColor,
-  NoteTab,
   NotesGrid,
   ReceivedNotesGrid,
   SentNotesGrid,
