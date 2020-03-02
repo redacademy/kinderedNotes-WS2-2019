@@ -1,10 +1,18 @@
 import React from 'react'
 import {TouchableOpacity} from 'react-native'
 import PaletteBlue from '../../../assets/icons/Color-palette_Blue.svg'
+import PaletteWhite from '../../../assets/icons/Color-palette_White.svg'
+import PaletteGreen from '../../../assets/icons/Color-palette_Green.svg'
 
-const ColorPalette = props => (
+const ColorPalette = ({color, ...props}) => (
   <TouchableOpacity {...props}>
-    <PaletteBlue />
+    {color === 'BLUE' ? (
+      <PaletteBlue />
+    ) : color === 'GREEN' ? (
+      <PaletteGreen />
+    ) : (
+      <PaletteWhite />
+    )}
   </TouchableOpacity>
 )
 
