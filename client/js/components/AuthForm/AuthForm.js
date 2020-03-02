@@ -1,9 +1,10 @@
 import React, {useCallback} from 'react'
-import {Button, View} from 'react-native'
+import {Button, View, Image, TextInput} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
 import {Input} from '../index'
 import {validateInputs} from './utils'
+import UserIcon from '../../../assets/icons/User_Grey.png'
 import styles from './AuthForm.styles'
 
 const AuthForm = () => {
@@ -31,14 +32,20 @@ const AuthForm = () => {
         isValid,
       }) => (
         <View style={styles.form}>
-          <Input
-            onChangeText={handleChange('username')}
-            onBlur={handleBlur('username')}
-            value={values.username}
-            placeholder="Username"
-          />
+          <View style={styles.username}>
+            <Image
+              source={require('../../../assets/icons/User_Grey.png')}
+            />
+            <Input
+              onChangeText={handleChange('username')}
+              onBlur={handleBlur('username')}
+              value={values.username}
+              placeholder="Username"
+            />
+          </View>
 
           <Input
+            secureTextEntry={true}
             onChangeText={handleChange('password')}
             onBlur={handleBlur('password')}
             value={values.password}

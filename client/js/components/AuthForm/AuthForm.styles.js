@@ -3,12 +3,15 @@ import {StyleSheet} from 'react-native'
 const styles = StyleSheet.create({
   form: {
     width: 300,
-    // height: '100%',
-    // position: 'absolute',
-    // bottom: '0px',
-    // top: 0,
     marginLeft: 'auto',
     marginRight: 'auto',
+  },
+  username: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#d3d3d3',
   },
 })
 
