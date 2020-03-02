@@ -9,4 +9,13 @@ const INBOX = gql`
   }
 `
 
-export {INBOX}
+const OUTBOX = gql`
+  {
+    outbox {
+      id
+      message
+    }
+  }
+`
+
+export {INBOX, OUTBOX}
