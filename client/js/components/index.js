@@ -6,6 +6,9 @@ import Input from './Input'
 import Note from './Note/Note'
 import NoteColor from './NoteColor.js'
 import NoteTab from './NoteTab/notesTabs'
+import NotesGrid from './NotesGrid'
+import ReceivedNotesGrid from './ReceivedNotesGrid'
+import SentNotesGrid from './SentNotesGrid'
 import Message from './Message'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
@@ -20,6 +23,9 @@ export {
   Note,
   NoteColor,
   NoteTab,
+  NotesGrid,
+  ReceivedNotesGrid,
+  SentNotesGrid,
   Message,
   TagsInput,
   TagsList,
