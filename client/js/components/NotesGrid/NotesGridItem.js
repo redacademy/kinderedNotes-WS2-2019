@@ -1,12 +1,16 @@
 import React from 'react'
 import {View} from 'react-native'
 import styles from './NotesGrid.styles'
+import {COLORS} from '../styles'
 
-const NotesGridItem = ({bg = '#48a9c6', children}) => (
+const NotesGridItem = ({style, color, children}) => (
   <View
     style={{
       ...styles.item,
-      backgroundColor: bg,
+      backgroundColor:
+        style === 'BORDERED'
+          ? COLORS.TEXT_PRIMARY.INVERT
+          : COLORS[`ACCENT_${color}`],
     }}
   >
     {children}

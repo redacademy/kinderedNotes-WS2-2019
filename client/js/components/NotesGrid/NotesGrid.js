@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, Text, FlatList} from 'react-native'
 import NotesGridItem from './NotesGridItem'
+import {COLORS} from '../styles'
 import styles from './NotesGrid.styles'
 
 const NotesGrid = ({data, loading, error, Icon}) => {
@@ -21,18 +22,26 @@ const NotesGrid = ({data, loading, error, Icon}) => {
       <FlatList
         data={data}
         renderItem={({item}) => (
-          <NotesGridItem>
+          <NotesGridItem color={item.color} style={item.style}>
             {Icon ? (
               <Icon width="95" />
             ) : (
-              <Text style={{...styles.itemText, color: item.color}}>
+              <Text
+                style={{
+                  ...styles.itemText,
+                  color:
+                    item.style === 'FILL'
+                      ? COLORS.TEXT_PRIMARY.INVERT
+                      : COLORS[`ACCENT_${item.color}`],
+                }}
+              >
                 {item.message}
               </Text>
             )}
           </NotesGridItem>
         )}
         numColumns={3}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, i) => i.toString()}
       />
     </View>
   )
