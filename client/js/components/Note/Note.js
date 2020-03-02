@@ -1,6 +1,11 @@
 import React from 'react'
 import {View} from 'react-native'
-import {ColorPalette, FontToggle, Message} from '../../components'
+import {
+  ColorPalette,
+  FontToggle,
+  Message,
+  NoteColor,
+} from '../../components'
 import styles from './Note.styles'
 
 const Note = ({value, onChangeText}) => (
@@ -10,6 +15,7 @@ const Note = ({value, onChangeText}) => (
       <View style={styles.noteOptions}>
         <FontToggle />
         <ColorPalette />
+        <NoteColor />
       </View>
     </View>
   </View>

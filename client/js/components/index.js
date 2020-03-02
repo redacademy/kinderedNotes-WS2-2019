@@ -4,6 +4,7 @@ import FontToggle from './FontToggle'
 import Grid from './grid'
 import Input from './Input'
 import Note from './Note/Note'
+import NoteColor from './NoteColor.js'
 import NoteTab from './NoteTab/notesTabs'
 import Message from './Message'
 import TagsInput from './TagsInput'
@@ -17,6 +18,7 @@ export {
   Grid,
   Input,
   Note,
+  NoteColor,
   NoteTab,
   Message,
   TagsInput,
