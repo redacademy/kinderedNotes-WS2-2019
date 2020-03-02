@@ -4,6 +4,7 @@ import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
 import {Input} from '../index'
 import {validateInputs} from './utils'
+import styles from './AuthForm.styles'
 
 const AuthForm = () => {
   const {signup, login, isLogin, toggleIsLogin} = useAuth()
@@ -29,7 +30,7 @@ const AuthForm = () => {
         values,
         isValid,
       }) => (
-        <View>
+        <View style={styles.form}>
           <Input
             onChangeText={handleChange('username')}
             onBlur={handleBlur('username')}
