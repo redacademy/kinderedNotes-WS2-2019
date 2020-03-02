@@ -6,9 +6,10 @@ import {NotesGrid} from '../index'
 const SentNotesGrid = () => {
   const {loading, error, data} = useQuery(OUTBOX)
 
+  // FIXME: sort in query
   return (
     <NotesGrid
-      data={data && data.outbox}
+      data={data && data.outbox.reverse()}
       loading={loading}
       error={error}
     />
