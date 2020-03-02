@@ -1,7 +1,7 @@
 import React from 'react'
 import {TextInput, View} from 'react-native'
 
-const Message = ({value, onChangeText}) => (
+const MessageInput = ({value, onChangeText}) => (
   <View>
     <TextInput
       type="text"
@@ -14,4 +14,4 @@ const Message = ({value, onChangeText}) => (
   </View>
 )
 
-export default Message
+export default MessageInput
