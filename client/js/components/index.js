@@ -1,3 +1,4 @@
+import AuthForm from './AuthForm'
 import Button from './Button'
 import Grid from './grid'
 import Input from './Input'
@@ -9,6 +10,7 @@ import TagsList from './TagsList'
 import styles from './Layout/Layout.styles'
 
 export {
+  AuthForm,
   Button,
   Grid,
   Input,
