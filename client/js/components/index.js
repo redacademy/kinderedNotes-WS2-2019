@@ -1,4 +1,5 @@
 import Button from './Button'
+import ColorPalette from './ColorPalette'
 import FontToggle from './FontToggle'
 import Grid from './grid'
 import Input from './Input'
@@ -11,6 +12,7 @@ import styles from './Layout/Layout.styles'
 
 export {
   Button,
+  ColorPalette,
   FontToggle,
   Grid,
   Input,
