@@ -244,9 +244,9 @@ type Note {
   topic(where: InterestWhereInput, orderBy: InterestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Interest!]
   responses(where: NoteResponseWhereInput, orderBy: NoteResponseOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [NoteResponse!]
   viewers(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
-  fontFamily: String!
-  fontColor: String!
-  backgroundColor: String!
+  font: String!
+  color: String!
+  style: String!
 }
 
 type NoteConnection {
@@ -262,9 +262,9 @@ input NoteCreateInput {
   topic: InterestCreateManyInput
   responses: NoteResponseCreateManyInput
   viewers: UserCreateManyInput
-  fontFamily: String!
-  fontColor: String!
-  backgroundColor: String!
+  font: String!
+  color: String!
+  style: String!
 }
 
 input NoteCreateManyInput {
@@ -284,21 +284,21 @@ enum NoteOrderByInput {
   createdAt_DESC
   message_ASC
   message_DESC
-  fontFamily_ASC
-  fontFamily_DESC
-  fontColor_ASC
-  fontColor_DESC
-  backgroundColor_ASC
-  backgroundColor_DESC
+  font_ASC
+  font_DESC
+  color_ASC
+  color_DESC
+  style_ASC
+  style_DESC
 }
 
 type NotePreviousValues {
   id: ID!
   createdAt: DateTime!
   message: String!
-  fontFamily: String!
-  fontColor: String!
-  backgroundColor: String!
+  font: String!
+  color: String!
+  style: String!
 }
 
 type NoteResponse {
@@ -535,48 +535,48 @@ input NoteScalarWhereInput {
   message_not_starts_with: String
   message_ends_with: String
   message_not_ends_with: String
-  fontFamily: String
-  fontFamily_not: String
-  fontFamily_in: [String!]
-  fontFamily_not_in: [String!]
-  fontFamily_lt: String
-  fontFamily_lte: String
-  fontFamily_gt: String
-  fontFamily_gte: String
-  fontFamily_contains: String
-  fontFamily_not_contains: String
-  fontFamily_starts_with: String
-  fontFamily_not_starts_with: String
-  fontFamily_ends_with: String
-  fontFamily_not_ends_with: String
-  fontColor: String
-  fontColor_not: String
-  fontColor_in: [String!]
-  fontColor_not_in: [String!]
-  fontColor_lt: String
-  fontColor_lte: String
-  fontColor_gt: String
-  fontColor_gte: String
-  fontColor_contains: String
-  fontColor_not_contains: String
-  fontColor_starts_with: String
-  fontColor_not_starts_with: String
-  fontColor_ends_with: String
-  fontColor_not_ends_with: String
-  backgroundColor: String
-  backgroundColor_not: String
-  backgroundColor_in: [String!]
-  backgroundColor_not_in: [String!]
-  backgroundColor_lt: String
-  backgroundColor_lte: String
-  backgroundColor_gt: String
-  backgroundColor_gte: String
-  backgroundColor_contains: String
-  backgroundColor_not_contains: String
-  backgroundColor_starts_with: String
-  backgroundColor_not_starts_with: String
-  backgroundColor_ends_with: String
-  backgroundColor_not_ends_with: String
+  font: String
+  font_not: String
+  font_in: [String!]
+  font_not_in: [String!]
+  font_lt: String
+  font_lte: String
+  font_gt: String
+  font_gte: String
+  font_contains: String
+  font_not_contains: String
+  font_starts_with: String
+  font_not_starts_with: String
+  font_ends_with: String
+  font_not_ends_with: String
+  color: String
+  color_not: String
+  color_in: [String!]
+  color_not_in: [String!]
+  color_lt: String
+  color_lte: String
+  color_gt: String
+  color_gte: String
+  color_contains: String
+  color_not_contains: String
+  color_starts_with: String
+  color_not_starts_with: String
+  color_ends_with: String
+  color_not_ends_with: String
+  style: String
+  style_not: String
+  style_in: [String!]
+  style_not_in: [String!]
+  style_lt: String
+  style_lte: String
+  style_gt: String
+  style_gte: String
+  style_contains: String
+  style_not_contains: String
+  style_starts_with: String
+  style_not_starts_with: String
+  style_ends_with: String
+  style_not_ends_with: String
   AND: [NoteScalarWhereInput!]
   OR: [NoteScalarWhereInput!]
   NOT: [NoteScalarWhereInput!]
@@ -606,9 +606,9 @@ input NoteUpdateDataInput {
   topic: InterestUpdateManyInput
   responses: NoteResponseUpdateManyInput
   viewers: UserUpdateManyInput
-  fontFamily: String
-  fontColor: String
-  backgroundColor: String
+  font: String
+  color: String
+  style: String
 }
 
 input NoteUpdateInput {
@@ -617,16 +617,16 @@ input NoteUpdateInput {
   topic: InterestUpdateManyInput
   responses: NoteResponseUpdateManyInput
   viewers: UserUpdateManyInput
-  fontFamily: String
-  fontColor: String
-  backgroundColor: String
+  font: String
+  color: String
+  style: String
 }
 
 input NoteUpdateManyDataInput {
   message: String
-  fontFamily: String
-  fontColor: String
-  backgroundColor: String
+  font: String
+  color: String
+  style: String
 }
 
 input NoteUpdateManyInput {
@@ -643,9 +643,9 @@ input NoteUpdateManyInput {
 
 input NoteUpdateManyMutationInput {
   message: String
-  fontFamily: String
-  fontColor: String
-  backgroundColor: String
+  font: String
+  color: String
+  style: String
 }
 
 input NoteUpdateManyWithWhereNestedInput {
@@ -711,48 +711,48 @@ input NoteWhereInput {
   viewers_every: UserWhereInput
   viewers_some: UserWhereInput
   viewers_none: UserWhereInput
-  fontFamily: String
-  fontFamily_not: String
-  fontFamily_in: [String!]
-  fontFamily_not_in: [String!]
-  fontFamily_lt: String
-  fontFamily_lte: String
-  fontFamily_gt: String
-  fontFamily_gte: String
-  fontFamily_contains: String
-  fontFamily_not_contains: String
-  fontFamily_starts_with: String
-  fontFamily_not_starts_with: String
-  fontFamily_ends_with: String
-  fontFamily_not_ends_with: String
-  fontColor: String
-  fontColor_not: String
-  fontColor_in: [String!]
-  fontColor_not_in: [String!]
-  fontColor_lt: String
-  fontColor_lte: String
-  fontColor_gt: String
-  fontColor_gte: String
-  fontColor_contains: String
-  fontColor_not_contains: String
-  fontColor_starts_with: String
-  fontColor_not_starts_with: String
-  fontColor_ends_with: String
-  fontColor_not_ends_with: String
-  backgroundColor: String
-  backgroundColor_not: String
-  backgroundColor_in: [String!]
-  backgroundColor_not_in: [String!]
-  backgroundColor_lt: String
-  backgroundColor_lte: String
-  backgroundColor_gt: String
-  backgroundColor_gte: String
-  backgroundColor_contains: String
-  backgroundColor_not_contains: String
-  backgroundColor_starts_with: String
-  backgroundColor_not_starts_with: String
-  backgroundColor_ends_with: String
-  backgroundColor_not_ends_with: String
+  font: String
+  font_not: String
+  font_in: [String!]
+  font_not_in: [String!]
+  font_lt: String
+  font_lte: String
+  font_gt: String
+  font_gte: String
+  font_contains: String
+  font_not_contains: String
+  font_starts_with: String
+  font_not_starts_with: String
+  font_ends_with: String
+  font_not_ends_with: String
+  color: String
+  color_not: String
+  color_in: [String!]
+  color_not_in: [String!]
+  color_lt: String
+  color_lte: String
+  color_gt: String
+  color_gte: String
+  color_contains: String
+  color_not_contains: String
+  color_starts_with: String
+  color_not_starts_with: String
+  color_ends_with: String
+  color_not_ends_with: String
+  style: String
+  style_not: String
+  style_in: [String!]
+  style_not_in: [String!]
+  style_lt: String
+  style_lte: String
+  style_gt: String
+  style_gte: String
+  style_contains: String
+  style_not_contains: String
+  style_starts_with: String
+  style_not_starts_with: String
+  style_ends_with: String
+  style_not_ends_with: String
   AND: [NoteWhereInput!]
   OR: [NoteWhereInput!]
   NOT: [NoteWhereInput!]

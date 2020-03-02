@@ -10,7 +10,13 @@ type Mutation {
   # TODO: use email for auth
   signup(password: String!, username: String!): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
-  createNote(message: String!, tags: [String!]!): Note!
+  createNote(
+    message: String!
+    tags: [String!]!
+    font: String!
+    color: String!
+    style: String!
+  ): Note!
   viewNote(id: String!): Note!
   favoriteNote(id: String!): Note!
   createNoteResponse(id: String!, message: String!): Note!
@@ -43,9 +49,9 @@ type Note {
   topic: [Interest!]!
   responses: [NoteResponse]
   viewers: [User]
-  fontFamily: String!
-  fontColor: String!
-  backgroundColor: String!
+  font: String!
+  color: String!
+  style: String!
 }
 
 type NoteResponse {

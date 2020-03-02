@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {View} from 'react-native'
 import MessageInput from './MessageInput'
 import ColorPalette from './ColorPalette'
@@ -6,18 +6,22 @@ import FontToggle from './FontToggle'
 import NoteColor from './NoteColor'
 import styles from './Note.styles'
 
-const Note = ({value, onChangeText}) => {
-  const [cardStyle, setCardStyle] = useState('BORDERED')
-  const [color, setColor] = useState('BLUE')
-  const [font, setFont] = useState('DEFAULT')
+const Note = ({value, onChangeText, options, onChangeOptions}) => {
+  const {color, font, style} = options
 
-  const onFontToggle = () =>
-    setFont(s => (s === 'DEFAULT' ? 'HANDWRITTEN' : 'DEFAULT'))
-  const onColorToggle = () =>
-    setColor(s => (s === 'BLUE' ? 'GREEN' : 'BLUE'))
-  const onStyleToggle = () =>
-    setCardStyle(s => (s === 'FILL' ? 'BORDERED' : 'FILL'))
-  const iconColor = cardStyle === 'FILL' ? 'WHITE' : color
+  const onFontToggle = () => {
+    const newVal = font === 'DEFAULT' ? 'HANDWRITTEN' : 'DEFAULT'
+    onChangeOptions({font: newVal})
+  }
+  const onColorToggle = () => {
+    const newVal = color === 'BLUE' ? 'GREEN' : 'BLUE'
+    onChangeOptions({color: newVal})
+  }
+  const onStyleToggle = () => {
+    const newVal = style === 'FILL' ? 'BORDERED' : 'FILL'
+    onChangeOptions({style: newVal})
+  }
+  const iconColor = style === 'FILL' ? 'WHITE' : color
 
   return (
     <View style={styles.container}>
@@ -25,13 +29,14 @@ const Note = ({value, onChangeText}) => {
         style={{
           ...styles.noteContainer,
           ...styles[`noteContainer${color}`],
-          ...(cardStyle === 'FILL' &&
+          ...(style === 'FILL' &&
             styles[`noteContainerFill${color}`]),
         }}
       >
         <MessageInput
-          style={cardStyle}
+          style={style}
           font={font}
+          color={color}
           value={value}
           onChangeText={onChangeText}
         />

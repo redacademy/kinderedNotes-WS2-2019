@@ -29,8 +29,20 @@ const LOG_IN = gql`
 `
 
 const CREATE_NOTE = gql`
-  mutation createNote($message: String!, $tags: [String!]!) {
-    createNote(message: $message, tags: $tags) {
+  mutation createNote(
+    $message: String!
+    $tags: [String!]!
+    $font: String!
+    $color: String!
+    $style: String!
+  ) {
+    createNote(
+      message: $message
+      tags: $tags
+      font: $font
+      color: $color
+      style: $style
+    ) {
       id
     }
   }
