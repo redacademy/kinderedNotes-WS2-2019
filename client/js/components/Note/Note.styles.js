@@ -26,6 +26,10 @@ const styles = StyleSheet.create({
   noteOptions: {
     position: 'absolute',
     bottom: 30,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 })
 
