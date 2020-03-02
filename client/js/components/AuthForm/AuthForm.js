@@ -33,24 +33,35 @@ const AuthForm = () => {
       }) => (
         <View style={styles.form}>
           <View style={styles.username}>
-            <Image
-              source={require('../../../assets/icons/User_Grey.png')}
-            />
+            <View style={styles.image}>
+              <Image
+                source={require('../../../assets/icons/User_Grey.png')}
+              />
+            </View>
             <Input
               onChangeText={handleChange('username')}
               onBlur={handleBlur('username')}
               value={values.username}
               placeholder="Username"
+              style={styles.usernameInput}
             />
           </View>
 
-          <Input
-            secureTextEntry={true}
-            onChangeText={handleChange('password')}
-            onBlur={handleBlur('password')}
-            value={values.password}
-            placeholder="Password"
-          />
+          <View style={styles.username}>
+            <View style={styles.image}>
+              <Image
+                source={require('../../../assets/icons/Mail_Grey.png')}
+              />
+            </View>
+            <Input
+              secureTextEntry={true}
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              placeholder="Password"
+              style={styles.usernameInput}
+            />
+          </View>
 
           <Button
             disabled={!isValid}

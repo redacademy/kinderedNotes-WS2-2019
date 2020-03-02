@@ -13,6 +13,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#d3d3d3',
   },
+  usernameInput: {
+    marginTop: 10,
+    marginBottom: 5,
+    height: 40,
+  },
+  image: {
+    paddingTop: 6,
+    paddingRight: 25,
+  },
 })
 
 export default styles
