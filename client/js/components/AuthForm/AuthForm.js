@@ -3,6 +3,7 @@ import {Button, View} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
 import {Input} from '../index'
+import {validateInputs} from './utils'
 
 const AuthForm = () => {
   const {signup, login, isLogin, toggleIsLogin} = useAuth()
@@ -18,6 +19,7 @@ const AuthForm = () => {
   return (
     <Formik
       initialValues={{username: 'user', password: 'password'}}
+      validate={validateInputs}
       onSubmit={onAuth}
     >
       {({
@@ -43,6 +45,7 @@ const AuthForm = () => {
           />
 
           <Button
+            disabled={!isValid}
             onPress={handleSubmit}
             title={isLogin ? 'Log in' : 'Sign up'}
           />
