@@ -34,6 +34,18 @@ const Query = {
     })
   },
 
+  outbox: async (parent, args, context) => {
+    const userId = getUserId(context)
+
+    return context.prisma.notes({
+      where: {
+        author: {
+          id: userId,
+        },
+      },
+    })
+  },
+
   me(parent, args, context) {
     const id = getUserId(context)
     return context.prisma.user({id})

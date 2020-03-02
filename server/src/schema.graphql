@@ -2,6 +2,7 @@ type Query {
   users: [User]
   note(id: ID!): Note
   inbox: [Note]
+  outbox: [Note]
   me: User
 }
 

@@ -1,8 +1,9 @@
 import Button from './Button'
-import Grid from './grid'
+import NotesGrid from './NotesGrid'
+import ReceivedNotesGrid from './ReceivedNotesGrid'
+import SentNotesGrid from './SentNotesGrid'
 import Input from './Input'
 import Note from './Note/Note'
-import NoteTab from './NoteTab/notesTabs'
 import Message from './Message'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
@@ -10,10 +11,11 @@ import styles from './Layout/Layout.styles'
 
 export {
   Button,
-  Grid,
+  NotesGrid,
+  ReceivedNotesGrid,
+  SentNotesGrid,
   Input,
   Note,
-  NoteTab,
   Message,
   TagsInput,
   TagsList,
