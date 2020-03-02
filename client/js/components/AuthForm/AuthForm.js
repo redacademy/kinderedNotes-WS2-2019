@@ -1,10 +1,9 @@
-import React, {useCallback} from 'react'
-import {Button, View, Image, TextInput} from 'react-native'
+import React, {useState, useCallback} from 'react'
+import {Button, View, Image, TouchableOpacity} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
 import {Input} from '../index'
 import {validateInputs} from './utils'
-import UserIcon from '../../../assets/icons/User_Grey.png'
 import styles from './AuthForm.styles'
 
 const AuthForm = () => {
@@ -17,6 +16,12 @@ const AuthForm = () => {
       }),
     [isLogin, login, signup],
   )
+
+  const [textEntry, setTextEntry] = useState(true)
+
+  const onPassPress = () => {
+    setTextEntry(!textEntry)
+  }
 
   return (
     <Formik
@@ -54,13 +59,21 @@ const AuthForm = () => {
               />
             </View>
             <Input
-              secureTextEntry={true}
+              secureTextEntry={textEntry}
               onChangeText={handleChange('password')}
               onBlur={handleBlur('password')}
               value={values.password}
               placeholder="Password"
               style={styles.usernameInput}
             />
+            <TouchableOpacity
+              onPress={onPassPress}
+              style={styles.image}
+            >
+              <Image
+                source={require('../../../assets/icons/Eye.png')}
+              />
+            </TouchableOpacity>
           </View>
 
           <Button
