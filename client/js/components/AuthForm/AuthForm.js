@@ -1,10 +1,16 @@
 import React, {useState, useCallback} from 'react'
-import {Button, View, Image, TouchableOpacity} from 'react-native'
+import {
+  Button as AuthLink,
+  View,
+  Image,
+  TouchableOpacity,
+} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
-import {Input} from '../index'
+import {Button, Input} from '../index'
 import {validateInputs} from './utils'
 import styles from './AuthForm.styles'
+import {AuthText, Header} from '../Typography'
 
 const AuthForm = () => {
   const {signup, login, isLogin, toggleIsLogin} = useAuth()
@@ -76,20 +82,21 @@ const AuthForm = () => {
             </TouchableOpacity>
           </View>
 
-          <Button
-            disabled={!isValid}
-            onPress={handleSubmit}
-            title={isLogin ? 'Log in' : 'Sign up'}
-          />
+          <View style={styles.authButtons}>
+            <Button disabled={!isValid} onPress={handleSubmit}>
+              {' '}
+              {isLogin ? 'Log in' : 'Sign up'}
+            </Button>
 
-          <Button
-            onPress={toggleIsLogin}
-            title={
-              isLogin
-                ? 'Create an account'
-                : 'Already have an account'
-            }
-          />
+            <Button onPress={toggleIsLogin} style={styles.authToggle}>
+              <AuthText>
+                {isLogin
+                  ? "Don't have an account?"
+                  : 'Already have an account? '}
+              </AuthText>
+              <Header>{!isLogin ? ' Login' : ' Sign Up'}</Header>
+            </Button>
+          </View>
         </View>
       )}
     </Formik>

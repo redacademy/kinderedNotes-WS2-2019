@@ -6,4 +6,8 @@ const Header = ({children}) => (
   <Text style={styles.header}>{children}</Text>
 )
 
-export {Header}
+const AuthText = ({children}) => (
+  <Text style={styles.authText}>{children}</Text>
+)
+
+export {AuthText, Header}

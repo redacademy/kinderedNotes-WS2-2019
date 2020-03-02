@@ -7,6 +7,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-SemiBold',
     fontSize: 16,
   },
+  authText: {
+    color: '#636e74',
+    fontWeight: '500',
+    fontFamily: 'Nunito-SemiBold',
+    fontSize: 16,
+    textAlign: 'center',
+  },
 })
 
 export default styles

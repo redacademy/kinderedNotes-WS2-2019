@@ -1,3 +1,4 @@
+import {AuthText} from './Typography'
 import {Header} from './Typography'
 
-export {Header}
+export {AuthText, Header}

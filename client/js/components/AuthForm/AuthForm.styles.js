@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#d3d3d3',
   },
+  authButtons: {
+    marginTop: 30,
+  },
   usernameInput: {
     marginTop: 10,
     marginBottom: 5,
@@ -22,6 +25,10 @@ const styles = StyleSheet.create({
   image: {
     paddingTop: 6,
     paddingRight: 25,
+  },
+  authToggle: {
+    backgroundColor: 'transparent',
+    color: 'red',
   },
 })
 
