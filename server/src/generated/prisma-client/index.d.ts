@@ -231,12 +231,12 @@ export type NoteOrderByInput =
   | "createdAt_DESC"
   | "message_ASC"
   | "message_DESC"
-  | "fontFamily_ASC"
-  | "fontFamily_DESC"
-  | "fontColor_ASC"
-  | "fontColor_DESC"
-  | "backgroundColor_ASC"
-  | "backgroundColor_DESC";
+  | "font_ASC"
+  | "font_DESC"
+  | "color_ASC"
+  | "color_DESC"
+  | "style_ASC"
+  | "style_DESC";
 
 export type InterestOrderByInput =
   | "id_ASC"
@@ -274,9 +274,9 @@ export interface NoteUpdateInput {
   topic?: Maybe<InterestUpdateManyInput>;
   responses?: Maybe<NoteResponseUpdateManyInput>;
   viewers?: Maybe<UserUpdateManyInput>;
-  fontFamily?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
+  font?: Maybe<String>;
+  color?: Maybe<String>;
+  style?: Maybe<String>;
 }
 
 export type InterestWhereUniqueInput = AtLeastOne<{
@@ -383,9 +383,9 @@ export interface NoteCreateInput {
   topic?: Maybe<InterestCreateManyInput>;
   responses?: Maybe<NoteResponseCreateManyInput>;
   viewers?: Maybe<UserCreateManyInput>;
-  fontFamily: String;
-  fontColor: String;
-  backgroundColor: String;
+  font: String;
+  color: String;
+  style: String;
 }
 
 export type NoteWhereUniqueInput = AtLeastOne<{
@@ -463,48 +463,48 @@ export interface NoteWhereInput {
   viewers_every?: Maybe<UserWhereInput>;
   viewers_some?: Maybe<UserWhereInput>;
   viewers_none?: Maybe<UserWhereInput>;
-  fontFamily?: Maybe<String>;
-  fontFamily_not?: Maybe<String>;
-  fontFamily_in?: Maybe<String[] | String>;
-  fontFamily_not_in?: Maybe<String[] | String>;
-  fontFamily_lt?: Maybe<String>;
-  fontFamily_lte?: Maybe<String>;
-  fontFamily_gt?: Maybe<String>;
-  fontFamily_gte?: Maybe<String>;
-  fontFamily_contains?: Maybe<String>;
-  fontFamily_not_contains?: Maybe<String>;
-  fontFamily_starts_with?: Maybe<String>;
-  fontFamily_not_starts_with?: Maybe<String>;
-  fontFamily_ends_with?: Maybe<String>;
-  fontFamily_not_ends_with?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  fontColor_not?: Maybe<String>;
-  fontColor_in?: Maybe<String[] | String>;
-  fontColor_not_in?: Maybe<String[] | String>;
-  fontColor_lt?: Maybe<String>;
-  fontColor_lte?: Maybe<String>;
-  fontColor_gt?: Maybe<String>;
-  fontColor_gte?: Maybe<String>;
-  fontColor_contains?: Maybe<String>;
-  fontColor_not_contains?: Maybe<String>;
-  fontColor_starts_with?: Maybe<String>;
-  fontColor_not_starts_with?: Maybe<String>;
-  fontColor_ends_with?: Maybe<String>;
-  fontColor_not_ends_with?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
-  backgroundColor_not?: Maybe<String>;
-  backgroundColor_in?: Maybe<String[] | String>;
-  backgroundColor_not_in?: Maybe<String[] | String>;
-  backgroundColor_lt?: Maybe<String>;
-  backgroundColor_lte?: Maybe<String>;
-  backgroundColor_gt?: Maybe<String>;
-  backgroundColor_gte?: Maybe<String>;
-  backgroundColor_contains?: Maybe<String>;
-  backgroundColor_not_contains?: Maybe<String>;
-  backgroundColor_starts_with?: Maybe<String>;
-  backgroundColor_not_starts_with?: Maybe<String>;
-  backgroundColor_ends_with?: Maybe<String>;
-  backgroundColor_not_ends_with?: Maybe<String>;
+  font?: Maybe<String>;
+  font_not?: Maybe<String>;
+  font_in?: Maybe<String[] | String>;
+  font_not_in?: Maybe<String[] | String>;
+  font_lt?: Maybe<String>;
+  font_lte?: Maybe<String>;
+  font_gt?: Maybe<String>;
+  font_gte?: Maybe<String>;
+  font_contains?: Maybe<String>;
+  font_not_contains?: Maybe<String>;
+  font_starts_with?: Maybe<String>;
+  font_not_starts_with?: Maybe<String>;
+  font_ends_with?: Maybe<String>;
+  font_not_ends_with?: Maybe<String>;
+  color?: Maybe<String>;
+  color_not?: Maybe<String>;
+  color_in?: Maybe<String[] | String>;
+  color_not_in?: Maybe<String[] | String>;
+  color_lt?: Maybe<String>;
+  color_lte?: Maybe<String>;
+  color_gt?: Maybe<String>;
+  color_gte?: Maybe<String>;
+  color_contains?: Maybe<String>;
+  color_not_contains?: Maybe<String>;
+  color_starts_with?: Maybe<String>;
+  color_not_starts_with?: Maybe<String>;
+  color_ends_with?: Maybe<String>;
+  color_not_ends_with?: Maybe<String>;
+  style?: Maybe<String>;
+  style_not?: Maybe<String>;
+  style_in?: Maybe<String[] | String>;
+  style_not_in?: Maybe<String[] | String>;
+  style_lt?: Maybe<String>;
+  style_lte?: Maybe<String>;
+  style_gt?: Maybe<String>;
+  style_gte?: Maybe<String>;
+  style_contains?: Maybe<String>;
+  style_not_contains?: Maybe<String>;
+  style_starts_with?: Maybe<String>;
+  style_not_starts_with?: Maybe<String>;
+  style_ends_with?: Maybe<String>;
+  style_not_ends_with?: Maybe<String>;
   AND?: Maybe<NoteWhereInput[] | NoteWhereInput>;
   OR?: Maybe<NoteWhereInput[] | NoteWhereInput>;
   NOT?: Maybe<NoteWhereInput[] | NoteWhereInput>;
@@ -606,9 +606,9 @@ export interface NoteResponseCreateManyInput {
 
 export interface NoteUpdateManyMutationInput {
   message?: Maybe<String>;
-  fontFamily?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
+  font?: Maybe<String>;
+  color?: Maybe<String>;
+  style?: Maybe<String>;
 }
 
 export interface NoteResponseCreateInput {
@@ -619,9 +619,9 @@ export interface NoteResponseCreateInput {
 
 export interface NoteUpdateManyDataInput {
   message?: Maybe<String>;
-  fontFamily?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
+  font?: Maybe<String>;
+  color?: Maybe<String>;
+  style?: Maybe<String>;
 }
 
 export interface UserCreateManyInput {
@@ -801,9 +801,9 @@ export interface NoteUpdateDataInput {
   topic?: Maybe<InterestUpdateManyInput>;
   responses?: Maybe<NoteResponseUpdateManyInput>;
   viewers?: Maybe<UserUpdateManyInput>;
-  fontFamily?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
+  font?: Maybe<String>;
+  color?: Maybe<String>;
+  style?: Maybe<String>;
 }
 
 export interface UserUpdateInput {
@@ -892,48 +892,48 @@ export interface NoteScalarWhereInput {
   message_not_starts_with?: Maybe<String>;
   message_ends_with?: Maybe<String>;
   message_not_ends_with?: Maybe<String>;
-  fontFamily?: Maybe<String>;
-  fontFamily_not?: Maybe<String>;
-  fontFamily_in?: Maybe<String[] | String>;
-  fontFamily_not_in?: Maybe<String[] | String>;
-  fontFamily_lt?: Maybe<String>;
-  fontFamily_lte?: Maybe<String>;
-  fontFamily_gt?: Maybe<String>;
-  fontFamily_gte?: Maybe<String>;
-  fontFamily_contains?: Maybe<String>;
-  fontFamily_not_contains?: Maybe<String>;
-  fontFamily_starts_with?: Maybe<String>;
-  fontFamily_not_starts_with?: Maybe<String>;
-  fontFamily_ends_with?: Maybe<String>;
-  fontFamily_not_ends_with?: Maybe<String>;
-  fontColor?: Maybe<String>;
-  fontColor_not?: Maybe<String>;
-  fontColor_in?: Maybe<String[] | String>;
-  fontColor_not_in?: Maybe<String[] | String>;
-  fontColor_lt?: Maybe<String>;
-  fontColor_lte?: Maybe<String>;
-  fontColor_gt?: Maybe<String>;
-  fontColor_gte?: Maybe<String>;
-  fontColor_contains?: Maybe<String>;
-  fontColor_not_contains?: Maybe<String>;
-  fontColor_starts_with?: Maybe<String>;
-  fontColor_not_starts_with?: Maybe<String>;
-  fontColor_ends_with?: Maybe<String>;
-  fontColor_not_ends_with?: Maybe<String>;
-  backgroundColor?: Maybe<String>;
-  backgroundColor_not?: Maybe<String>;
-  backgroundColor_in?: Maybe<String[] | String>;
-  backgroundColor_not_in?: Maybe<String[] | String>;
-  backgroundColor_lt?: Maybe<String>;
-  backgroundColor_lte?: Maybe<String>;
-  backgroundColor_gt?: Maybe<String>;
-  backgroundColor_gte?: Maybe<String>;
-  backgroundColor_contains?: Maybe<String>;
-  backgroundColor_not_contains?: Maybe<String>;
-  backgroundColor_starts_with?: Maybe<String>;
-  backgroundColor_not_starts_with?: Maybe<String>;
-  backgroundColor_ends_with?: Maybe<String>;
-  backgroundColor_not_ends_with?: Maybe<String>;
+  font?: Maybe<String>;
+  font_not?: Maybe<String>;
+  font_in?: Maybe<String[] | String>;
+  font_not_in?: Maybe<String[] | String>;
+  font_lt?: Maybe<String>;
+  font_lte?: Maybe<String>;
+  font_gt?: Maybe<String>;
+  font_gte?: Maybe<String>;
+  font_contains?: Maybe<String>;
+  font_not_contains?: Maybe<String>;
+  font_starts_with?: Maybe<String>;
+  font_not_starts_with?: Maybe<String>;
+  font_ends_with?: Maybe<String>;
+  font_not_ends_with?: Maybe<String>;
+  color?: Maybe<String>;
+  color_not?: Maybe<String>;
+  color_in?: Maybe<String[] | String>;
+  color_not_in?: Maybe<String[] | String>;
+  color_lt?: Maybe<String>;
+  color_lte?: Maybe<String>;
+  color_gt?: Maybe<String>;
+  color_gte?: Maybe<String>;
+  color_contains?: Maybe<String>;
+  color_not_contains?: Maybe<String>;
+  color_starts_with?: Maybe<String>;
+  color_not_starts_with?: Maybe<String>;
+  color_ends_with?: Maybe<String>;
+  color_not_ends_with?: Maybe<String>;
+  style?: Maybe<String>;
+  style_not?: Maybe<String>;
+  style_in?: Maybe<String[] | String>;
+  style_not_in?: Maybe<String[] | String>;
+  style_lt?: Maybe<String>;
+  style_lte?: Maybe<String>;
+  style_gt?: Maybe<String>;
+  style_gte?: Maybe<String>;
+  style_contains?: Maybe<String>;
+  style_not_contains?: Maybe<String>;
+  style_starts_with?: Maybe<String>;
+  style_not_starts_with?: Maybe<String>;
+  style_ends_with?: Maybe<String>;
+  style_not_ends_with?: Maybe<String>;
   AND?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
   OR?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
   NOT?: Maybe<NoteScalarWhereInput[] | NoteScalarWhereInput>;
@@ -1512,9 +1512,9 @@ export interface Note {
   id: ID_Output;
   createdAt: DateTimeOutput;
   message: String;
-  fontFamily: String;
-  fontColor: String;
-  backgroundColor: String;
+  font: String;
+  color: String;
+  style: String;
 }
 
 export interface NotePromise extends Promise<Note>, Fragmentable {
@@ -1549,9 +1549,9 @@ export interface NotePromise extends Promise<Note>, Fragmentable {
     first?: Int;
     last?: Int;
   }) => T;
-  fontFamily: () => Promise<String>;
-  fontColor: () => Promise<String>;
-  backgroundColor: () => Promise<String>;
+  font: () => Promise<String>;
+  color: () => Promise<String>;
+  style: () => Promise<String>;
 }
 
 export interface NoteSubscription
@@ -1588,9 +1588,9 @@ export interface NoteSubscription
     first?: Int;
     last?: Int;
   }) => T;
-  fontFamily: () => Promise<AsyncIterator<String>>;
-  fontColor: () => Promise<AsyncIterator<String>>;
-  backgroundColor: () => Promise<AsyncIterator<String>>;
+  font: () => Promise<AsyncIterator<String>>;
+  color: () => Promise<AsyncIterator<String>>;
+  style: () => Promise<AsyncIterator<String>>;
 }
 
 export interface NoteNullablePromise
@@ -1627,9 +1627,9 @@ export interface NoteNullablePromise
     first?: Int;
     last?: Int;
   }) => T;
-  fontFamily: () => Promise<String>;
-  fontColor: () => Promise<String>;
-  backgroundColor: () => Promise<String>;
+  font: () => Promise<String>;
+  color: () => Promise<String>;
+  style: () => Promise<String>;
 }
 
 export interface NoteResponseConnection {
@@ -1769,9 +1769,9 @@ export interface NotePreviousValues {
   id: ID_Output;
   createdAt: DateTimeOutput;
   message: String;
-  fontFamily: String;
-  fontColor: String;
-  backgroundColor: String;
+  font: String;
+  color: String;
+  style: String;
 }
 
 export interface NotePreviousValuesPromise
@@ -1780,9 +1780,9 @@ export interface NotePreviousValuesPromise
   id: () => Promise<ID_Output>;
   createdAt: () => Promise<DateTimeOutput>;
   message: () => Promise<String>;
-  fontFamily: () => Promise<String>;
-  fontColor: () => Promise<String>;
-  backgroundColor: () => Promise<String>;
+  font: () => Promise<String>;
+  color: () => Promise<String>;
+  style: () => Promise<String>;
 }
 
 export interface NotePreviousValuesSubscription
@@ -1791,9 +1791,9 @@ export interface NotePreviousValuesSubscription
   id: () => Promise<AsyncIterator<ID_Output>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   message: () => Promise<AsyncIterator<String>>;
-  fontFamily: () => Promise<AsyncIterator<String>>;
-  fontColor: () => Promise<AsyncIterator<String>>;
-  backgroundColor: () => Promise<AsyncIterator<String>>;
+  font: () => Promise<AsyncIterator<String>>;
+  color: () => Promise<AsyncIterator<String>>;
+  style: () => Promise<AsyncIterator<String>>;
 }
 
 export interface NoteSubscriptionPayload {

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import {COLORS} from '../styles'
 
 const styles = StyleSheet.create({
   container: {
@@ -10,8 +11,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF',
-    borderColor: '#48A9C5',
     borderWidth: 1,
     borderRadius: 10,
     shadowOffset: {width: 0, height: 5},
@@ -22,6 +21,22 @@ const styles = StyleSheet.create({
     height: 250,
     marginTop: 45,
     marginBottom: 35,
+    backgroundColor: '#FFF',
+    borderColor: COLORS.ACCENT_BLUE,
+  },
+  noteContainerGREEN: {
+    borderColor: COLORS.ACCENT_GREEN,
+  },
+  noteContainerBLUE: {
+    borderColor: COLORS.ACCENT_BLUE,
+  },
+  noteContainerFillGREEN: {
+    backgroundColor: COLORS.ACCENT_GREEN,
+    borderColor: COLORS.ACCENT_GREEN,
+  },
+  noteContainerFillBLUE: {
+    backgroundColor: COLORS.ACCENT_BLUE,
+    borderColor: COLORS.ACCENT_BLUE,
   },
   noteOptions: {
     position: 'absolute',

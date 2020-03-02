@@ -17,9 +17,9 @@ type Note {
   topic: [Interest!]! @relation(link: TABLE)
   responses: [NoteResponse]! @relation(link: TABLE)
   viewers: [User]! @relation(link: TABLE, name: "Viewers")
-  fontFamily: String!
-  fontColor: String!
-  backgroundColor: String!
+  font: String!
+  color: String!
+  style: String!
 }
 
 type NoteResponse {

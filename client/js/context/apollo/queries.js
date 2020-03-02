@@ -5,6 +5,9 @@ const INBOX = gql`
     inbox {
       id
       message
+      color
+      style
+      font
     }
   }
 `
@@ -14,6 +17,9 @@ const OUTBOX = gql`
     outbox {
       id
       message
+      color
+      style
+      font
     }
   }
 `
