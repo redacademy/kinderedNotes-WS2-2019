@@ -11,6 +11,7 @@ const ReceivedNotesGrid = ({navigation}) => {
   return (
     <NotesGrid
       data={data && data.inbox.reverse()}
+      bg="BLUE"
       onNotePress={() => navigation.navigate('Note')}
       loading={loading}
       error={error}
