@@ -2,11 +2,11 @@ import React from 'react'
 import {SafeAreaView} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import {Header} from '../components/Typography'
-import {TagsInput, TagsList, Input} from '../components'
+import {TagsInput, TagsList, Input, styles} from '../components'
 
 const ProfileEmpty = () => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.noteArea}>
       <ScrollView>
         <Header>Profile Information</Header>
         <Input placeholder="Username"></Input>
