@@ -7,6 +7,9 @@ import client, {
 } from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
 import TagsContext, {TagsContextProvider} from './tags'
+import ActiveNoteContext, {
+  ActiveNoteContextProvider,
+} from './active-note'
 
 export {
   client,
@@ -19,4 +22,6 @@ export {
   AuthContextProvider,
   TagsContext,
   TagsContextProvider,
+  ActiveNoteContext,
+  ActiveNoteContextProvider,
 }

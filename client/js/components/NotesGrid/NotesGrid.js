@@ -3,8 +3,15 @@ import {View, Text, FlatList} from 'react-native'
 import NotesGridItem from './NotesGridItem'
 import {COLORS} from '../styles'
 import styles from './NotesGrid.styles'
+import {useActiveNote} from '../../hooks'
 
-const NotesGrid = ({data, loading, error, Icon}) => {
+const NotesGrid = ({data, loading, error, Icon, onNotePress}) => {
+  const {setActiveNote} = useActiveNote()
+  const handleNotePress = item => {
+    setActiveNote(item)
+    onNotePress()
+  }
+
   if (error) {
     return (
       <Text>
@@ -22,7 +29,11 @@ const NotesGrid = ({data, loading, error, Icon}) => {
       <FlatList
         data={data}
         renderItem={({item}) => (
-          <NotesGridItem color={item.color} style={item.style}>
+          <NotesGridItem
+            color={item.color}
+            style={item.style}
+            onPress={() => handleNotePress(item)}
+          >
             {Icon ? (
               <Icon width="95" />
             ) : (
