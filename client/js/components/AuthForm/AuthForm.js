@@ -1,10 +1,5 @@
 import React, {useState, useCallback} from 'react'
-import {
-  Button as AuthLink,
-  View,
-  Image,
-  TouchableOpacity,
-} from 'react-native'
+import {View, Image, TouchableOpacity} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
 import {Button, Input} from '../index'
@@ -61,7 +56,7 @@ const AuthForm = () => {
           <View style={styles.username}>
             <View style={styles.image}>
               <Image
-                source={require('../../../assets/icons/Mail_Grey.png')}
+                source={require('../../../assets/icons/Lock_Grey.png')}
               />
             </View>
             <Input
@@ -85,17 +80,22 @@ const AuthForm = () => {
           <View style={styles.authButtons}>
             <Button disabled={!isValid} onPress={handleSubmit}>
               {' '}
-              {isLogin ? 'Log in' : 'Sign up'}
+              {isLogin ? 'Login' : 'Sign up'}
             </Button>
 
-            <Button onPress={toggleIsLogin} style={styles.authToggle}>
-              <AuthText>
-                {isLogin
-                  ? "Don't have an account?"
-                  : 'Already have an account? '}
-              </AuthText>
-              <Header>{!isLogin ? ' Login' : ' Sign Up'}</Header>
-            </Button>
+            <View style={styles.authContainer}>
+              <Button
+                onPress={toggleIsLogin}
+                style={styles.authToggle}
+              >
+                <AuthText>
+                  {isLogin
+                    ? "Don't have an account?"
+                    : 'Already have an account? '}
+                </AuthText>
+                <Header>{!isLogin ? ' Login' : ' Sign Up'}</Header>
+              </Button>
+            </View>
           </View>
         </View>
       )}

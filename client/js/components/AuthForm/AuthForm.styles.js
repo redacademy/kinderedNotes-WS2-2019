@@ -21,14 +21,24 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     height: 40,
     width: '75%',
+    fontFamily: 'Nunito-Regular',
+    fontSize: 16,
+    fontWeight: '300',
+    color: '#b2b2b2',
   },
   image: {
     paddingTop: 6,
     paddingRight: 25,
   },
+  authContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
   authToggle: {
     backgroundColor: 'transparent',
     color: 'red',
+    marginTop: 30,
   },
 })
 
