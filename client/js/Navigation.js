@@ -1,5 +1,5 @@
 import React from 'react'
-import {Notes, Profile, Write} from './screens'
+import {Notes, Note, Profile, Write} from './screens'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -21,6 +21,7 @@ function NotesStackScreen() {
       }}
     >
       <NotesStack.Screen name="Notes" component={Notes} />
+      <NotesStack.Screen name="Note" component={Note} />
     </NotesStack.Navigator>
   )
 }

@@ -6,6 +6,7 @@ import {
   client,
   AuthContextProvider,
   TagsContextProvider,
+  ActiveNoteContextProvider,
 } from './context'
 import {SiteTransitionWrapper} from './navigation'
 
@@ -28,10 +29,12 @@ const App = () => {
       <AuthContextProvider>
         <StatusBar barStyle="dark-content" />
         <TagsContextProvider>
-          <SiteTransitionWrapper
-            AuthView={Login}
-            DefaultView={Navigation}
-          />
+          <ActiveNoteContextProvider>
+            <SiteTransitionWrapper
+              AuthView={Login}
+              DefaultView={Navigation}
+            />
+          </ActiveNoteContextProvider>
         </TagsContextProvider>
       </AuthContextProvider>
     </ApolloProvider>

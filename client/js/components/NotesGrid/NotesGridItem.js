@@ -1,10 +1,10 @@
 import React from 'react'
-import {View} from 'react-native'
+import {TouchableOpacity} from 'react-native'
 import styles from './NotesGrid.styles'
 import {COLORS} from '../styles'
 
-const NotesGridItem = ({style, color, children}) => (
-  <View
+const NotesGridItem = ({style, color, onPress, children}) => (
+  <TouchableOpacity
     style={{
       ...styles.item,
       backgroundColor:
@@ -12,9 +12,10 @@ const NotesGridItem = ({style, color, children}) => (
           ? COLORS.TEXT_PRIMARY.INVERT
           : COLORS[`ACCENT_${color}`],
     }}
+    onPress={onPress}
   >
     {children}
-  </View>
+  </TouchableOpacity>
 )
 
 export default NotesGridItem

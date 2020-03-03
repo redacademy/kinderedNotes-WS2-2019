@@ -4,6 +4,7 @@ import useSiteTransition from './useSiteTransition'
 import useCreateNote from './useCreateNote'
 import useTags from './useTags'
 import useWalkthrough from './useWalkthrough'
+import useActiveNote from './useActiveNote'
 
 export {
   useAuth,
@@ -12,4 +13,5 @@ export {
   useCreateNote,
   useTags,
   useWalkthrough,
+  useActiveNote,
 }
