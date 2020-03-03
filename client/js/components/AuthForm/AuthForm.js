@@ -1,9 +1,11 @@
-import React, {useCallback} from 'react'
-import {Button, View} from 'react-native'
+import React, {useState, useCallback} from 'react'
+import {View, Image, TouchableOpacity} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
-import {Input} from '../index'
+import {Button, Input} from '../index'
 import {validateInputs} from './utils'
+import styles from './AuthForm.styles'
+import {AuthText, Header} from '../Typography'
 
 const AuthForm = () => {
   const {signup, login, isLogin, toggleIsLogin} = useAuth()
@@ -15,6 +17,12 @@ const AuthForm = () => {
       }),
     [isLogin, login, signup],
   )
+
+  const [textEntry, setTextEntry] = useState(true)
+
+  const onPassPress = () => {
+    setTextEntry(!textEntry)
+  }
 
   return (
     <Formik
@@ -29,35 +37,66 @@ const AuthForm = () => {
         values,
         isValid,
       }) => (
-        <View>
-          <Input
-            onChangeText={handleChange('username')}
-            onBlur={handleBlur('username')}
-            value={values.username}
-            placeholder="Username"
-          />
+        <View style={styles.form}>
+          <View style={styles.username}>
+            <View style={styles.image}>
+              <Image
+                source={require('../../../assets/icons/User_Grey.png')}
+              />
+            </View>
+            <Input
+              onChangeText={handleChange('username')}
+              onBlur={handleBlur('username')}
+              value={values.username}
+              placeholder="Username"
+              style={styles.usernameInput}
+            />
+          </View>
 
-          <Input
-            onChangeText={handleChange('password')}
-            onBlur={handleBlur('password')}
-            value={values.password}
-            placeholder="Password"
-          />
+          <View style={styles.username}>
+            <View style={styles.image}>
+              <Image
+                source={require('../../../assets/icons/Lock_Grey.png')}
+              />
+            </View>
+            <Input
+              secureTextEntry={textEntry}
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              placeholder="Password"
+              style={styles.usernameInput}
+            />
+            <TouchableOpacity
+              onPress={onPassPress}
+              style={styles.image}
+            >
+              <Image
+                source={require('../../../assets/icons/Eye.png')}
+              />
+            </TouchableOpacity>
+          </View>
 
-          <Button
-            disabled={!isValid}
-            onPress={handleSubmit}
-            title={isLogin ? 'Log in' : 'Sign up'}
-          />
+          <View style={styles.authButtons}>
+            <Button disabled={!isValid} onPress={handleSubmit}>
+              {' '}
+              {isLogin ? 'Login' : 'Sign up'}
+            </Button>
 
-          <Button
-            onPress={toggleIsLogin}
-            title={
-              isLogin
-                ? 'Create an account'
-                : 'Already have an account'
-            }
-          />
+            <View style={styles.authContainer}>
+              <Button
+                onPress={toggleIsLogin}
+                style={styles.authToggle}
+              >
+                <AuthText>
+                  {isLogin
+                    ? "Don't have an account?"
+                    : 'Already have an account? '}
+                </AuthText>
+                <Header>{!isLogin ? ' Login' : ' Sign Up'}</Header>
+              </Button>
+            </View>
+          </View>
         </View>
       )}
     </Formik>

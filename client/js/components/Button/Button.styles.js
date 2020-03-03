@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
   },
   font: {
     color: '#fff',
+    fontWeight: '700',
+    fontFamily: 'Nunito-SemiBold',
+    fontSize: 16,
   },
 })
 
