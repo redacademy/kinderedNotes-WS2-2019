@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontFamily: 'Nunito-SemiBold',
     fontSize: 16,
+    alignSelf: 'center',
+    paddingTop: 5,
   },
   authText: {
     color: '#636e74',
