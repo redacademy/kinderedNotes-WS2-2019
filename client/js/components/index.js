@@ -7,6 +7,7 @@ import ReceivedNotesGrid from './ReceivedNotesGrid'
 import SentNotesGrid from './SentNotesGrid'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
+import IntroTransitionWrapper from './IntroTransitionWrapper'
 import styles from './Layout/Layout.styles'
 
 export {
@@ -19,5 +20,6 @@ export {
   SentNotesGrid,
   TagsInput,
   TagsList,
+  IntroTransitionWrapper,
   styles,
 }

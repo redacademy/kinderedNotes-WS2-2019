@@ -12,32 +12,34 @@ import {SiteTransitionWrapper} from './navigation'
 
 // TODO: refactor to `navigation/routes.js`
 import Navigation from './Navigation'
+import {IntroTransitionWrapper} from './components'
 
 const App = () => {
   const [isFirstTimeUser, setIsFirstTimeUser] = useState(true)
 
-  if (isFirstTimeUser) {
-    return (
-      <SafeAreaView>
-        <Walkthrough onComplete={() => setIsFirstTimeUser(false)} />
-      </SafeAreaView>
-    )
-  }
-
   return (
-    <ApolloProvider client={client}>
-      <AuthContextProvider>
-        <StatusBar barStyle="dark-content" />
-        <TagsContextProvider>
-          <ActiveNoteContextProvider>
-            <SiteTransitionWrapper
-              AuthView={Login}
-              DefaultView={Navigation}
-            />
-          </ActiveNoteContextProvider>
-        </TagsContextProvider>
-      </AuthContextProvider>
-    </ApolloProvider>
+    <IntroTransitionWrapper>
+      {isFirstTimeUser ? (
+        <SafeAreaView>
+          <Walkthrough onComplete={() => setIsFirstTimeUser(false)} />
+        </SafeAreaView>
+      ) : (
+        <ApolloProvider client={client}>
+          <AuthContextProvider>
+            <StatusBar barStyle="dark-content" />
+            <TagsContextProvider>
+              <ActiveNoteContextProvider>
+                {/* TODO: rename */}
+                <SiteTransitionWrapper
+                  AuthView={Login}
+                  DefaultView={Navigation}
+                />
+              </ActiveNoteContextProvider>
+            </TagsContextProvider>
+          </AuthContextProvider>
+        </ApolloProvider>
+      )}
+    </IntroTransitionWrapper>
   )
 }
 

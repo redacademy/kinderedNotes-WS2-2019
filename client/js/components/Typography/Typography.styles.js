@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import {COLORS} from '../styles'
 
 const styles = StyleSheet.create({
   header: {
@@ -14,6 +15,12 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontFamily: 'Nunito-SemiBold',
     fontSize: 16,
+  },
+  title: {
+    color: COLORS.TEXT_PRIMARY.INVERT,
+    fontWeight: '700',
+    fontFamily: 'Nunito-Bold',
+    fontSize: 30,
   },
 })
 
