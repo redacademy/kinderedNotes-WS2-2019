@@ -13,12 +13,15 @@ const Notes = () => (
           labelStyle: {
             //fontSize: 12,
             color: '#48a9c6',
+            //fontWeight: 'bold',
           },
-          tabStyle: {
-            //width: 100,
-          },
+          tabStyle: {},
           style: {
             backgroundColor: '#eaf5f8',
+          },
+          indicatorStyle: {
+            bottom: 1,
+            backgroundColor: '#48a9c6',
           },
         }}
       >
