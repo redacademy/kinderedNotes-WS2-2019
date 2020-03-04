@@ -8,7 +8,23 @@ const Tab = createMaterialTopTabNavigator()
 const Notes = () => (
   <SafeAreaView>
     <View style={{height: '100%'}}>
-      <Tab.Navigator>
+      <Tab.Navigator
+        tabBarOptions={{
+          labelStyle: {
+            //fontSize: 12,
+            color: '#48a9c6',
+            //fontWeight: 'bold',
+          },
+          tabStyle: {},
+          style: {
+            backgroundColor: '#eaf5f8',
+          },
+          indicatorStyle: {
+            bottom: 1,
+            backgroundColor: '#48a9c6',
+          },
+        }}
+      >
         <Tab.Screen name="Received" component={ReceivedNotesGrid} />
         <Tab.Screen name="Sent" component={SentNotesGrid} />
       </Tab.Navigator>

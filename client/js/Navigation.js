@@ -20,7 +20,11 @@ function NotesStackScreen() {
         headerStyle: {backgroundColor: '#eaf5f8', height: 130},
       }}
     >
-      <NotesStack.Screen name="Notes" component={Notes} />
+      <NotesStack.Screen
+        options={{title: ''}}
+        name="Notes"
+        component={Notes}
+      />
       <NotesStack.Screen name="Note" component={Note} />
     </NotesStack.Navigator>
   )
@@ -93,6 +97,9 @@ export default function App() {
           style: {
             backgroundColor: '#eaf5f8',
             height: 95,
+            borderBottomColor: 'red',
+            borderBottomWidth: 0,
+            shadowColor: 'transparent',
           },
         }}
       >
