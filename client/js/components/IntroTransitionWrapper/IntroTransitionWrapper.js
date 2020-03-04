@@ -5,46 +5,30 @@ import WaveTop from '../../../assets/icons/Wave_Up.svg'
 import WaveBottom from '../../../assets/icons/Wave_Down.svg'
 import styles from './IntroTransitionWrapper.styles'
 import {Title} from '../Typography'
-
-const ANIMATION_IN_DURATION = 800
-const ANIMATION_PAUSE_DURATION = 950
-const ANIMATION_OUT_DURATION = 800
+import {useOpacityFadeTransition} from './hooks'
+import {
+  ANIMATION_IN_DURATION,
+  ANIMATION_OUT_DURATION,
+  ANIMATION_PAUSE_DURATION,
+} from './consts'
 
 const IntroTransitionWrapper = ({children}) => {
-  const [bgOpacity] = useState(new Animated.Value(1))
-  const [contentOpacity] = useState(new Animated.Value(0))
   const [logoScale] = useState(new Animated.Value(0))
-  const [elementsOpacity] = useState(new Animated.Value(0))
   const [waveOffsetTop] = useState(new Animated.Value(-100))
   const [waveOffsetBottom] = useState(new Animated.Value(100))
-
-  const fadeInContent = () => {
-    Animated.timing(contentOpacity, {
-      toValue: 1,
-      duration: ANIMATION_OUT_DURATION,
-    }).start()
-  }
-
-  const fadeOutBg = () => {
-    Animated.timing(bgOpacity, {
-      toValue: 0,
-      duration: ANIMATION_OUT_DURATION,
-    }).start()
-  }
-
-  const elementsFadeIn = () => {
-    Animated.timing(elementsOpacity, {
-      toValue: 1,
-      duration: ANIMATION_IN_DURATION,
-    }).start()
-  }
-
-  const elementsFadeOut = () => {
-    Animated.timing(elementsOpacity, {
-      toValue: 0,
-      duration: ANIMATION_OUT_DURATION,
-    }).start()
-  }
+  const {
+    opacity: elementsOpacity,
+    fadeIn: elementsFadeIn,
+    fadeOut: elementsFadeOut,
+  } = useOpacityFadeTransition(0)
+  const {
+    opacity: bgOpacity,
+    fadeOut: bgFadeOut,
+  } = useOpacityFadeTransition(1)
+  const {
+    opacity: contentOpacity,
+    fadeIn: fadeInContent,
+  } = useOpacityFadeTransition(0)
 
   const logoScaleUp = () => {
     Animated.timing(logoScale, {
@@ -89,7 +73,7 @@ const IntroTransitionWrapper = ({children}) => {
   }
 
   const animateOut = () => {
-    fadeOutBg()
+    bgFadeOut()
     elementsFadeOut()
     waveTopSlideOut()
     waveBottomSlideOut()
@@ -102,7 +86,7 @@ const IntroTransitionWrapper = ({children}) => {
     }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION)
 
     setTimeout(() => {
-      fadeOutBg()
+      bgFadeOut()
       fadeInContent()
     }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION + ANIMATION_OUT_DURATION)
   }, [])
