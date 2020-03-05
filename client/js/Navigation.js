@@ -1,5 +1,12 @@
 import React from 'react'
-import {Notes, Note, Profile, SentNote, Write} from './screens'
+import {
+  Notes,
+  Note,
+  Profile,
+  ReceivedNote,
+  SentNote,
+  Write,
+} from './screens'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -19,7 +26,7 @@ function NotesStackScreen() {
         headerTintColor: '#48a9c6',
         headerStyle: {
           backgroundColor: '#eaf5f8',
-          height: 83,
+          height: 100,
           shadowColor: 'transparent',
         },
       }}
@@ -31,6 +38,10 @@ function NotesStackScreen() {
       />
       <NotesStack.Screen name="Note" component={Note} />
       <NotesStack.Screen name="SentNote" component={SentNote} />
+      <NotesStack.Screen
+        name="ReceivedNote"
+        component={ReceivedNote}
+      />
     </NotesStack.Navigator>
   )
 }
