@@ -50,16 +50,10 @@ function ProfileStackScreen() {
   return (
     <ProfileStack.Navigator
       screenOptions={{
-        headerTintColor: '#48a9c6',
-        headerStyle: {backgroundColor: '#eaf5f8', height: 130},
-        headerMode: false,
-      }}
-      navigationOptions={{
-        headerMode: 'none', // doesn't work
-        header: null, // only this works
+        headerShown: false,
       }}
     >
-      <ProfileStack.Screen name="Profilee" component={Profile} />
+      <ProfileStack.Screen name="Profile" component={Profile} />
     </ProfileStack.Navigator>
   )
 }
