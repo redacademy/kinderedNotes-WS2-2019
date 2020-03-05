@@ -4,7 +4,6 @@ import Input from './Input'
 import Note from './Note/Note'
 import NotesGrid from './NotesGrid'
 import ReceivedNotesGrid from './ReceivedNotesGrid'
-import SentNote from './SentNote'
 import SentNotesGrid from './SentNotesGrid'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
@@ -18,7 +17,6 @@ export {
   Note,
   NotesGrid,
   ReceivedNotesGrid,
-  SentNote,
   SentNotesGrid,
   TagsInput,
   TagsList,
