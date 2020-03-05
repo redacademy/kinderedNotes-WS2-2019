@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: 'center',
   },
+  profileArea: {
+    width: 300,
+    alignSelf: 'center',
+    marginVertical: 290,
+  },
 })
 
 export default styles

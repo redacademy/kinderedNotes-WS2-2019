@@ -50,8 +50,7 @@ function ProfileStackScreen() {
   return (
     <ProfileStack.Navigator
       screenOptions={{
-        headerTintColor: '#48a9c6',
-        headerStyle: {backgroundColor: '#eaf5f8', height: 130},
+        headerShown: false,
       }}
     >
       <ProfileStack.Screen name="Profile" component={Profile} />
