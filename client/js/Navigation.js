@@ -1,6 +1,5 @@
 import React from 'react'
 import {Notes, Note, Profile, SentNote, Write} from './screens'
-// import {SentNote} from './components'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -20,7 +19,8 @@ function NotesStackScreen() {
         headerTintColor: '#48a9c6',
         headerStyle: {
           backgroundColor: '#eaf5f8',
-          height: 130,
+          height: 83,
+          shadowColor: 'transparent',
         },
       }}
     >
@@ -66,12 +66,12 @@ function ProfileStackScreen() {
 
 const Tab = createBottomTabNavigator()
 
-export default function App() {
+export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
+          tabBarIcon: ({color}) => {
             const {name} = route
             if (name === 'Notes') {
               if (color === 'gray') {

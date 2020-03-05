@@ -6,7 +6,7 @@ import styles from './NotesGrid.styles'
 import {useActiveNote} from '../../hooks'
 
 const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
-  const {activeNote, setActiveNote} = useActiveNote()
+  const {setActiveNote} = useActiveNote()
   const handleNotePress = item => {
     setActiveNote(item)
     onNotePress()
