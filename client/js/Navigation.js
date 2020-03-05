@@ -1,7 +1,6 @@
 import React from 'react'
 import {
   Notes,
-  Note,
   Profile,
   ReceivedNote,
   SentNote,
@@ -36,7 +35,6 @@ function NotesStackScreen() {
         name="Notes"
         component={Notes}
       />
-      <NotesStack.Screen name="Note" component={Note} />
       <NotesStack.Screen name="SentNote" component={SentNote} />
       <NotesStack.Screen
         name="ReceivedNote"
