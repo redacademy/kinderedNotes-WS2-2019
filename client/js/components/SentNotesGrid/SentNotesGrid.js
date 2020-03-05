@@ -10,7 +10,7 @@ const SentNotesGrid = ({navigation}) => {
   return (
     <NotesGrid
       data={data && data.outbox.reverse()}
-      onNotePress={() => navigation.navigate('Note')}
+      onNotePress={() => navigation.navigate('SentNote')}
       loading={loading}
       error={error}
     />

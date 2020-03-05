@@ -5,7 +5,11 @@ import {useActiveNote} from '../hooks'
 const Note = () => {
   const {activeNote} = useActiveNote()
 
-  return <Text>{activeNote.message}</Text>
+  return (
+    <>
+      <Text>{activeNote.message} Sent Note</Text>
+    </>
+  )
 }
 
 export default Note

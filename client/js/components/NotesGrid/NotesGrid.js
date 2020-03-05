@@ -1,7 +1,6 @@
 import React from 'react'
 import {View, Text, FlatList} from 'react-native'
 import NotesGridItem from './NotesGridItem'
-import {SentNote} from '../index'
 import {COLORS} from '../styles'
 import styles from './NotesGrid.styles'
 import {useActiveNote} from '../../hooks'
@@ -10,7 +9,7 @@ const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
   const {activeNote, setActiveNote} = useActiveNote()
   const handleNotePress = item => {
     setActiveNote(item)
-    // onNotePress()
+    onNotePress()
   }
 
   if (error) {
@@ -23,14 +22,6 @@ const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
 
   if (loading) {
     return <Text>Loading notes...</Text>
-  }
-
-  if (activeNote) {
-    return (
-      <>
-        <SentNote />
-      </>
-    )
   }
 
   return (
