@@ -2,7 +2,7 @@ import Login from './Login'
 import Notes from './Notes'
 import Profile from './Profile'
 import ReceivedNote from './ReceivedNote'
-import SentNote from './SentNote'
+import SentNotes from './SentNotes'
 import Write from './Write'
 import Walkthrough from './Walkthrough'
 
@@ -11,7 +11,7 @@ export {
   Notes,
   Profile,
   ReceivedNote,
-  SentNote,
+  SentNotes,
   Write,
   Walkthrough,
 }

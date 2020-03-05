@@ -1,13 +1,13 @@
 import React from 'react'
-import {SafeAreaView, Text} from 'react-native'
-import {useActiveNote} from '../hooks'
+import {useActiveNote} from '../../hooks'
+import {SafeAreaView, View, Text} from 'react-native'
 
 const SentNote = () => {
   const {activeNote} = useActiveNote()
 
   return (
     <SafeAreaView>
-      <Text>{activeNote.message} Sent Note Screen</Text>
+      <Text>{activeNote.message}</Text>
     </SafeAreaView>
   )
 }
