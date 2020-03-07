@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     marginRight: 'auto',
     marginLeft: 'auto',
   },
-  receivedNote: {
+  sentNote: {
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
