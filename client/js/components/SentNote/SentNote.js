@@ -1,13 +1,28 @@
 import React from 'react'
+import {
+  SafeAreaView,
+  View,
+  Text,
+  TouchableOpacity,
+} from 'react-native'
 import {useActiveNote} from '../../hooks'
-import {SafeAreaView, View, Text} from 'react-native'
+import {Header} from '../Typography'
+import styles from './SentNote.styles'
 
 const SentNote = () => {
   const {activeNote} = useActiveNote()
 
   return (
-    <SafeAreaView>
-      <Text>{activeNote.message}</Text>
+    <SafeAreaView style={styles.sentContainer}>
+      <View style={styles.container}>
+        <View style={styles.sentNote}>
+          <Text>{activeNote.message}</Text>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.font}>See who read it</Text>
+          </TouchableOpacity>
+        </View>
+        <Header>Who appreciated your note</Header>
+      </View>
     </SafeAreaView>
   )
 }
