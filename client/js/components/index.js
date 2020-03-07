@@ -1,4 +1,5 @@
 import AuthForm from './AuthForm'
+import Bookmark from './Bookmark'
 import Button from './Button'
 import Input from './Input'
 import Note from './Note/Note'
@@ -14,6 +15,7 @@ import styles from './Layout/Layout.styles'
 
 export {
   AuthForm,
+  Bookmark,
   Button,
   Input,
   Note,

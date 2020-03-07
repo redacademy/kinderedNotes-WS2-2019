@@ -44,11 +44,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     fontSize: 16,
   },
-  bookmark: {
-    position: 'absolute',
-    top: 25,
-    right: 25,
-  },
   replyButton: {
     width: '100%',
     height: 50,
