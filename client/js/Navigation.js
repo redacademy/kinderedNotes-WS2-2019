@@ -1,5 +1,11 @@
 import React from 'react'
-import {Notes, Note, Profile, Write} from './screens'
+import {
+  Notes,
+  Profile,
+  ReceivedNotes,
+  SentNotes,
+  Write,
+} from './screens'
 import {NavigationContainer} from '@react-navigation/native'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import {createStackNavigator} from '@react-navigation/stack'
@@ -17,7 +23,11 @@ function NotesStackScreen() {
     <NotesStack.Navigator
       screenOptions={{
         headerTintColor: '#48a9c6',
-        headerStyle: {backgroundColor: '#eaf5f8', height: 130},
+        headerStyle: {
+          backgroundColor: '#eaf5f8',
+          height: 100,
+          shadowColor: 'transparent',
+        },
       }}
     >
       <NotesStack.Screen
@@ -25,7 +35,11 @@ function NotesStackScreen() {
         name="Notes"
         component={Notes}
       />
-      <NotesStack.Screen name="Note" component={Note} />
+      <NotesStack.Screen name="SentNotes" component={SentNotes} />
+      <NotesStack.Screen
+        name="ReceivedNotes"
+        component={ReceivedNotes}
+      />
     </NotesStack.Navigator>
   )
 }
@@ -60,12 +74,12 @@ function ProfileStackScreen() {
 
 const Tab = createBottomTabNavigator()
 
-export default function App() {
+export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
+          tabBarIcon: ({color}) => {
             const {name} = route
             if (name === 'Notes') {
               if (color === 'gray') {
