@@ -37,7 +37,7 @@ function NotesStackScreen() {
       />
       <NotesStack.Screen name="SentNotes" component={SentNotes} />
       <NotesStack.Screen
-        name="ReceivedNote"
+        name="ReceivedNotes"
         component={ReceivedNotes}
       />
     </NotesStack.Navigator>

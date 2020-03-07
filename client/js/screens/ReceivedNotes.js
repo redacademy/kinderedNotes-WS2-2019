@@ -1,15 +1,8 @@
 import React from 'react'
-import {SafeAreaView, Text} from 'react-native'
-import {useActiveNote} from '../hooks'
+import {ReceivedNote} from '../components'
 
-const ReceivedNote = () => {
-  const {activeNote} = useActiveNote()
-
-  return (
-    <SafeAreaView>
-      <Text>{activeNote.message} Received Note Screen</Text>
-    </SafeAreaView>
-  )
+const ReceivedNotes = () => {
+  return <ReceivedNote />
 }
 
-export default ReceivedNote
+export default ReceivedNotes

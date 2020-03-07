@@ -15,7 +15,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
     borderRadius: 10,
     shadowOffset: {width: 0, height: 5},
     shadowColor: '#c7c7c7',
@@ -25,6 +24,7 @@ const styles = StyleSheet.create({
     height: 280,
     marginTop: 45,
     marginBottom: 35,
+    backgroundColor: '#48a9c5',
   },
   button: {
     position: 'absolute',
@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontFamily: 'Nunito-SemiBold',
     fontSize: 14,
+  },
+  bookmark: {
+    position: 'absolute',
+    top: 25,
+    right: 25,
   },
 })
 
