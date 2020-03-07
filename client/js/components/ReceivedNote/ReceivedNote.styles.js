@@ -1,7 +1,7 @@
 import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
-  sentContainer: {
+  receivedContainer: {
     backgroundColor: 'white',
     height: '100%',
   },
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1.0,
     elevation: 5,
     width: 300,
-    height: 280,
+    height: 345,
     marginTop: 45,
     marginBottom: 35,
     backgroundColor: '#48a9c5',
@@ -40,14 +40,30 @@ const styles = StyleSheet.create({
   },
   font: {
     color: '#fff',
-    fontWeight: '700',
-    fontFamily: 'Nunito-SemiBold',
-    fontSize: 14,
+    fontWeight: '900',
+    fontFamily: 'Nunito-Bold',
+    fontSize: 16,
   },
   bookmark: {
     position: 'absolute',
     top: 25,
     right: 25,
+  },
+  replyButton: {
+    width: '100%',
+    height: 50,
+    backgroundColor: '#48a9c5',
+    borderRadius: 5,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginTop: 30,
+  },
+  reply: {
+    color: '#fff',
+    fontFamily: 'Nunito-Regular',
+    fontSize: 14,
   },
 })
 

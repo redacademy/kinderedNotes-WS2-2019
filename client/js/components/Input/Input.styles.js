@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   input: {
-    textAlign: 'center',
     marginTop: 10,
     marginBottom: 10,
     borderBottomWidth: 1,
