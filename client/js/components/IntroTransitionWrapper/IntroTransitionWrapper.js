@@ -5,7 +5,7 @@ import WaveTop from '../../../assets/icons/Wave_Up.svg'
 import WaveBottom from '../../../assets/icons/Wave_Down.svg'
 import styles from './IntroTransitionWrapper.styles'
 import {Title} from '../Typography'
-import {useOpacityFadeTransition} from './hooks'
+import {useOpacityFadeTransition} from '../../hooks'
 import {
   ANIMATION_IN_DURATION,
   ANIMATION_OUT_DURATION,
@@ -13,6 +13,7 @@ import {
 } from './consts'
 
 const IntroTransitionWrapper = ({children}) => {
+  const [isDone, setIsDone] = useState(false)
   const [logoScale] = useState(new Animated.Value(0))
   const [waveOffsetTop] = useState(new Animated.Value(-100))
   const [waveOffsetBottom] = useState(new Animated.Value(100))
@@ -81,6 +82,7 @@ const IntroTransitionWrapper = ({children}) => {
 
   useEffect(() => {
     animateIn()
+
     setTimeout(() => {
       animateOut()
     }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION)
@@ -88,6 +90,7 @@ const IntroTransitionWrapper = ({children}) => {
     setTimeout(() => {
       bgFadeOut()
       fadeInContent()
+      setIsDone(true)
     }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION + ANIMATION_OUT_DURATION)
   }, [])
 
@@ -136,7 +139,7 @@ const IntroTransitionWrapper = ({children}) => {
       <Animated.View
         style={{...styles.floatingContainer, opacity: contentOpacity}}
       >
-        {children}
+        {isDone ? children : null}
       </Animated.View>
     </View>
   )

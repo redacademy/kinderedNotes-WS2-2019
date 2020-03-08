@@ -1,0 +1,2 @@
+export const ANIMATION_IN_DURATION = 800
+export const ANIMATION_OUT_DURATION = 800

@@ -3,7 +3,7 @@ import {Animated} from 'react-native'
 import {
   ANIMATION_IN_DURATION,
   ANIMATION_OUT_DURATION,
-} from '../consts'
+} from '../components/IntroTransitionWrapper/consts'
 
 const useOpacityFadeTransition = initialValue => {
   const [opacity] = useState(new Animated.Value(initialValue))
