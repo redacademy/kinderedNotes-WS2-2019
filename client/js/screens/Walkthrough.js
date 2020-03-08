@@ -41,8 +41,21 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   wave: {
-    opacity: 0.7,
+    opacity: 1,
     marginHorizontal: -50,
+  },
+  pen: {
+    position: 'absolute',
+    right: -30,
+    top: -20,
+  },
+  circle: {
+    backgroundColor: COLORS.LIGHT_BLUE,
+    borderRadius: 150,
+    width: 300,
+    height: 300,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
@@ -57,20 +70,15 @@ const Walkthrough = ({onComplete}) => {
     togglePrevView,
   } = useWalkthrough(onComplete)
 
+  const [slideNum, setSlideNum] = useState(1)
   const [waveOffsetTop] = useState(new Animated.Value(-100))
+  const [waveOffsetBottom] = useState(new Animated.Value(100))
+  const [noteOffset] = useState(new Animated.Value(100))
 
   const {
     opacity: elementsOpacity,
     fadeIn: elementsFadeIn,
     fadeOut: elementsFadeOut,
-  } = useOpacityFadeTransition(0)
-  const {
-    opacity: bgOpacity,
-    fadeOut: bgFadeOut,
-  } = useOpacityFadeTransition(1)
-  const {
-    opacity: contentOpacity,
-    fadeIn: fadeInContent,
   } = useOpacityFadeTransition(0)
 
   const waveTopSlideIn = () => {
@@ -94,8 +102,16 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
+  const noteSlideIn = () => {
+    Animated.timing(noteOffset, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
   const animateIn = () => {
     penSlideIn()
+    noteSlideIn()
     waveTopSlideIn()
     elementsFadeIn()
   }
@@ -105,6 +121,17 @@ const Walkthrough = ({onComplete}) => {
   }
 
   useEffect(() => {
+    switch (event) {
+      case 'NEXT_VIEW':
+        setSlideNum(s => s + 1)
+        break
+      case 'PREV_VIEW':
+        setSlideNum(s => s - 1)
+        break
+      default:
+        break
+    }
+
     switch (state) {
       case 'WRITE_FADING_IN':
         animateIn()
@@ -135,7 +162,7 @@ const Walkthrough = ({onComplete}) => {
       default:
         break
     }
-  }, [state, dispatch, onComplete])
+  }, [event, state, dispatch, onComplete])
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -147,12 +174,26 @@ const Walkthrough = ({onComplete}) => {
       >
         <WaveTop style={styles.wave} />
       </Animated.View>
-      <View style={styles.container}>
-        <Text>
-          {state}, {event}
-        </Text>
-        <Text>Write a kind note</Text>
-      </View>
+      {slideNum === 1 && <Text>Write a kind note</Text>}
+      {slideNum === 2 && <Text>slide 2</Text>}
+      {slideNum === 3 && <Text>slide 3</Text>}
+      <Animated.View
+        style={{
+          ...styles.container,
+          opacity: elementsOpacity,
+        }}
+      >
+        <Animated.View style={styles.circle}>
+          <Animated.View
+            style={{
+              transform: [{translateY: noteOffset}],
+            }}
+          >
+            <Note />
+            <Pen style={styles.pen} />
+          </Animated.View>
+        </Animated.View>
+      </Animated.View>
       <View style={styles.actions}>
         <Button
           disabled={nextDisabled}
