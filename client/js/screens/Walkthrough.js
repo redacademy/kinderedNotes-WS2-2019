@@ -57,6 +57,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  font: {
+    fontFamily: 'Nunito-Bold',
+    fontSize: 24,
+    color: COLORS.BLUE,
+    marginTop: 30,
+    textAlign: 'center',
+  },
 })
 
 const Walkthrough = ({onComplete}) => {
@@ -79,6 +86,14 @@ const Walkthrough = ({onComplete}) => {
     opacity: elementsOpacity,
     fadeIn: elementsFadeIn,
     fadeOut: elementsFadeOut,
+  } = useOpacityFadeTransition(0)
+  const {
+    opacity: bgOpacity,
+    fadeOut: bgFadeOut,
+  } = useOpacityFadeTransition(1)
+  const {
+    opacity: contentOpacity,
+    fadeIn: fadeInContent,
   } = useOpacityFadeTransition(0)
 
   const waveTopSlideIn = () => {
@@ -173,10 +188,12 @@ const Walkthrough = ({onComplete}) => {
         }}
       >
         <WaveTop style={styles.wave} />
+        {slideNum === 1 && (
+          <Text style={styles.font}>Write a kind note</Text>
+        )}
+        {slideNum === 2 && <Text>slide 2</Text>}
+        {slideNum === 3 && <Text>slide 3</Text>}
       </Animated.View>
-      {slideNum === 1 && <Text>Write a kind note</Text>}
-      {slideNum === 2 && <Text>slide 2</Text>}
-      {slideNum === 3 && <Text>slide 3</Text>}
       <Animated.View
         style={{
           ...styles.container,
