@@ -18,6 +18,7 @@ const AuthForm = () => {
     [isLogin, login, signup],
   )
 
+  // TODO: rename state
   const [textEntry, setTextEntry] = useState(true)
 
   const onPassPress = () => {
