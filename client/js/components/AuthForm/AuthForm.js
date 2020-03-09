@@ -8,14 +8,13 @@ import styles from './AuthForm.styles'
 import {AuthText, Header} from '../Typography'
 
 const AuthForm = ({onSignUp}) => {
-  const {login, isLogin, toggleIsLogin, tempUserData} = useAuth()
+  const {login, isLogin, toggleIsLogin} = useAuth()
 
   const onAuth = variables =>
     (isLogin ? login : onSignUp)({
       variables,
     })
 
-  console.log(tempUserData)
   // TODO: rename state
   const [textEntry, setTextEntry] = useState(true)
 

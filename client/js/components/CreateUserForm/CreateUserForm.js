@@ -1,28 +1,55 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {SafeAreaView, Button} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import {Header} from '../Typography'
-import {TagsInput, TagsList, Input, styles} from '../index'
+import {
+  AvatarSelect,
+  TagsInput,
+  TagsList,
+  Input,
+  styles,
+} from '../index'
 import {useAuth} from '../../hooks'
 
 const CreateUserForm = ({authData}) => {
   const {signup} = useAuth()
+  const [countryInput, setCountryInput] = useState('')
+  const [cityInput, setCityInput] = useState('')
+  const [currentAvatar, setCurrentAvatar] = useState(0)
 
-  const signUp = () => {
-    signup(authData)
+  const createUser = () => {
+    signup({
+      variables: {
+        ...authData.variables,
+        country: countryInput,
+        city: cityInput,
+        avatar: currentAvatar,
+      },
+    })
   }
 
   return (
     <SafeAreaView style={styles.noteArea}>
       <ScrollView>
         <Header>Profile Information</Header>
-        <Input placeholder="Username"></Input>
-        <Input placeholder="Country"></Input>
-        <Input placeholder="City"></Input>
+        <AvatarSelect
+          currentAvatar={currentAvatar}
+          onChange={setCurrentAvatar}
+        />
+        <Input
+          value={countryInput}
+          onChangeText={setCountryInput}
+          placeholder="Country"
+        />
+        <Input
+          value={cityInput}
+          onChangeText={setCityInput}
+          placeholder="City"
+        />
         <Header>Topics of Interest</Header>
-        <TagsInput placeholder="Write your topic" />
+        <TagsInput placeholder="TODO" />
         <TagsList />
-        <Button onPress={signUp} title="Get Started" />
+        <Button onPress={createUser} title="Get Started" />
       </ScrollView>
     </SafeAreaView>
   )

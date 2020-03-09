@@ -4,9 +4,7 @@ import {Header} from '../Typography'
 import {AvatarSelect, TagsInput, TagsList} from '../index'
 
 const ProfileEditForm = () => {
-  const [currentAvatar, setCurrentAvatar] = useState(
-    require('../../../assets/images/memoji-1.jpg'),
-  )
+  const [currentAvatar, setCurrentAvatar] = useState(0)
 
   return (
     <>
