@@ -17,6 +17,9 @@ const SIGN_UP = gql`
     ) {
       user {
         id
+        avatar
+        country
+        city
         # username
         # favoriteNotes
         # interests
@@ -31,6 +34,9 @@ const LOG_IN = gql`
     login(username: $username, password: $password) {
       user {
         id
+        avatar
+        country
+        city
         # username
         # favoriteNotes
         # interests

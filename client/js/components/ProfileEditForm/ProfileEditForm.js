@@ -2,9 +2,13 @@ import React, {useState} from 'react'
 import {Text} from 'react-native'
 import {Header} from '../Typography'
 import {AvatarSelect, TagsInput, TagsList} from '../index'
+import {useAuth} from '../../hooks'
 
 const ProfileEditForm = () => {
-  const [currentAvatar, setCurrentAvatar] = useState(0)
+  const {user} = useAuth()
+  const [currentAvatar, setCurrentAvatar] = useState(
+    user?.user?.avatar,
+  )
 
   return (
     <>

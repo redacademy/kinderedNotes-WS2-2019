@@ -45,6 +45,8 @@ type User {
   favoriteNotes: [Note]
   interests: [Interest!]!
   avatar: Int!
+  city: String!
+  country: String!
 }
 
 type Note {
