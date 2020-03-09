@@ -3,6 +3,7 @@ import client, {
   OUTBOX,
   SIGN_UP,
   LOG_IN,
+  UPDATE_USER,
   CREATE_NOTE,
 } from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
@@ -17,6 +18,7 @@ export {
   OUTBOX,
   SIGN_UP,
   LOG_IN,
+  UPDATE_USER,
   CREATE_NOTE,
   AuthContext,
   AuthContextProvider,

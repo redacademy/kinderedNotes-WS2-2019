@@ -5,6 +5,7 @@ const {getUserId} = require('../../utils')
 const auth = {
   async signup(parent, args, context) {
     const password = await bcrypt.hash(args.password, 10)
+    // TODO: DRY up tag/interests duplicate check logic
     const interests = await context.prisma.interests()
     const {existingInterests, newInterests} = args.interests.reduce(
       (interestSummary, interest) => {
@@ -60,16 +61,39 @@ const auth = {
 
   async updateUser(parent, {avatar, country, city, interests}, context) {
     const userId = getUserId(context)
+    const allInterests = await context.prisma.interests()
+    const {existingInterests, newInterests} = interests.reduce(
+      (interestSummary, interest) => {
+        const existingEntry =
+          allInterests && allInterests.find(({title}) => title === interest)
+        if (existingEntry) {
+          return {
+            ...interestSummary,
+            existingInterests: [
+              ...interestSummary.existingInterests,
+              existingEntry.id,
+            ],
+          }
+        } else {
+          return {
+            ...interestSummary,
+            newInterests: [...interestSummary.newInterests, interest],
+          }
+        }
+      },
+      {existingInterests: [], newInterests: []},
+    )
 
-    console.log(interests.map(i => ({title: i})))
     return context.prisma.updateUser({
       where: {id: userId},
       data: {
         avatar,
         country,
         city,
+        // FIXME: deleted interests are not removed
         interests: {
-          upsert: interests.map(i => ({title: i})),
+          create: newInterests.map(title => ({title})),
+          connect: existingInterests.map(id => ({id})),
         },
       },
     })

@@ -7,6 +7,7 @@ const SIGN_UP = gql`
     $city: String!
     $country: String!
     $avatar: Int!
+    $interests: [String!]!
   ) {
     signup(
       username: $username
@@ -14,15 +15,18 @@ const SIGN_UP = gql`
       city: $city
       country: $country
       avatar: $avatar
+      interests: $interests
     ) {
       user {
         id
         avatar
         country
         city
+        interests {
+          title
+        }
         # username
         # favoriteNotes
-        # interests
       }
       token
     }
@@ -37,11 +41,37 @@ const LOG_IN = gql`
         avatar
         country
         city
+        interests {
+          title
+        }
         # username
         # favoriteNotes
-        # interests
       }
       token
+    }
+  }
+`
+
+const UPDATE_USER = gql`
+  mutation updateUser(
+    $avatar: Int!
+    $country: String!
+    $city: String!
+    $interests: [String!]!
+  ) {
+    updateUser(
+      avatar: $avatar
+      country: $country
+      city: $city
+      interests: $interests
+    ) {
+      id
+      avatar
+      country
+      city
+      interests {
+        title
+      }
     }
   }
 `
@@ -66,4 +96,4 @@ const CREATE_NOTE = gql`
   }
 `
 
-export {SIGN_UP, LOG_IN, CREATE_NOTE}
+export {SIGN_UP, LOG_IN, UPDATE_USER, CREATE_NOTE}

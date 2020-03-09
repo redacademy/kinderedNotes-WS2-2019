@@ -17,6 +17,12 @@ type Mutation {
     interests: [String!]!
   ): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
+  updateUser(
+    avatar: Int!
+    country: String!
+    city: String!
+    interests: [String!]!
+  ): User!
   createNote(
     message: String!
     tags: [String!]!
