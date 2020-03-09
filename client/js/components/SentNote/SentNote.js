@@ -16,7 +16,9 @@ const SentNote = () => {
     <SafeAreaView style={styles.sentContainer}>
       <View style={styles.container}>
         <View style={styles.sentNote}>
-          <Text style={styles.message}>{activeNote.message}</Text>
+          <View style={styles.messageContainer}>
+            <Text style={styles.message}>{activeNote.message}</Text>
+          </View>
           <TouchableOpacity style={styles.button}>
             <Text style={styles.font}>See who read it</Text>
           </TouchableOpacity>
