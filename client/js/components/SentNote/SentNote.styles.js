@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
   },
   sentNote: {
     position: 'relative',
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
@@ -26,9 +25,17 @@ const styles = StyleSheet.create({
     marginBottom: 35,
     backgroundColor: '#48a9c5',
   },
+  messageContainer: {
+    marginHorizontal: 45,
+    justifyContent: 'center',
+    height: 150,
+    marginBottom: 50,
+  },
   message: {
     color: '#fff',
     fontWeight: '800',
+    textAlign: 'center',
+    lineHeight: 25,
   },
   button: {
     position: 'absolute',

@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
     maxWidth: '32.8%',
   },
   itemText: {
-    paddingHorizontal: 10,
+    fontSize: 11,
+    fontWeight: '600',
+    paddingHorizontal: 20,
     textAlign: 'center',
     overflow: 'hidden', // TODO: limit length and add ellipsis
   },
