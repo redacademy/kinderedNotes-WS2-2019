@@ -1,4 +1,5 @@
 import AuthForm from './AuthForm'
+import AvatarSelect from './AvatarSelect'
 import Bookmark from './Bookmark'
 import Button from './Button'
 import Input from './Input'
@@ -15,6 +16,7 @@ import styles from './Layout/Layout.styles'
 
 export {
   AuthForm,
+  AvatarSelect,
   Bookmark,
   Button,
   Input,
