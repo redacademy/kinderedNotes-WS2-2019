@@ -16,6 +16,7 @@ const CreateUserForm = ({authData}) => {
   const [countryInput, setCountryInput] = useState('')
   const [cityInput, setCityInput] = useState('')
   const [currentAvatar, setCurrentAvatar] = useState(0)
+  const [interestsInput, setInterestsInput] = useState([])
 
   const createUser = () => {
     signup({
@@ -24,6 +25,7 @@ const CreateUserForm = ({authData}) => {
         country: countryInput,
         city: cityInput,
         avatar: currentAvatar,
+        interests: interestsInput,
       },
     })
   }
@@ -47,8 +49,12 @@ const CreateUserForm = ({authData}) => {
           placeholder="City"
         />
         <Header>Topics of Interest</Header>
-        <TagsInput placeholder="TODO" />
-        <TagsList />
+        <TagsInput
+          value={interestsInput}
+          onChange={setInterestsInput}
+          placeholder="Anxiety"
+        />
+        <TagsList tags={interestsInput} setTags={setInterestsInput} />
         <Button onPress={createUser} title="Get Started" />
       </ScrollView>
     </SafeAreaView>

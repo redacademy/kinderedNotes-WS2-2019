@@ -1,10 +1,13 @@
 import React from 'react'
 import {View, Text, TouchableOpacity} from 'react-native'
-import {useTags} from '../../hooks'
 import styles from './TagsList.styles'
 
-const TagsList = () => {
-  const {tags, deleteTag} = useTags()
+const TagsList = ({tags, setTags}) => {
+  const deleteTag = i => {
+    const tagsCopy = [...tags]
+    tagsCopy.splice(i, 1)
+    setTags(tagsCopy)
+  }
 
   return (
     <View style={styles.tagsContainer}>
