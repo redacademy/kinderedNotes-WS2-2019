@@ -42,6 +42,21 @@ const styles = StyleSheet.create({
     top: '50%',
     left: '50%',
   },
+  avatarCurrentContainer: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    overflow: 'hidden',
+  },
+  avatarLabel: {
+    fontSize: 10,
+    textAlign: 'center',
+    height: 15,
+    position: 'relative',
+    top: -13,
+    backgroundColor: '#33333399',
+    color: '#eee',
+  },
 })
 
 export default styles

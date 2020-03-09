@@ -1,5 +1,11 @@
 import React, {useState} from 'react'
-import {Animated, View, Image, TouchableOpacity} from 'react-native'
+import {
+  Animated,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+} from 'react-native'
 import styles from './AvatarSelect.styles'
 import AvatarOption from './AvatarOption'
 
@@ -106,11 +112,15 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
         source={require('../../../assets/images/memoji-6.jpg')}
       />
 
-      <TouchableOpacity onPress={toggleIsOpen}>
+      <TouchableOpacity
+        style={styles.avatarCurrentContainer}
+        onPress={toggleIsOpen}
+      >
         <Image
           style={{...styles.avatar, ...styles.avatarCurrent}}
           source={currentAvatar}
         />
+        {!isOpen && <Text style={styles.avatarLabel}>Edit</Text>}
       </TouchableOpacity>
     </View>
   )
