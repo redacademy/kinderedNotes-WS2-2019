@@ -2,6 +2,7 @@ import AuthForm from './AuthForm'
 import AvatarSelect from './AvatarSelect'
 import Bookmark from './Bookmark'
 import Button from './Button'
+import CreateUserForm from './CreateUserForm'
 import Input from './Input'
 import Note from './Note/Note'
 import NotesGrid from './NotesGrid'
@@ -20,6 +21,7 @@ export {
   AvatarSelect,
   Bookmark,
   Button,
+  CreateUserForm,
   Input,
   Note,
   NotesGrid,

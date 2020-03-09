@@ -1,10 +1,17 @@
 import React from 'react'
-import {SafeAreaView} from 'react-native'
+import {SafeAreaView, Button} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
-import {Header} from '../components/Typography'
-import {TagsInput, TagsList, Input, styles} from '../components'
+import {Header} from '../Typography'
+import {TagsInput, TagsList, Input, styles} from '../index'
+import {useAuth} from '../../hooks'
 
-const ProfileEmpty = () => {
+const CreateUserForm = ({authData}) => {
+  const {signup} = useAuth()
+
+  const signUp = () => {
+    signup(authData)
+  }
+
   return (
     <SafeAreaView style={styles.noteArea}>
       <ScrollView>
@@ -15,9 +22,10 @@ const ProfileEmpty = () => {
         <Header>Topics of Interest</Header>
         <TagsInput placeholder="Write your topic" />
         <TagsList />
+        <Button onPress={signUp} title="Get Started" />
       </ScrollView>
     </SafeAreaView>
   )
 }
 
-export default ProfileEmpty
+export default CreateUserForm

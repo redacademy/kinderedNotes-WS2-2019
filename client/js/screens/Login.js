@@ -1,11 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {SafeAreaView} from 'react-native'
-import {AuthForm} from '../components'
+import {AuthForm, CreateUserForm} from '../components'
 
-const Login = () => (
-  <SafeAreaView>
-    <AuthForm />
-  </SafeAreaView>
-)
+const Login = () => {
+  const [tempUserData, setTempUserData] = useState()
+
+  return (
+    <SafeAreaView>
+      {tempUserData ? (
+        <CreateUserForm authData={tempUserData} />
+      ) : (
+        <AuthForm onSignUp={setTempUserData} />
+      )}
+    </SafeAreaView>
+  )
+}
 
 export default Login
