@@ -795,7 +795,7 @@ type Subscription {
 type User {
   id: ID!
   password: String!
-  avatar: String!
+  avatar: Int!
   username: String!
   country: String!
   city: String!
@@ -812,7 +812,7 @@ type UserConnection {
 input UserCreateInput {
   id: ID
   password: String!
-  avatar: String!
+  avatar: Int!
   username: String!
   country: String!
   city: String!
@@ -853,7 +853,7 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   password: String!
-  avatar: String!
+  avatar: Int!
   username: String!
   country: String!
   city: String!
@@ -888,20 +888,14 @@ input UserScalarWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
-  avatar: String
-  avatar_not: String
-  avatar_in: [String!]
-  avatar_not_in: [String!]
-  avatar_lt: String
-  avatar_lte: String
-  avatar_gt: String
-  avatar_gte: String
-  avatar_contains: String
-  avatar_not_contains: String
-  avatar_starts_with: String
-  avatar_not_starts_with: String
-  avatar_ends_with: String
-  avatar_not_ends_with: String
+  avatar: Int
+  avatar_not: Int
+  avatar_in: [Int!]
+  avatar_not_in: [Int!]
+  avatar_lt: Int
+  avatar_lte: Int
+  avatar_gt: Int
+  avatar_gte: Int
   username: String
   username_not: String
   username_in: [String!]
@@ -969,7 +963,7 @@ input UserSubscriptionWhereInput {
 
 input UserUpdateDataInput {
   password: String
-  avatar: String
+  avatar: Int
   username: String
   country: String
   city: String
@@ -979,7 +973,7 @@ input UserUpdateDataInput {
 
 input UserUpdateInput {
   password: String
-  avatar: String
+  avatar: Int
   username: String
   country: String
   city: String
@@ -989,7 +983,7 @@ input UserUpdateInput {
 
 input UserUpdateManyDataInput {
   password: String
-  avatar: String
+  avatar: Int
   username: String
   country: String
   city: String
@@ -1009,7 +1003,7 @@ input UserUpdateManyInput {
 
 input UserUpdateManyMutationInput {
   password: String
-  avatar: String
+  avatar: Int
   username: String
   country: String
   city: String
@@ -1072,20 +1066,14 @@ input UserWhereInput {
   password_not_starts_with: String
   password_ends_with: String
   password_not_ends_with: String
-  avatar: String
-  avatar_not: String
-  avatar_in: [String!]
-  avatar_not_in: [String!]
-  avatar_lt: String
-  avatar_lte: String
-  avatar_gt: String
-  avatar_gte: String
-  avatar_contains: String
-  avatar_not_contains: String
-  avatar_starts_with: String
-  avatar_not_starts_with: String
-  avatar_ends_with: String
-  avatar_not_ends_with: String
+  avatar: Int
+  avatar_not: Int
+  avatar_in: [Int!]
+  avatar_not_in: [Int!]
+  avatar_lt: Int
+  avatar_lte: Int
+  avatar_gt: Int
+  avatar_gte: Int
   username: String
   username_not: String
   username_in: [String!]

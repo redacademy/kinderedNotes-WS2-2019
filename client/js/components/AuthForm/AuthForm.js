@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react'
+import React, {useState} from 'react'
 import {View, Image, TouchableOpacity} from 'react-native'
 import {Formik} from 'formik'
 import {useAuth} from '../../hooks'
@@ -7,16 +7,13 @@ import {validateInputs} from './utils'
 import styles from './AuthForm.styles'
 import {AuthText, Header} from '../Typography'
 
-const AuthForm = () => {
-  const {signup, login, isLogin, toggleIsLogin} = useAuth()
+const AuthForm = ({onSignUp}) => {
+  const {login, isLogin, toggleIsLogin} = useAuth()
 
-  const onAuth = useCallback(
-    variables =>
-      (isLogin ? login : signup)({
-        variables,
-      }),
-    [isLogin, login, signup],
-  )
+  const onAuth = variables =>
+    (isLogin ? login : onSignUp)({
+      variables,
+    })
 
   // TODO: rename state
   const [textEntry, setTextEntry] = useState(true)
@@ -27,6 +24,7 @@ const AuthForm = () => {
 
   return (
     <Formik
+      // TODO: clear dev auth details
       initialValues={{username: 'user', password: 'password'}}
       validate={validateInputs}
       onSubmit={onAuth}
@@ -80,7 +78,6 @@ const AuthForm = () => {
 
           <View style={styles.authButtons}>
             <Button disabled={!isValid} onPress={handleSubmit}>
-              {' '}
               {isLogin ? 'Login' : 'Sign up'}
             </Button>
 

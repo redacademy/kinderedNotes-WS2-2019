@@ -1,7 +1,7 @@
 type User {
   id: ID! @id
   password: String!
-  avatar: String!
+  avatar: Int!
   username: String! @unique
   country: String!
   city: String!

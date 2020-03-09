@@ -2,12 +2,11 @@ import React, {useState} from 'react'
 import {Animated, View, Image, TouchableOpacity} from 'react-native'
 import styles from './AvatarSelect.styles'
 import AvatarOption from './AvatarOption'
-
-const AVATAR_AMOUNT = 6
+import AVATARS from './avatars'
 
 const AvatarSelect = ({currentAvatar, onChange}) => {
   const [avatarAnimVals] = useState(
-    Array.from({length: AVATAR_AMOUNT}, () => new Animated.Value(0)),
+    Array.from({length: AVATARS.length}, () => new Animated.Value(0)),
   )
   const [isOpen, setIsOpen] = useState(false)
 
@@ -45,6 +44,7 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
   return (
     <View style={styles.container}>
       <AvatarOption
+        idx={0}
         onPress={handleAvatarSelect}
         style={{
           opacity: avatarAnimVals[0],
@@ -55,9 +55,10 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
             {rotate: '-325deg'},
           ],
         }}
-        source={require('../../../assets/images/memoji-6.jpg')}
+        source={AVATARS[0]}
       />
       <AvatarOption
+        idx={1}
         onPress={handleAvatarSelect}
         style={{
           opacity: avatarAnimVals[1],
@@ -68,9 +69,10 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
             {rotate: '-15deg'},
           ],
         }}
-        source={require('../../../assets/images/memoji-1.jpg')}
+        source={AVATARS[1]}
       />
       <AvatarOption
+        idx={2}
         onPress={handleAvatarSelect}
         style={{
           opacity: avatarAnimVals[2],
@@ -81,9 +83,10 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
             {rotate: '-65deg'},
           ],
         }}
-        source={require('../../../assets/images/memoji-2.jpg')}
+        source={AVATARS[2]}
       />
       <AvatarOption
+        idx={3}
         onPress={handleAvatarSelect}
         style={{
           opacity: avatarAnimVals[3],
@@ -94,9 +97,10 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
             {rotate: '-115deg'},
           ],
         }}
-        source={require('../../../assets/images/memoji-3.jpg')}
+        source={AVATARS[3]}
       />
       <AvatarOption
+        idx={4}
         onPress={handleAvatarSelect}
         style={{
           opacity: avatarAnimVals[4],
@@ -107,9 +111,10 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
             {rotate: '-165deg'},
           ],
         }}
-        source={require('../../../assets/images/memoji-4.jpg')}
+        source={AVATARS[4]}
       />
       <AvatarOption
+        idx={5}
         onPress={handleAvatarSelect}
         style={{
           opacity: avatarAnimVals[5],
@@ -120,7 +125,7 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
             {rotate: '-215deg'},
           ],
         }}
-        source={require('../../../assets/images/memoji-5.jpg')}
+        source={AVATARS[5]}
       />
 
       <TouchableOpacity
@@ -129,7 +134,7 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
       >
         <Image
           style={{...styles.avatar, ...styles.avatarCurrent}}
-          source={currentAvatar}
+          source={AVATARS[currentAvatar]}
         />
         <Animated.Text
           style={{

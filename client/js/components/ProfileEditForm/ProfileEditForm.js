@@ -2,10 +2,12 @@ import React, {useState} from 'react'
 import {Text} from 'react-native'
 import {Header} from '../Typography'
 import {AvatarSelect, TagsInput, TagsList} from '../index'
+import {useAuth} from '../../hooks'
 
 const ProfileEditForm = () => {
+  const {user} = useAuth()
   const [currentAvatar, setCurrentAvatar] = useState(
-    require('../../../assets/images/memoji-1.jpg'),
+    user?.user?.avatar,
   )
 
   return (

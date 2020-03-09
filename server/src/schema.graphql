@@ -8,7 +8,13 @@ type Query {
 
 type Mutation {
   # TODO: use email for auth
-  signup(password: String!, username: String!): AuthPayload!
+  signup(
+    password: String!
+    username: String!
+    avatar: Int!
+    country: String!
+    city: String!
+  ): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
   createNote(
     message: String!
@@ -38,6 +44,9 @@ type User {
   password: String!
   favoriteNotes: [Note]
   interests: [Interest!]!
+  avatar: Int!
+  city: String!
+  country: String!
 }
 
 type Note {

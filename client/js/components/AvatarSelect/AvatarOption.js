@@ -2,11 +2,11 @@ import React from 'react'
 import {Animated, Image, TouchableOpacity} from 'react-native'
 import styles from './AvatarSelect.styles'
 
-const AvatarOption = ({source, style, onPress}) => (
+const AvatarOption = ({source, style, onPress, idx}) => (
   <Animated.View style={{...styles.avatarContainer, ...style}}>
     <TouchableOpacity
       style={styles.avatarButton}
-      onPress={() => onPress(source)}
+      onPress={() => onPress(idx)}
     >
       <Image
         style={{

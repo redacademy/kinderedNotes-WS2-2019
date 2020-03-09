@@ -1,10 +1,8 @@
 import React, {useState} from 'react'
-import {useTags} from '../../hooks'
 import {Input} from '../index'
 import {formatTagInput} from './utils'
 
-const TagsInput = ({placeholder}) => {
-  const {tags, setTags} = useTags()
+const TagsInput = ({value, onChange, placeholder}) => {
   const [tagInput, setTagInput] = useState('')
 
   // TODO: validate tag on input (eg. no duplicates, max length, max tags amount)
@@ -17,10 +15,10 @@ const TagsInput = ({placeholder}) => {
     const lastInput = input[input.length - 1]
 
     if (lastInput === ' ') {
-      setTags([formatTagInput(input), ...tags])
+      onChange([formatTagInput(input), ...value])
       setTagInput('')
     } else if (lastInput === ',') {
-      setTags([formatTagInput(input.slice(0, -1)), ...tags])
+      onChange([formatTagInput(input.slice(0, -1)), ...value])
       setTagInput('')
     } else {
       setTagInput(input)

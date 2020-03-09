@@ -8,9 +8,6 @@ const auth = {
     const user = await context.prisma.createUser({
       ...args,
       password,
-      avatar: 'hi',
-      country: 'CA',
-      city: 'VAN',
       interests: {
         create: [
           {
@@ -34,10 +31,7 @@ const auth = {
     if (!user) {
       throw new Error(`No user found for username: ${username}`)
     }
-    const passwordValid = await bcrypt.compare(
-      password,
-      user.password,
-    )
+    const passwordValid = await bcrypt.compare(password, user.password)
     if (!passwordValid) {
       throw new Error('Invalid password')
     }
