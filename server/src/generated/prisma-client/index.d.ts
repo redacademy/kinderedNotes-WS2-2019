@@ -399,7 +399,7 @@ export interface UserCreateOneInput {
 
 export interface UserUpdateManyMutationInput {
   password?: Maybe<String>;
-  avatar?: Maybe<String>;
+  avatar?: Maybe<Int>;
   username?: Maybe<String>;
   country?: Maybe<String>;
   city?: Maybe<String>;
@@ -408,7 +408,7 @@ export interface UserUpdateManyMutationInput {
 export interface UserCreateInput {
   id?: Maybe<ID_Input>;
   password: String;
-  avatar: String;
+  avatar: Int;
   username: String;
   country: String;
   city: String;
@@ -657,7 +657,7 @@ export type UserWhereUniqueInput = AtLeastOne<{
 
 export interface UserUpdateDataInput {
   password?: Maybe<String>;
-  avatar?: Maybe<String>;
+  avatar?: Maybe<Int>;
   username?: Maybe<String>;
   country?: Maybe<String>;
   city?: Maybe<String>;
@@ -694,20 +694,14 @@ export interface UserScalarWhereInput {
   password_not_starts_with?: Maybe<String>;
   password_ends_with?: Maybe<String>;
   password_not_ends_with?: Maybe<String>;
-  avatar?: Maybe<String>;
-  avatar_not?: Maybe<String>;
-  avatar_in?: Maybe<String[] | String>;
-  avatar_not_in?: Maybe<String[] | String>;
-  avatar_lt?: Maybe<String>;
-  avatar_lte?: Maybe<String>;
-  avatar_gt?: Maybe<String>;
-  avatar_gte?: Maybe<String>;
-  avatar_contains?: Maybe<String>;
-  avatar_not_contains?: Maybe<String>;
-  avatar_starts_with?: Maybe<String>;
-  avatar_not_starts_with?: Maybe<String>;
-  avatar_ends_with?: Maybe<String>;
-  avatar_not_ends_with?: Maybe<String>;
+  avatar?: Maybe<Int>;
+  avatar_not?: Maybe<Int>;
+  avatar_in?: Maybe<Int[] | Int>;
+  avatar_not_in?: Maybe<Int[] | Int>;
+  avatar_lt?: Maybe<Int>;
+  avatar_lte?: Maybe<Int>;
+  avatar_gt?: Maybe<Int>;
+  avatar_gte?: Maybe<Int>;
   username?: Maybe<String>;
   username_not?: Maybe<String>;
   username_in?: Maybe<String[] | String>;
@@ -808,7 +802,7 @@ export interface NoteUpdateDataInput {
 
 export interface UserUpdateInput {
   password?: Maybe<String>;
-  avatar?: Maybe<String>;
+  avatar?: Maybe<Int>;
   username?: Maybe<String>;
   country?: Maybe<String>;
   city?: Maybe<String>;
@@ -1095,20 +1089,14 @@ export interface UserWhereInput {
   password_not_starts_with?: Maybe<String>;
   password_ends_with?: Maybe<String>;
   password_not_ends_with?: Maybe<String>;
-  avatar?: Maybe<String>;
-  avatar_not?: Maybe<String>;
-  avatar_in?: Maybe<String[] | String>;
-  avatar_not_in?: Maybe<String[] | String>;
-  avatar_lt?: Maybe<String>;
-  avatar_lte?: Maybe<String>;
-  avatar_gt?: Maybe<String>;
-  avatar_gte?: Maybe<String>;
-  avatar_contains?: Maybe<String>;
-  avatar_not_contains?: Maybe<String>;
-  avatar_starts_with?: Maybe<String>;
-  avatar_not_starts_with?: Maybe<String>;
-  avatar_ends_with?: Maybe<String>;
-  avatar_not_ends_with?: Maybe<String>;
+  avatar?: Maybe<Int>;
+  avatar_not?: Maybe<Int>;
+  avatar_in?: Maybe<Int[] | Int>;
+  avatar_not_in?: Maybe<Int[] | Int>;
+  avatar_lt?: Maybe<Int>;
+  avatar_lte?: Maybe<Int>;
+  avatar_gt?: Maybe<Int>;
+  avatar_gte?: Maybe<Int>;
   username?: Maybe<String>;
   username_not?: Maybe<String>;
   username_in?: Maybe<String[] | String>;
@@ -1181,7 +1169,7 @@ export interface UserUpsertWithWhereUniqueNestedInput {
 
 export interface UserUpdateManyDataInput {
   password?: Maybe<String>;
-  avatar?: Maybe<String>;
+  avatar?: Maybe<Int>;
   username?: Maybe<String>;
   country?: Maybe<String>;
   city?: Maybe<String>;
@@ -1194,7 +1182,7 @@ export interface NodeNode {
 export interface UserPreviousValues {
   id: ID_Output;
   password: String;
-  avatar: String;
+  avatar: Int;
   username: String;
   country: String;
   city: String;
@@ -1205,7 +1193,7 @@ export interface UserPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   password: () => Promise<String>;
-  avatar: () => Promise<String>;
+  avatar: () => Promise<Int>;
   username: () => Promise<String>;
   country: () => Promise<String>;
   city: () => Promise<String>;
@@ -1216,7 +1204,7 @@ export interface UserPreviousValuesSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   password: () => Promise<AsyncIterator<String>>;
-  avatar: () => Promise<AsyncIterator<String>>;
+  avatar: () => Promise<AsyncIterator<Int>>;
   username: () => Promise<AsyncIterator<String>>;
   country: () => Promise<AsyncIterator<String>>;
   city: () => Promise<AsyncIterator<String>>;
@@ -1343,7 +1331,7 @@ export interface NoteResponsePreviousValuesSubscription
 export interface User {
   id: ID_Output;
   password: String;
-  avatar: String;
+  avatar: Int;
   username: String;
   country: String;
   city: String;
@@ -1352,7 +1340,7 @@ export interface User {
 export interface UserPromise extends Promise<User>, Fragmentable {
   id: () => Promise<ID_Output>;
   password: () => Promise<String>;
-  avatar: () => Promise<String>;
+  avatar: () => Promise<Int>;
   username: () => Promise<String>;
   country: () => Promise<String>;
   city: () => Promise<String>;
@@ -1381,7 +1369,7 @@ export interface UserSubscription
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   password: () => Promise<AsyncIterator<String>>;
-  avatar: () => Promise<AsyncIterator<String>>;
+  avatar: () => Promise<AsyncIterator<Int>>;
   username: () => Promise<AsyncIterator<String>>;
   country: () => Promise<AsyncIterator<String>>;
   city: () => Promise<AsyncIterator<String>>;
@@ -1410,7 +1398,7 @@ export interface UserNullablePromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   password: () => Promise<String>;
-  avatar: () => Promise<String>;
+  avatar: () => Promise<Int>;
   username: () => Promise<String>;
   country: () => Promise<String>;
   city: () => Promise<String>;
