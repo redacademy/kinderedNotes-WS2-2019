@@ -1,11 +1,5 @@
 import React, {useState} from 'react'
-import {
-  Animated,
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-} from 'react-native'
+import {Animated, View, Image, TouchableOpacity} from 'react-native'
 import styles from './AvatarSelect.styles'
 import AvatarOption from './AvatarOption'
 
@@ -37,6 +31,16 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
       outputRange: ['0rem', '100rem'],
     }),
   )
+
+  const labelOffset = avatarAnimVals[0].interpolate({
+    inputRange: [0, 1],
+    outputRange: [-13, 0],
+  })
+
+  const labelOpacity = avatarAnimVals[0].interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  })
 
   return (
     <View style={styles.container}>
@@ -127,7 +131,15 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
           style={{...styles.avatar, ...styles.avatarCurrent}}
           source={currentAvatar}
         />
-        {!isOpen && <Text style={styles.avatarLabel}>Edit</Text>}
+        <Animated.Text
+          style={{
+            ...styles.avatarLabel,
+            top: labelOffset,
+            opacity: labelOpacity,
+          }}
+        >
+          Edit
+        </Animated.Text>
       </TouchableOpacity>
     </View>
   )
