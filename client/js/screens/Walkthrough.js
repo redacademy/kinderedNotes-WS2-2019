@@ -44,10 +44,10 @@ const styles = StyleSheet.create({
     opacity: 1,
     marginHorizontal: -50,
   },
-  pen: {
+  penContainer: {
     position: 'absolute',
-    right: -30,
-    top: -20,
+    right: 65,
+    top: 60,
   },
   circle: {
     backgroundColor: COLORS.LIGHT_BLUE,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     fontSize: 24,
     color: COLORS.BLUE,
-    marginTop: 30,
+    // marginTop: 30,
     textAlign: 'center',
   },
 })
@@ -81,6 +81,8 @@ const Walkthrough = ({onComplete}) => {
   const [waveOffsetTop] = useState(new Animated.Value(-100))
   const [waveOffsetBottom] = useState(new Animated.Value(100))
   const [noteOffset] = useState(new Animated.Value(100))
+  const [penOffset] = useState(new Animated.Value(-100))
+  const [titleFade] = useState(new Animated.Value(0))
 
   const {
     opacity: elementsOpacity,
@@ -110,8 +112,15 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
+  const titleFadeIn = () => {
+    Animated.timing(titleFade, {
+      toValue: 1,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
   const penSlideIn = () => {
-    Animated.timing(waveOffsetBottom, {
+    Animated.timing(penOffset, {
       toValue: 0,
       duration: ANIMATION_IN_DURATION,
     }).start()
@@ -125,6 +134,7 @@ const Walkthrough = ({onComplete}) => {
   }
 
   const animateIn = () => {
+    titleFadeIn()
     penSlideIn()
     noteSlideIn()
     waveTopSlideIn()
@@ -188,11 +198,15 @@ const Walkthrough = ({onComplete}) => {
         }}
       >
         <WaveTop style={styles.wave} />
+      </Animated.View>
+      <Animated.View style={{opacity: bgOpacity}}>
         {slideNum === 1 && (
           <Text style={styles.font}>Write a kind note</Text>
         )}
-        {slideNum === 2 && <Text>slide 2</Text>}
-        {slideNum === 3 && <Text>slide 3</Text>}
+        {slideNum === 2 && (
+          <Text style={styles.font}>Receive a kind note</Text>
+        )}
+        {slideNum === 3 && <Text style={styles.font}>slide 3</Text>}
       </Animated.View>
       <Animated.View
         style={{
@@ -207,7 +221,14 @@ const Walkthrough = ({onComplete}) => {
             }}
           >
             <Note />
-            <Pen style={styles.pen} />
+          </Animated.View>
+          <Animated.View
+            style={{
+              ...styles.penContainer,
+              transform: [{translateY: penOffset}],
+            }}
+          >
+            <Pen />
           </Animated.View>
         </Animated.View>
       </Animated.View>
