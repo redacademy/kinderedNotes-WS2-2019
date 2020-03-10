@@ -6,6 +6,7 @@ import {useAsyncStorage} from '../hooks'
 const useAuth = () => {
   const {user, setUser} = useContext(AuthContext)
   const [isLogin, setIsLogin] = useState(false)
+  // TODO: gracefully handle network errors
   const [signup, {data: signupData}] = useMutation(SIGN_UP)
   const [login, {data: loginData}] = useMutation(LOG_IN)
   const [localUser, setLocalUser] = useAsyncStorage('kindred-user')

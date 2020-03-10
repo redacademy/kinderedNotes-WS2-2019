@@ -6,7 +6,7 @@ type User {
   country: String!
   city: String!
   favoriteNotes: [Note]! @relation(link: TABLE, name: "FavoriteNote")
-  interests: [Interest!]! @relation(link: TABLE)
+  interests: [Interest!]! @relation(link: TABLE, name: "Interests")
 }
 
 type Note {

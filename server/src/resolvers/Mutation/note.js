@@ -1,12 +1,31 @@
 const {getUserId} = require('../../utils')
 
 const note = {
-  async createNote(
-    parent,
-    {message, tags, font, color, style},
-    context,
-  ) {
+  async createNote(parent, {message, tags, font, color, style}, context) {
     const userId = getUserId(context)
+    const interests = await context.prisma.interests()
+    const {existingInterests, newInterests} = tags.reduce(
+      (interestSummary, interest) => {
+        const existingEntry =
+          interests && interests.find(({title}) => title === interest)
+        if (existingEntry) {
+          return {
+            ...interestSummary,
+            existingInterests: [
+              ...interestSummary.existingInterests,
+              existingEntry.id,
+            ],
+          }
+        } else {
+          return {
+            ...interestSummary,
+            newInterests: [...interestSummary.newInterests, interest],
+          }
+        }
+      },
+      {existingInterests: [], newInterests: []},
+    )
+
     return context.prisma.createNote({
       message,
       font,
@@ -14,7 +33,8 @@ const note = {
       style,
       author: {connect: {id: userId}},
       topic: {
-        create: tags.map(tag => ({title: tag})),
+        create: newInterests.map(title => ({title})),
+        connect: existingInterests.map(id => ({id})),
       },
     })
   },
