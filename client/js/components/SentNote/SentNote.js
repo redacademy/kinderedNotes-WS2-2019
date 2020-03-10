@@ -8,6 +8,7 @@ import {
 import {useActiveNote} from '../../hooks'
 import {Header} from '../Typography'
 import styles from './SentNote.styles'
+import ReplyNote from '../Reply'
 
 const SentNote = () => {
   const {activeNote} = useActiveNote()
@@ -24,6 +25,7 @@ const SentNote = () => {
           </TouchableOpacity>
         </View>
         <Header>Who appreciated your note</Header>
+        <ReplyNote />
       </View>
     </SafeAreaView>
   )
