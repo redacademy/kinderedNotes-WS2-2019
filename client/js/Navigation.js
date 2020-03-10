@@ -35,8 +35,13 @@ function NotesStackScreen() {
         name="Notes"
         component={Notes}
       />
-      <NotesStack.Screen name="SentNotes" component={SentNotes} />
       <NotesStack.Screen
+        options={{title: ''}}
+        name="SentNotes"
+        component={SentNotes}
+      />
+      <NotesStack.Screen
+        options={{title: ''}}
         name="ReceivedNotes"
         component={ReceivedNotes}
       />
