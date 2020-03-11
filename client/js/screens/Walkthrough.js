@@ -24,6 +24,7 @@ import {
   ANIMATION_OUT_DURATION,
 } from '../hooks/useWalkthrough/consts'
 import {COLORS} from '../components/styles'
+import {ANIMATION_PAUSE_DURATION} from '../components/IntroTransitionWrapper/consts'
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -43,11 +44,16 @@ const styles = StyleSheet.create({
   actions: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 0,
+    bottom: 20,
   },
   wave: {
     opacity: 1,
     marginHorizontal: -50,
+  },
+  waveBottom: {
+    opacity: 1,
+    position: 'absolute',
+    bottom: -50,
   },
   elementContainer: {
     position: 'absolute',
@@ -136,9 +142,30 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
+  const waveTopSlideMiddle = () => {
+    Animated.timing(waveOffsetTop, {
+      toValue: 300,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
   const waveTopSlideOut = () => {
     Animated.timing(waveOffsetTop, {
       toValue: -100,
+      duration: ANIMATION_OUT_DURATION,
+    }).start()
+  }
+
+  const waveBottomSlideIn = () => {
+    Animated.timing(waveOffsetBottom, {
+      toValue: -300,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
+  const waveBottomSlideOut = () => {
+    Animated.timing(waveOffsetBottom, {
+      toValue: 100,
       duration: ANIMATION_OUT_DURATION,
     }).start()
   }
@@ -194,8 +221,17 @@ const Walkthrough = ({onComplete}) => {
     handsSlideIn()
   }
 
+  const spreadOut = () => {
+    elementsFadeOut()
+  }
+
   const animateOut = () => {
-    waveTopSlideOut()
+    waveTopSlideMiddle()
+    waveBottomSlideIn()
+    setTimeout(() => {
+      waveTopSlideOut()
+      waveBottomSlideOut()
+    }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION)
   }
 
   useEffect(() => {
@@ -218,7 +254,6 @@ const Walkthrough = ({onComplete}) => {
         }, ANIMATION_IN_DURATION)
         break
       case 'RECEIVE_FADING_IN':
-        // animateIn()
         receiveIn()
         setTimeout(() => {
           dispatch('DONE')
@@ -235,12 +270,14 @@ const Walkthrough = ({onComplete}) => {
         setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
         break
       case 'SPREAD_FADING_OUT':
-        setTimeout(() => dispatch('DONE'), 400)
+        spreadOut()
+        setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
         break
       case 'WALKTHROUGH_FADING_OUT':
+        animateOut()
         setTimeout(() => {
           onComplete()
-        }, 400)
+        }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION + ANIMATION_OUT_DURATION)
         break
       default:
         break
@@ -257,7 +294,6 @@ const Walkthrough = ({onComplete}) => {
       >
         <WaveTop style={styles.wave} />
       </Animated.View>
-
       {slideNum === 1 && (
         <FadeIn visible={slideNum === 1}>
           <Text style={styles.font}>Write a kind note</Text>
@@ -357,6 +393,15 @@ const Walkthrough = ({onComplete}) => {
           title="back"
         />
       </View>
+      <Animated.View
+        style={{
+          ...styles.waveBottom,
+          opacity: elementsOpacity,
+          transform: [{translateY: waveOffsetBottom}],
+        }}
+      >
+        <WaveBottom />
+      </Animated.View>
     </SafeAreaView>
   )
 }
