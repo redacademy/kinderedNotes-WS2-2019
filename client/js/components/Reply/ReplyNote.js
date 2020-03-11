@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
-import {Text, Image} from 'react-native'
+import React from 'react'
+import {Text, Image, View} from 'react-native'
 import {useAuth} from '../../hooks'
 import AVATARS from '../AvatarSelect/avatars'
+import {ScrollView} from 'react-native-gesture-handler'
 
 const ReplyNote = ({
   avatarIndex = 4,
@@ -11,14 +12,24 @@ const ReplyNote = ({
   const {user} = useAuth()
 
   return (
-    <>
-      <Image
-        style={{height: 200, width: 200}}
-        source={AVATARS[avatarIndex]}
-      />
-      <Text>TODO: name</Text>
-      <Text>{message}</Text>
-    </>
+    <ScrollView>
+      <View style={{display: 'flex', flexDirection: 'row'}}>
+        <Image
+          style={{height: 80, width: 80}}
+          source={AVATARS[avatarIndex]}
+        />
+        <View
+          style={{
+            flexDirection: 'column',
+            paddingTop: 30,
+            paddingLeft: 20,
+          }}
+        >
+          <Text>TODO: name</Text>
+          <Text style={{color: 'gray'}}>{message}</Text>
+        </View>
+      </View>
+    </ScrollView>
   )
 }
 

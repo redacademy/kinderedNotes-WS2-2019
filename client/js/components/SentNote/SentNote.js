@@ -26,7 +26,7 @@ const SentNote = () => {
         </View>
         <Header>Who appreciated your note</Header>
         {/* TODO */}
-        <ReplyNote avatarIndex={0} message="banana" />
+        <ReplyNote avatarIndex={0} message="apple" />
         <ReplyNote avatarIndex={2} message="banana 2" />
         <ReplyNote avatarIndex={3} message="banana3" />
         <ReplyNote avatarIndex={4} message="banana" />
