@@ -1,21 +1,25 @@
 import React, {useState} from 'react'
-import {Text} from 'react-native'
-import {AvatarSelect} from '../index'
+import {Text, Image} from 'react-native'
 import {useAuth} from '../../hooks'
+import AVATARS from '../AvatarSelect/avatars'
 
-const ReplyNote = () => {
+const ReplyNote = ({
+  avatarIndex = 4,
+  name,
+  message = 'boooo stupid note',
+}) => {
   const {user} = useAuth()
-  const [currentAvatar] = useState()
 
   return (
     <>
-      <AvatarSelect currentAvatar={currentAvatar} />
+      <Image
+        style={{height: 200, width: 200}}
+        source={AVATARS[avatarIndex]}
+      />
       <Text>TODO: name</Text>
-      <Text>Thanks for the note</Text>
+      <Text>{message}</Text>
     </>
   )
 }
 
 export default ReplyNote
-
-//avatar -> nome -> message 'thanks for the note'

@@ -25,7 +25,12 @@ const SentNote = () => {
           </TouchableOpacity>
         </View>
         <Header>Who appreciated your note</Header>
-        <ReplyNote />
+        {/* TODO */}
+        <ReplyNote avatarIndex={0} message="banana" />
+        <ReplyNote avatarIndex={2} message="banana 2" />
+        <ReplyNote avatarIndex={3} message="banana3" />
+        <ReplyNote avatarIndex={4} message="banana" />
+        <ReplyNote avatarIndex={5} message="banana" />
       </View>
     </SafeAreaView>
   )
