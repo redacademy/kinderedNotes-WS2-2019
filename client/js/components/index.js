@@ -3,6 +3,7 @@ import AvatarSelect from './AvatarSelect'
 import Bookmark from './Bookmark'
 import Button from './Button'
 import CreateUserForm from './CreateUserForm'
+import FadeIn from './FadeIn'
 import Input from './Input'
 import Note from './Note/Note'
 import NotesGrid from './NotesGrid'
@@ -22,6 +23,7 @@ export {
   Bookmark,
   Button,
   CreateUserForm,
+  FadeIn,
   Input,
   Note,
   NotesGrid,

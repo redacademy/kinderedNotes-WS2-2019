@@ -11,8 +11,11 @@ import {useWalkthrough} from '../hooks'
 import LogoSVG from '../../assets/icons/Logo_Border.svg'
 import WaveTop from '../../assets/icons/Wave_Up.svg'
 import WaveBottom from '../../assets/icons/Wave_Down.svg'
+import MailNote from '../../assets/icons/Note_Sample.svg'
+import Envelope from '../../assets/icons/Mail.svg'
 import Pen from '../../assets/icons/Pen.svg'
 import Note from '../../assets/icons/Note.svg'
+import FadeIn from '../components/FadeIn'
 import {useOpacityFadeTransition} from '../hooks'
 import {
   ANIMATION_IN_DURATION,
@@ -82,7 +85,6 @@ const Walkthrough = ({onComplete}) => {
   const [waveOffsetBottom] = useState(new Animated.Value(100))
   const [noteOffset] = useState(new Animated.Value(100))
   const [penOffset] = useState(new Animated.Value(-100))
-  const [titleFade] = useState(new Animated.Value(0))
 
   const {
     opacity: elementsOpacity,
@@ -112,13 +114,6 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
-  const titleFadeIn = () => {
-    Animated.timing(titleFade, {
-      toValue: 1,
-      duration: ANIMATION_IN_DURATION,
-    }).start()
-  }
-
   const penSlideIn = () => {
     Animated.timing(penOffset, {
       toValue: 0,
@@ -134,9 +129,13 @@ const Walkthrough = ({onComplete}) => {
   }
 
   const animateIn = () => {
-    titleFadeIn()
     penSlideIn()
     noteSlideIn()
+    waveTopSlideIn()
+    elementsFadeIn()
+  }
+
+  const receiveIn = () => {
     waveTopSlideIn()
     elementsFadeIn()
   }
@@ -165,7 +164,10 @@ const Walkthrough = ({onComplete}) => {
         }, ANIMATION_IN_DURATION)
         break
       case 'RECEIVE_FADING_IN':
-        setTimeout(() => dispatch('DONE'), 400)
+        receiveIn()
+        setTimeout(() => {
+          dispatch('DONE')
+        }, ANIMATION_IN_DURATION)
         break
       case 'RECEIVE_FADING_OUT':
         setTimeout(() => dispatch('DONE'), 400)
@@ -199,15 +201,23 @@ const Walkthrough = ({onComplete}) => {
       >
         <WaveTop style={styles.wave} />
       </Animated.View>
-      <Animated.View style={{opacity: bgOpacity}}>
-        {slideNum === 1 && (
+
+      {slideNum === 1 && (
+        <Animated.View style={{opacity: elementsOpacity}}>
           <Text style={styles.font}>Write a kind note</Text>
-        )}
-        {slideNum === 2 && (
+        </Animated.View>
+      )}
+      {slideNum === 2 && (
+        <Animated.View style={{opacity: elementsOpacity}}>
           <Text style={styles.font}>Receive a kind note</Text>
-        )}
-        {slideNum === 3 && <Text style={styles.font}>slide 3</Text>}
-      </Animated.View>
+        </Animated.View>
+      )}
+      {slideNum === 3 && (
+        <Animated.View style={{opacity: elementsOpacity}}>
+          <Text style={styles.font}>slide 3</Text>
+        </Animated.View>
+      )}
+
       <Animated.View
         style={{
           ...styles.container,
@@ -215,20 +225,29 @@ const Walkthrough = ({onComplete}) => {
         }}
       >
         <Animated.View style={styles.circle}>
-          <Animated.View
-            style={{
-              transform: [{translateY: noteOffset}],
-            }}
-          >
-            <Note />
-          </Animated.View>
+          {/* First Slide Content */}
+          <FadeIn visible={slideNum === 1}>
+            <Animated.View
+              style={{
+                transform: [{translateY: noteOffset}],
+              }}
+            >
+              <Note />
+            </Animated.View>
+          </FadeIn>
+
+          {/* Second Slide Content */}
+          <FadeIn visible={slideNum === 2}>
+            <Envelope />
+          </FadeIn>
+
           <Animated.View
             style={{
               ...styles.penContainer,
               transform: [{translateY: penOffset}],
             }}
           >
-            <Pen />
+            {slideNum === 1 && <Pen />}
           </Animated.View>
         </Animated.View>
       </Animated.View>
