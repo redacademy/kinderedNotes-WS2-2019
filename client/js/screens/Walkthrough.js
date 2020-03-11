@@ -15,6 +15,8 @@ import MailNote from '../../assets/icons/Note_Sample.svg'
 import Envelope from '../../assets/icons/Mail.svg'
 import Pen from '../../assets/icons/Pen.svg'
 import Note from '../../assets/icons/Note.svg'
+import Hand from '../../assets/icons/Hand.svg'
+import Heart from '../../assets/icons/Heart.svg'
 import FadeIn from '../components/FadeIn'
 import {useOpacityFadeTransition} from '../hooks'
 import {
@@ -47,13 +49,14 @@ const styles = StyleSheet.create({
     opacity: 1,
     marginHorizontal: -50,
   },
-  noteContainer: {
+  elementContainer: {
     position: 'absolute',
     top: 0,
     bottom: 0,
     right: 0,
     left: 0,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   penContainer: {
     position: 'absolute',
@@ -93,6 +96,7 @@ const Walkthrough = ({onComplete}) => {
   const [waveOffsetBottom] = useState(new Animated.Value(100))
   const [noteOffset] = useState(new Animated.Value(100))
   const [penOffset] = useState(new Animated.Value(-100))
+  const [envelopeOffsetTop] = useState(new Animated.Value(-100))
 
   const {
     opacity: elementsOpacity,
@@ -136,6 +140,13 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
+  const envelopeSlideIn = () => {
+    Animated.timing(envelopeOffsetTop, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
   const animateIn = () => {
     penSlideIn()
     noteSlideIn()
@@ -144,8 +155,7 @@ const Walkthrough = ({onComplete}) => {
   }
 
   const receiveIn = () => {
-    waveTopSlideIn()
-    elementsFadeIn()
+    envelopeSlideIn()
   }
 
   const animateOut = () => {
@@ -172,6 +182,7 @@ const Walkthrough = ({onComplete}) => {
         }, ANIMATION_IN_DURATION)
         break
       case 'RECEIVE_FADING_IN':
+        // animateIn()
         receiveIn()
         setTimeout(() => {
           dispatch('DONE')
@@ -222,7 +233,7 @@ const Walkthrough = ({onComplete}) => {
       )}
       {slideNum === 3 && (
         <FadeIn visible={slideNum === 3}>
-          <Text style={styles.font}>slide 3</Text>
+          <Text style={styles.font}>Spread kindness</Text>
         </FadeIn>
       )}
 
@@ -233,31 +244,57 @@ const Walkthrough = ({onComplete}) => {
         }}
       >
         <Animated.View style={styles.circle}>
-          {/* First Slide Content */}
-          <FadeIn visible={slideNum === 1}>
-            <Animated.View
-              style={{
-                ...styles.noteContainer,
-                transform: [{translateY: noteOffset}],
-              }}
-            >
-              <Note />
-            </Animated.View>
-          </FadeIn>
-
-          {/* Second Slide Content */}
-          <FadeIn visible={slideNum === 2}>
-            <Envelope />
-          </FadeIn>
-
-          <Animated.View
-            style={{
-              ...styles.penContainer,
-              transform: [{translateY: penOffset}],
-            }}
-          >
-            {slideNum === 1 && <Pen />}
-          </Animated.View>
+          {slideNum === 1 ? (
+            <>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: noteOffset}],
+                }}
+              >
+                <FadeIn visible={slideNum === 1}>
+                  <Note />
+                </FadeIn>
+              </Animated.View>
+              <Animated.View
+                style={{
+                  ...styles.penContainer,
+                  transform: [{translateY: penOffset}],
+                }}
+              >
+                {slideNum === 1 && <Pen />}
+              </Animated.View>
+            </>
+          ) : null}
+          {slideNum === 2 ? (
+            <>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: envelopeOffsetTop}],
+                }}
+              >
+                <FadeIn visible={slideNum === 2}>
+                  <Envelope />
+                </FadeIn>
+              </Animated.View>
+            </>
+          ) : null}
+          {slideNum === 3 ? (
+            <>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: noteOffset}],
+                }}
+              >
+                <FadeIn visible={slideNum === 3}>
+                  <Hand />
+                  <Heart />
+                </FadeIn>
+              </Animated.View>
+            </>
+          ) : null}
         </Animated.View>
       </Animated.View>
       <View style={styles.actions}>

@@ -7,7 +7,7 @@ const FadeIn = ({visible, children, ...props}) => {
   useEffect(() => {
     Animated.timing(visibility, {
       toValue: visible ? 1 : 0,
-      duration: 600,
+      duration: 800,
     }).start()
   }, [visible])
 
