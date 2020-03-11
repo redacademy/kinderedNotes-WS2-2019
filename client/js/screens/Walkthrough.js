@@ -72,6 +72,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     position: 'relative',
   },
+  heartContainer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    bottom: 0,
+    alignItems: 'center',
+  },
+  handsContainer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    top: -15,
+    bottom: 0,
+    alignItems: 'center',
+  },
   font: {
     fontFamily: 'Nunito-Bold',
     fontSize: 24,
@@ -97,6 +112,8 @@ const Walkthrough = ({onComplete}) => {
   const [noteOffset] = useState(new Animated.Value(100))
   const [penOffset] = useState(new Animated.Value(-100))
   const [envelopeOffsetTop] = useState(new Animated.Value(-100))
+  const [heartOffsetTop] = useState(new Animated.Value(-100))
+  const [handsOffsetBottom] = useState(new Animated.Value(100))
 
   const {
     opacity: elementsOpacity,
@@ -147,6 +164,20 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
+  const heartSlideIn = () => {
+    Animated.timing(heartOffsetTop, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
+  const handsSlideIn = () => {
+    Animated.timing(handsOffsetBottom, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
   const animateIn = () => {
     penSlideIn()
     noteSlideIn()
@@ -156,6 +187,11 @@ const Walkthrough = ({onComplete}) => {
 
   const receiveIn = () => {
     envelopeSlideIn()
+  }
+
+  const spreadIn = () => {
+    heartSlideIn()
+    handsSlideIn()
   }
 
   const animateOut = () => {
@@ -195,7 +231,8 @@ const Walkthrough = ({onComplete}) => {
         setTimeout(() => dispatch('DONE'), 400)
         break
       case 'SPREAD_FADING_IN':
-        setTimeout(() => dispatch('DONE'), 400)
+        spreadIn()
+        setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
         break
       case 'SPREAD_FADING_OUT':
         setTimeout(() => dispatch('DONE'), 400)
@@ -265,8 +302,7 @@ const Walkthrough = ({onComplete}) => {
                 {slideNum === 1 && <Pen />}
               </Animated.View>
             </>
-          ) : null}
-          {slideNum === 2 ? (
+          ) : slideNum === 2 ? (
             <>
               <Animated.View
                 style={{
@@ -279,18 +315,30 @@ const Walkthrough = ({onComplete}) => {
                 </FadeIn>
               </Animated.View>
             </>
-          ) : null}
-          {slideNum === 3 ? (
+          ) : slideNum === 3 ? (
             <>
               <Animated.View
                 style={{
                   ...styles.elementContainer,
-                  transform: [{translateY: noteOffset}],
+                  transform: [{translateY: heartOffsetTop}],
                 }}
               >
                 <FadeIn visible={slideNum === 3}>
-                  <Hand />
-                  <Heart />
+                  <View style={styles.heartContainer}>
+                    <Heart />
+                  </View>
+                </FadeIn>
+              </Animated.View>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: handsOffsetBottom}],
+                }}
+              >
+                <FadeIn visible={slideNum === 3}>
+                  <View style={styles.handsContainer}>
+                    <Hand />
+                  </View>
                 </FadeIn>
               </Animated.View>
             </>
