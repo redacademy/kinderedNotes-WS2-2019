@@ -47,6 +47,14 @@ const styles = StyleSheet.create({
     opacity: 1,
     marginHorizontal: -50,
   },
+  noteContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    alignItems: 'center',
+  },
   penContainer: {
     position: 'absolute',
     right: 65,
@@ -59,12 +67,12 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
   },
   font: {
     fontFamily: 'Nunito-Bold',
     fontSize: 24,
     color: COLORS.BLUE,
-    // marginTop: 30,
     textAlign: 'center',
   },
 })
@@ -203,19 +211,19 @@ const Walkthrough = ({onComplete}) => {
       </Animated.View>
 
       {slideNum === 1 && (
-        <Animated.View style={{opacity: elementsOpacity}}>
+        <FadeIn visible={slideNum === 1}>
           <Text style={styles.font}>Write a kind note</Text>
-        </Animated.View>
+        </FadeIn>
       )}
       {slideNum === 2 && (
-        <Animated.View style={{opacity: elementsOpacity}}>
+        <FadeIn visible={slideNum === 2}>
           <Text style={styles.font}>Receive a kind note</Text>
-        </Animated.View>
+        </FadeIn>
       )}
       {slideNum === 3 && (
-        <Animated.View style={{opacity: elementsOpacity}}>
+        <FadeIn visible={slideNum === 3}>
           <Text style={styles.font}>slide 3</Text>
-        </Animated.View>
+        </FadeIn>
       )}
 
       <Animated.View
@@ -229,6 +237,7 @@ const Walkthrough = ({onComplete}) => {
           <FadeIn visible={slideNum === 1}>
             <Animated.View
               style={{
+                ...styles.noteContainer,
                 transform: [{translateY: noteOffset}],
               }}
             >
