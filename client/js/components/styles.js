@@ -16,4 +16,5 @@ export const COLORS = {
   ACCENT_BLUE: '#48a9c6',
   ACCENT_GREEN: '#8dffd3',
   ACCENT_YELLOW: '',
+  GRAY: '#555555',
 }

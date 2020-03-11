@@ -9,6 +9,7 @@ import {useActiveNote} from '../../hooks'
 import {Header} from '../Typography'
 import styles from './SentNote.styles'
 import ReplyNote from '../Reply'
+import {ScrollView} from 'react-native-gesture-handler'
 
 const SentNote = () => {
   const {activeNote} = useActiveNote()
@@ -24,8 +25,32 @@ const SentNote = () => {
             <Text style={styles.font}>See who read it</Text>
           </TouchableOpacity>
         </View>
-        <Header>Who appreciated your note</Header>
-        <ReplyNote />
+        <ScrollView style={{maxHeight: '100%', height: '45%'}}>
+          <Header>Who appreciated your note</Header>
+          {/* TODO */}
+          <View style={styles.notesContainer}>
+            <ReplyNote
+              avatarIndex={0}
+              message="thanks for the apple"
+            />
+            <ReplyNote
+              avatarIndex={2}
+              message="thanks for the grape"
+            />
+            <ReplyNote
+              avatarIndex={3}
+              message="thanks for the orange"
+            />
+            <ReplyNote
+              avatarIndex={4}
+              message="thanks for the banana"
+            />
+            <ReplyNote
+              avatarIndex={5}
+              message="thanks for the banana"
+            />
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   )

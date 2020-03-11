@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-SemiBold',
     fontSize: 14,
   },
+  notesContainer: {
+    marginTop: 20,
+  },
 })
 
 export default styles
