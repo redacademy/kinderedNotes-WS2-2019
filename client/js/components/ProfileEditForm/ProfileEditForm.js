@@ -1,21 +1,20 @@
-import React, {useState, useEffect} from 'react'
-import {Text} from 'react-native'
+import React, {useEffect, useState, useContext} from 'react'
+import {Text, View, Image} from 'react-native'
 import {useMutation} from '@apollo/react-hooks'
 import {UPDATE_USER} from '../../context'
 import {Header} from '../Typography'
-import {AvatarSelect, TagsInput, TagsList, Input} from '../index'
+import {TagsInput, TagsList} from '../index'
 import {useAuth} from '../../hooks'
+import styles from './ProfileEditForm.styles'
+import AVATARS from '../AvatarSelect/avatars'
+import {TagsContext} from '../../context'
 
-const ProfileEditForm = () => {
+const ProfileEditForm = ({avatarIndex = 4, name = 'Grazi'}) => {
   const [updateUser] = useMutation(UPDATE_USER)
+  const {tags, setTags} = useContext(TagsContext)
+
   const {user} = useAuth()
-  const [currentAvatar, setCurrentAvatar] = useState(
-    user?.user?.avatar,
-  )
-  const [currentCountry, setCurrentCountry] = useState(
-    user?.user?.country,
-  )
-  const [currentCity, setCurrentCity] = useState(user?.user?.city)
+  const [currentAvatar] = useState(user?.user?.avatar)
   const [currentInterests, setCurrentInterests] = useState(
     user?.user?.interests.map(({title}) => title),
   )
@@ -24,53 +23,31 @@ const ProfileEditForm = () => {
     updateUser({
       variables: {
         avatar: currentAvatar,
-        city: currentCity,
-        country: currentCountry,
         interests: currentInterests,
       },
     })
     // TODO: set new user data in user context
-  }, [
-    currentAvatar,
-    currentCity,
-    currentCountry,
-    currentInterests,
-    updateUser,
-  ])
+  }, [currentAvatar, currentInterests, updateUser])
 
   return (
-    <>
-      <AvatarSelect
-        currentAvatar={currentAvatar}
-        onChange={setCurrentAvatar}
-      />
-      <Text>TODO: name</Text>
-
-      <Input
-        value={currentCountry}
-        onChangeText={setCurrentCountry}
-        placeholder="Country"
-      />
-
-      <Input
-        value={currentCity}
-        onChangeText={setCurrentCity}
-        placeholder="City"
-      />
-
-      <Header>Topics of Interest</Header>
-      <TagsInput
-        value={currentInterests}
-        onChange={setCurrentInterests}
-        placeholder="Anxiety"
-      />
-      <TagsList
-        tags={currentInterests}
-        setTags={setCurrentInterests}
-      />
-      <Header>Favourite Notes</Header>
-      {/* TODO: add favs notes */}
-    </>
+    <View style={styles.profileContainer}>
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image style={styles.image} source={AVATARS[avatarIndex]} />
+        </View>
+        <Text style={styles.blueText}>{name}</Text>
+        <Header>Topics of Interest</Header>
+        <TagsInput
+          value={tags}
+          onChange={setTags}
+          placeholder="Anxiety"
+        />
+        <TagsList tags={tags} setTags={setTags} />
+        <Header>Favourite Notes</Header>
+        <Text>TODO -> Favorites</Text>
+        {/* add grid */}
+      </View>
+    </View>
   )
 }
 

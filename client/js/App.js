@@ -9,6 +9,7 @@ import {
   ActiveNoteContextProvider,
 } from './context'
 import {SiteTransitionWrapper} from './navigation'
+import GeneralStatusBarColor from './components/GeneralStatusBarColor'
 
 // TODO: refactor to `navigation/routes.js`
 import Navigation from './Navigation'
@@ -27,6 +28,7 @@ const App = () => {
         <ApolloProvider client={client}>
           <AuthContextProvider>
             <StatusBar barStyle="dark-content" />
+            <GeneralStatusBarColor />
             <TagsContextProvider>
               <ActiveNoteContextProvider>
                 {/* TODO: rename */}
