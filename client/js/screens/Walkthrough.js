@@ -6,19 +6,27 @@ import {
   StyleSheet,
   View,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native'
 import {useWalkthrough} from '../hooks'
 import LogoSVG from '../../assets/icons/Logo_Border.svg'
 import WaveTop from '../../assets/icons/Wave_Up.svg'
 import WaveBottom from '../../assets/icons/Wave_Down.svg'
+import MailNote from '../../assets/icons/Note_Sample.svg'
+import Envelope from '../../assets/icons/Mail.svg'
 import Pen from '../../assets/icons/Pen.svg'
 import Note from '../../assets/icons/Note.svg'
+import Hand from '../../assets/icons/Hand.svg'
+import Heart from '../../assets/icons/Heart.svg'
+import {FadeIn, Step} from '../components'
 import {useOpacityFadeTransition} from '../hooks'
 import {
   ANIMATION_IN_DURATION,
   ANIMATION_OUT_DURATION,
 } from '../hooks/useWalkthrough/consts'
 import {COLORS} from '../components/styles'
+import {ANIMATION_PAUSE_DURATION} from '../components/IntroTransitionWrapper/consts'
+import {NotPrev, Slides} from '../components/Typography'
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -38,16 +46,32 @@ const styles = StyleSheet.create({
   actions: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 35,
   },
   wave: {
     opacity: 1,
     marginHorizontal: -50,
   },
-  pen: {
+  waveBottom: {
+    opacity: 1,
     position: 'absolute',
-    right: -30,
-    top: -20,
+    bottom: -50,
+  },
+  elementContainer: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    right: 0,
+    left: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  penContainer: {
+    position: 'absolute',
+    right: 65,
+    top: 60,
   },
   circle: {
     backgroundColor: COLORS.LIGHT_BLUE,
@@ -56,12 +80,27 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
+  },
+  heartContainer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    bottom: 0,
+    alignItems: 'center',
+  },
+  handsContainer: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    top: -15,
+    bottom: 0,
+    alignItems: 'center',
   },
   font: {
     fontFamily: 'Nunito-Bold',
     fontSize: 24,
     color: COLORS.BLUE,
-    marginTop: 30,
     textAlign: 'center',
   },
 })
@@ -81,6 +120,10 @@ const Walkthrough = ({onComplete}) => {
   const [waveOffsetTop] = useState(new Animated.Value(-100))
   const [waveOffsetBottom] = useState(new Animated.Value(100))
   const [noteOffset] = useState(new Animated.Value(100))
+  const [penOffset] = useState(new Animated.Value(-100))
+  const [envelopeOffsetTop] = useState(new Animated.Value(-100))
+  const [heartOffsetTop] = useState(new Animated.Value(-100))
+  const [handsOffsetBottom] = useState(new Animated.Value(100))
 
   const {
     opacity: elementsOpacity,
@@ -92,13 +135,20 @@ const Walkthrough = ({onComplete}) => {
     fadeOut: bgFadeOut,
   } = useOpacityFadeTransition(1)
   const {
-    opacity: contentOpacity,
+    opacity: wavesOpacity,
     fadeIn: fadeInContent,
-  } = useOpacityFadeTransition(0)
+  } = useOpacityFadeTransition(1)
 
   const waveTopSlideIn = () => {
     Animated.timing(waveOffsetTop, {
       toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
+  const waveTopSlideMiddle = () => {
+    Animated.timing(waveOffsetTop, {
+      toValue: 300,
       duration: ANIMATION_IN_DURATION,
     }).start()
   }
@@ -110,8 +160,22 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
-  const penSlideIn = () => {
+  const waveBottomSlideIn = () => {
     Animated.timing(waveOffsetBottom, {
+      toValue: -300,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
+  const waveBottomSlideOut = () => {
+    Animated.timing(waveOffsetBottom, {
+      toValue: 100,
+      duration: ANIMATION_OUT_DURATION,
+    }).start()
+  }
+
+  const penSlideIn = () => {
+    Animated.timing(penOffset, {
       toValue: 0,
       duration: ANIMATION_IN_DURATION,
     }).start()
@@ -124,6 +188,27 @@ const Walkthrough = ({onComplete}) => {
     }).start()
   }
 
+  const envelopeSlideIn = () => {
+    Animated.timing(envelopeOffsetTop, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
+  const heartSlideIn = () => {
+    Animated.timing(heartOffsetTop, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
+  const handsSlideIn = () => {
+    Animated.timing(handsOffsetBottom, {
+      toValue: 0,
+      duration: ANIMATION_IN_DURATION,
+    }).start()
+  }
+
   const animateIn = () => {
     penSlideIn()
     noteSlideIn()
@@ -131,8 +216,26 @@ const Walkthrough = ({onComplete}) => {
     elementsFadeIn()
   }
 
+  const receiveIn = () => {
+    envelopeSlideIn()
+  }
+
+  const spreadIn = () => {
+    heartSlideIn()
+    handsSlideIn()
+  }
+
+  const spreadOut = () => {
+    elementsFadeOut()
+  }
+
   const animateOut = () => {
-    waveTopSlideOut()
+    waveTopSlideMiddle()
+    waveBottomSlideIn()
+    setTimeout(() => {
+      waveTopSlideOut()
+      waveBottomSlideOut()
+    }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION)
   }
 
   useEffect(() => {
@@ -155,7 +258,10 @@ const Walkthrough = ({onComplete}) => {
         }, ANIMATION_IN_DURATION)
         break
       case 'RECEIVE_FADING_IN':
-        setTimeout(() => dispatch('DONE'), 400)
+        receiveIn()
+        setTimeout(() => {
+          dispatch('DONE')
+        }, ANIMATION_IN_DURATION)
         break
       case 'RECEIVE_FADING_OUT':
         setTimeout(() => dispatch('DONE'), 400)
@@ -164,15 +270,20 @@ const Walkthrough = ({onComplete}) => {
         setTimeout(() => dispatch('DONE'), 400)
         break
       case 'SPREAD_FADING_IN':
-        setTimeout(() => dispatch('DONE'), 400)
+        spreadIn()
+        setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
         break
       case 'SPREAD_FADING_OUT':
-        setTimeout(() => dispatch('DONE'), 400)
+        setTimeout(() => {
+          dispatch('DONE')
+        }, ANIMATION_OUT_DURATION)
         break
       case 'WALKTHROUGH_FADING_OUT':
+        animateOut()
+        spreadOut()
         setTimeout(() => {
           onComplete()
-        }, 400)
+        }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION + ANIMATION_OUT_DURATION)
         break
       default:
         break
@@ -183,17 +294,28 @@ const Walkthrough = ({onComplete}) => {
     <SafeAreaView style={styles.wrapper}>
       <Animated.View
         style={{
-          opacity: elementsOpacity,
+          opacity: wavesOpacity,
           transform: [{translateY: waveOffsetTop}],
         }}
       >
         <WaveTop style={styles.wave} />
-        {slideNum === 1 && (
-          <Text style={styles.font}>Write a kind note</Text>
-        )}
-        {slideNum === 2 && <Text>slide 2</Text>}
-        {slideNum === 3 && <Text>slide 3</Text>}
       </Animated.View>
+      {slideNum === 1 && (
+        <FadeIn visible={slideNum === 1}>
+          <Text style={styles.font}>Write a kind note</Text>
+        </FadeIn>
+      )}
+      {slideNum === 2 && (
+        <FadeIn visible={slideNum === 2}>
+          <Text style={styles.font}>Receive a kind note</Text>
+        </FadeIn>
+      )}
+      {slideNum === 3 && (
+        <FadeIn visible={slideNum === 3}>
+          <Text style={styles.font}>Spread kindness</Text>
+        </FadeIn>
+      )}
+
       <Animated.View
         style={{
           ...styles.container,
@@ -201,28 +323,105 @@ const Walkthrough = ({onComplete}) => {
         }}
       >
         <Animated.View style={styles.circle}>
-          <Animated.View
-            style={{
-              transform: [{translateY: noteOffset}],
-            }}
-          >
-            <Note />
-            <Pen style={styles.pen} />
-          </Animated.View>
+          {slideNum === 1 ? (
+            <>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: noteOffset}],
+                }}
+              >
+                <FadeIn visible={slideNum === 1}>
+                  <Note />
+                </FadeIn>
+              </Animated.View>
+              <Animated.View
+                style={{
+                  ...styles.penContainer,
+                  transform: [{translateY: penOffset}],
+                }}
+              >
+                {slideNum === 1 && <Pen />}
+              </Animated.View>
+            </>
+          ) : slideNum === 2 ? (
+            <>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: envelopeOffsetTop}],
+                }}
+              >
+                <FadeIn visible={slideNum === 2}>
+                  <Envelope />
+                </FadeIn>
+              </Animated.View>
+            </>
+          ) : slideNum === 3 ? (
+            <>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: heartOffsetTop}],
+                }}
+              >
+                <FadeIn visible={slideNum === 3}>
+                  <View style={styles.heartContainer}>
+                    <Heart />
+                  </View>
+                </FadeIn>
+              </Animated.View>
+              <Animated.View
+                style={{
+                  ...styles.elementContainer,
+                  transform: [{translateY: handsOffsetBottom}],
+                }}
+              >
+                <FadeIn visible={slideNum === 3}>
+                  <View style={styles.handsContainer}>
+                    <Hand />
+                  </View>
+                </FadeIn>
+              </Animated.View>
+            </>
+          ) : null}
         </Animated.View>
       </Animated.View>
-      <View style={styles.actions}>
-        <Button
-          disabled={nextDisabled}
-          onPress={toggleNextView}
-          title="next"
-        />
-        <Button
+      <Animated.View
+        style={{
+          ...styles.actions,
+          opacity: elementsOpacity,
+        }}
+      >
+        <TouchableOpacity
           disabled={prevDisabled}
           onPress={togglePrevView}
-          title="back"
-        />
-      </View>
+        >
+          {slideNum !== 1 ? (
+            <Slides>BACK</Slides>
+          ) : (
+            <NotPrev>BACK</NotPrev>
+          )}
+        </TouchableOpacity>
+        <Step active={slideNum === 1} />
+        <Step active={slideNum === 2} />
+        <Step active={slideNum === 3} />
+        <TouchableOpacity
+          disabled={nextDisabled}
+          onPress={toggleNextView}
+        >
+          <Slides>NEXT</Slides>
+        </TouchableOpacity>
+      </Animated.View>
+      <Animated.View
+        style={{
+          ...styles.waveBottom,
+          opacity: wavesOpacity,
+          transform: [{translateY: waveOffsetBottom}],
+        }}
+      >
+        <WaveBottom />
+      </Animated.View>
     </SafeAreaView>
   )
 }

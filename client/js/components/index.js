@@ -3,6 +3,7 @@ import AvatarSelect from './AvatarSelect'
 import Bookmark from './Bookmark'
 import Button from './Button'
 import CreateUserForm from './CreateUserForm'
+import FadeIn from './FadeIn'
 import Input from './Input'
 import Note from './Note/Note'
 import NotesGrid from './NotesGrid'
@@ -11,6 +12,7 @@ import ReceivedNote from './ReceivedNote'
 import ReceivedNotesGrid from './ReceivedNotesGrid'
 import SentNote from './SentNote'
 import SentNotesGrid from './SentNotesGrid'
+import Step from './Walkthrough'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
 import IntroTransitionWrapper from './IntroTransitionWrapper'
@@ -22,6 +24,7 @@ export {
   Bookmark,
   Button,
   CreateUserForm,
+  FadeIn,
   Input,
   Note,
   NotesGrid,
@@ -30,6 +33,7 @@ export {
   ReceivedNotesGrid,
   SentNote,
   SentNotesGrid,
+  Step,
   TagsInput,
   TagsList,
   IntroTransitionWrapper,

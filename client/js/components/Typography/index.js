@@ -1,3 +1,3 @@
-import {AuthText, Header, Title} from './Typography'
+import {AuthText, Header, NotPrev, Slides, Title} from './Typography'
 
-export {AuthText, Header, Title}
+export {AuthText, Header, NotPrev, Slides, Title}
