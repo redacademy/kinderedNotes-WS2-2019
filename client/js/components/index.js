@@ -12,6 +12,7 @@ import ReceivedNote from './ReceivedNote'
 import ReceivedNotesGrid from './ReceivedNotesGrid'
 import SentNote from './SentNote'
 import SentNotesGrid from './SentNotesGrid'
+import Step from './Walkthrough'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
 import IntroTransitionWrapper from './IntroTransitionWrapper'
@@ -32,6 +33,7 @@ export {
   ReceivedNotesGrid,
   SentNote,
   SentNotesGrid,
+  Step,
   TagsInput,
   TagsList,
   IntroTransitionWrapper,

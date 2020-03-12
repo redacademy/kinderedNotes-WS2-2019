@@ -17,7 +17,7 @@ import Pen from '../../assets/icons/Pen.svg'
 import Note from '../../assets/icons/Note.svg'
 import Hand from '../../assets/icons/Hand.svg'
 import Heart from '../../assets/icons/Heart.svg'
-import FadeIn from '../components/FadeIn'
+import {FadeIn, Step} from '../components'
 import {useOpacityFadeTransition} from '../hooks'
 import {
   ANIMATION_IN_DURATION,
@@ -131,9 +131,9 @@ const Walkthrough = ({onComplete}) => {
     fadeOut: bgFadeOut,
   } = useOpacityFadeTransition(1)
   const {
-    opacity: contentOpacity,
+    opacity: wavesOpacity,
     fadeIn: fadeInContent,
-  } = useOpacityFadeTransition(0)
+  } = useOpacityFadeTransition(1)
 
   const waveTopSlideIn = () => {
     Animated.timing(waveOffsetTop, {
@@ -270,11 +270,14 @@ const Walkthrough = ({onComplete}) => {
         setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
         break
       case 'SPREAD_FADING_OUT':
-        spreadOut()
-        setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
+        // spreadOut()
+        setTimeout(() => {
+          dispatch('DONE')
+        }, ANIMATION_OUT_DURATION)
         break
       case 'WALKTHROUGH_FADING_OUT':
         animateOut()
+        spreadOut()
         setTimeout(() => {
           onComplete()
         }, ANIMATION_IN_DURATION + ANIMATION_PAUSE_DURATION + ANIMATION_OUT_DURATION)
@@ -288,7 +291,7 @@ const Walkthrough = ({onComplete}) => {
     <SafeAreaView style={styles.wrapper}>
       <Animated.View
         style={{
-          opacity: elementsOpacity,
+          opacity: wavesOpacity,
           transform: [{translateY: waveOffsetTop}],
         }}
       >
@@ -387,16 +390,20 @@ const Walkthrough = ({onComplete}) => {
           onPress={toggleNextView}
           title="next"
         />
+        <Step active={slideNum === 1} />
+        <Step active={slideNum === 2} />
+        <Step active={slideNum === 3} />
         <Button
           disabled={prevDisabled}
           onPress={togglePrevView}
           title="back"
         />
       </View>
+      <View></View>
       <Animated.View
         style={{
           ...styles.waveBottom,
-          opacity: elementsOpacity,
+          opacity: wavesOpacity,
           transform: [{translateY: waveOffsetBottom}],
         }}
       >
