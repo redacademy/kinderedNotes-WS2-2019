@@ -14,7 +14,12 @@ const Map = () => {
   return (
     <View style={styles.container}>
       <View style={styles.mapContainer}>
-        <MapboxGL.MapView style={styles.map} />
+        <MapboxGL.MapView
+          style={styles.map}
+          styleURL={
+            'mapbox://styles/shwilliam/ck7oe04v20veb1io9dapv39a7'
+          }
+        />
       </View>
     </View>
   )
