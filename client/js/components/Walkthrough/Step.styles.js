@@ -2,16 +2,20 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   onPage: {
-    width: 20,
-    height: 20,
+    width: 8,
+    height: 8,
     borderRadius: 10,
-    backgroundColor: 'red',
+    marginHorizontal: 20,
+    backgroundColor: '#b0b5b8',
   },
   notOnPage: {
-    width: 20,
-    height: 20,
+    width: 8,
+    height: 8,
     borderRadius: 10,
-    backgroundColor: 'blue',
+    marginHorizontal: 20,
+    backgroundColor: '#fff',
+    borderWidth: 1,
+    borderColor: '#b0b5b8',
   },
 })
 

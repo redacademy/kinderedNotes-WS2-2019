@@ -16,6 +16,18 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-SemiBold',
     fontSize: 16,
   },
+  slides: {
+    fontSize: 16,
+    fontFamily: 'Nunito-SemiBold',
+    color: '#b0b5b8',
+    marginHorizontal: 35,
+  },
+  prevSlides: {
+    fontSize: 16,
+    fontFamily: 'Nunito-SemiBold',
+    color: '#fff',
+    marginHorizontal: 35,
+  },
   title: {
     color: COLORS.TEXT_PRIMARY.INVERT,
     fontWeight: '700',

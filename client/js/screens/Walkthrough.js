@@ -6,6 +6,7 @@ import {
   StyleSheet,
   View,
   SafeAreaView,
+  TouchableOpacity,
 } from 'react-native'
 import {useWalkthrough} from '../hooks'
 import LogoSVG from '../../assets/icons/Logo_Border.svg'
@@ -25,6 +26,7 @@ import {
 } from '../hooks/useWalkthrough/consts'
 import {COLORS} from '../components/styles'
 import {ANIMATION_PAUSE_DURATION} from '../components/IntroTransitionWrapper/consts'
+import {NotPrev, Slides} from '../components/Typography'
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -44,7 +46,9 @@ const styles = StyleSheet.create({
   actions: {
     position: 'absolute',
     flexDirection: 'row',
-    bottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: 35,
   },
   wave: {
     opacity: 1,
@@ -270,7 +274,6 @@ const Walkthrough = ({onComplete}) => {
         setTimeout(() => dispatch('DONE'), ANIMATION_IN_DURATION)
         break
       case 'SPREAD_FADING_OUT':
-        // spreadOut()
         setTimeout(() => {
           dispatch('DONE')
         }, ANIMATION_OUT_DURATION)
@@ -384,22 +387,32 @@ const Walkthrough = ({onComplete}) => {
           ) : null}
         </Animated.View>
       </Animated.View>
-      <View style={styles.actions}>
-        <Button
-          disabled={nextDisabled}
-          onPress={toggleNextView}
-          title="next"
-        />
+      <Animated.View
+        style={{
+          ...styles.actions,
+          opacity: elementsOpacity,
+        }}
+      >
+        <TouchableOpacity
+          disabled={prevDisabled}
+          onPress={togglePrevView}
+        >
+          {slideNum !== 1 ? (
+            <Slides>BACK</Slides>
+          ) : (
+            <NotPrev>BACK</NotPrev>
+          )}
+        </TouchableOpacity>
         <Step active={slideNum === 1} />
         <Step active={slideNum === 2} />
         <Step active={slideNum === 3} />
-        <Button
-          disabled={prevDisabled}
-          onPress={togglePrevView}
-          title="back"
-        />
-      </View>
-      <View></View>
+        <TouchableOpacity
+          disabled={nextDisabled}
+          onPress={toggleNextView}
+        >
+          <Slides>NEXT</Slides>
+        </TouchableOpacity>
+      </Animated.View>
       <Animated.View
         style={{
           ...styles.waveBottom,

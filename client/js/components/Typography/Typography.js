@@ -10,8 +10,15 @@ const AuthText = ({children}) => (
   <Text style={styles.authText}>{children}</Text>
 )
 
+const Slides = ({children}) => (
+  <Text style={styles.slides}>{children}</Text>
+)
+const NotPrev = ({children}) => (
+  <Text style={styles.prevSlides}>{children}</Text>
+)
+
 const Title = ({children}) => (
   <Text style={styles.title}>{children}</Text>
 )
 
-export {AuthText, Header, Title}
+export {AuthText, Header, NotPrev, Slides, Title}
