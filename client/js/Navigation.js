@@ -3,6 +3,7 @@ import {
   Notes,
   Profile,
   ReceivedNote,
+  RecipientMap,
   SentNote,
   Write,
 } from './screens'
@@ -45,6 +46,10 @@ function NotesStackScreen() {
         name="ReceivedNote"
         component={ReceivedNote}
       />
+      <NotesStack.Screen
+        options={{title: ''}}
+        name="RecipientMap"
+        component={RecipientMap}
       />
     </NotesStack.Navigator>
   )

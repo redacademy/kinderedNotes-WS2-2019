@@ -11,7 +11,7 @@ import styles from './SentNote.styles'
 import ReplyNote from '../Reply'
 import {ScrollView} from 'react-native-gesture-handler'
 
-const SentNote = () => {
+const SentNote = ({onPress}) => {
   const {activeNote} = useActiveNote()
 
   return (
@@ -21,7 +21,7 @@ const SentNote = () => {
           <View style={styles.messageContainer}>
             <Text style={styles.message}>{activeNote.message}</Text>
           </View>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={onPress}>
             <Text style={styles.font}>See who read it</Text>
           </TouchableOpacity>
         </View>

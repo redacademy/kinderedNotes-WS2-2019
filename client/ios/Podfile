@@ -41,6 +41,7 @@ target 'KindredNotes' do
   end
 
   use_native_modules!
+  use_frameworks!
 end
 
 target 'KindredNotes-tvOS' do
