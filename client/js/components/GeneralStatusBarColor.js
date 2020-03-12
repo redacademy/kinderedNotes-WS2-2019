@@ -4,11 +4,7 @@ import styles from './GeneralStatusBarColorStyles'
 
 const GeneralStatusBarColor = ({backgroundColor, ...props}) => (
   <View style={[styles.statusBar, {backgroundColor}]}>
-    <StatusBar
-      translucent
-      backgroundColor={backgroundColor}
-      {...props}
-    />
+    <StatusBar translucent {...props} />
   </View>
 )
 export default GeneralStatusBarColor
