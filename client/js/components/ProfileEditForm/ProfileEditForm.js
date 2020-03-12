@@ -8,6 +8,7 @@ import {useAuth} from '../../hooks'
 import styles from './ProfileEditForm.styles'
 import AVATARS from '../AvatarSelect/avatars'
 import {TagsContext} from '../../context'
+import GeneralStatusBarColor from '../GeneralStatusBarColor'
 
 const ProfileEditForm = ({avatarIndex = 4, name = 'Grazi'}) => {
   const [updateUser] = useMutation(UPDATE_USER)
@@ -32,6 +33,8 @@ const ProfileEditForm = ({avatarIndex = 4, name = 'Grazi'}) => {
   return (
     <View style={styles.profileContainer}>
       <View style={styles.container}>
+        <GeneralStatusBarColor />
+
         <View style={styles.imageContainer}>
           <Image style={styles.image} source={AVATARS[avatarIndex]} />
         </View>
