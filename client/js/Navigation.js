@@ -2,8 +2,8 @@ import React from 'react'
 import {
   Notes,
   Profile,
-  ReceivedNotes,
-  SentNotes,
+  ReceivedNote,
+  SentNote,
   Write,
 } from './screens'
 import {NavigationContainer} from '@react-navigation/native'
@@ -37,13 +37,14 @@ function NotesStackScreen() {
       />
       <NotesStack.Screen
         options={{title: ''}}
-        name="SentNotes"
-        component={SentNotes}
+        name="SentNote"
+        component={SentNote}
       />
       <NotesStack.Screen
         options={{title: ''}}
-        name="ReceivedNotes"
-        component={ReceivedNotes}
+        name="ReceivedNote"
+        component={ReceivedNote}
+      />
       />
     </NotesStack.Navigator>
   )
