@@ -6,7 +6,9 @@ const MessageInput = ({value, onChangeText, style, font}) => (
   <View>
     <TextInput
       style={{
-        fontFamily: font === 'DEFAULT' ? 'Nunito' : 'Times',
+        fontFamily:
+          font === 'DEFAULT' ? 'Nunito-SemiBold' : 'PermanentMarker',
+        fontSize: 16,
         marginHorizontal: 50,
       }}
       type="text"

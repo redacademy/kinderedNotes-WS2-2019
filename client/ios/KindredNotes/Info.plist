@@ -53,6 +53,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>PermanentMarker.otf</string>
 		<string>Nunito-SemiBold.otf</string>
 		<string>Nunito-Regular.otf</string>
 		<string>Nunito-Medium.otf</string>
