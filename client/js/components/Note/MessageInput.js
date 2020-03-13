@@ -7,9 +7,15 @@ const MessageInput = ({value, onChangeText, style, font}) => (
     <TextInput
       style={{
         fontFamily:
-          font === 'DEFAULT' ? 'Nunito-SemiBold' : 'PermanentMarker',
+          font === 'DEFAULT'
+            ? 'Nunito-SemiBold'
+            : font === 'HANDWRITTEN'
+            ? 'Playlist-Script'
+            : 'PermanentMarker',
         fontSize: 16,
-        marginHorizontal: 50,
+        marginBottom: 20,
+        textAlign: 'center',
+        width: 220,
       }}
       type="text"
       name="note-message"

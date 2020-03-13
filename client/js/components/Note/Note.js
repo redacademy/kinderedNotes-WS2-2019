@@ -10,8 +10,13 @@ const Note = ({value, onChangeText, options, onChangeOptions}) => {
   const {color, font, style} = options
 
   const onFontToggle = () => {
-    const newVal = font === 'DEFAULT' ? 'HANDWRITTEN' : 'DEFAULT'
-    onChangeOptions({font: newVal})
+    if (font === 'DEFAULT') {
+      onChangeOptions({font: 'HANDWRITTEN'})
+    } else if (font === 'HANDWRITTEN') {
+      onChangeOptions({font: 'CURSIVE'})
+    } else {
+      onChangeOptions({font: 'DEFAULT'})
+    }
   }
   const onColorToggle = () => {
     const newVal = color === 'BLUE' ? 'GREEN' : 'BLUE'

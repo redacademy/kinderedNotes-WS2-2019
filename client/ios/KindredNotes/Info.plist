@@ -53,6 +53,7 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Playlist-Script.otf</string>
 		<string>PermanentMarker.otf</string>
 		<string>Nunito-SemiBold.otf</string>
 		<string>Nunito-Regular.otf</string>
