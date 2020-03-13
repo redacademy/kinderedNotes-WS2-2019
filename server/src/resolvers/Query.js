@@ -1,4 +1,5 @@
 const {getUserId} = require('../utils')
+const CITIES = require('cities.json')
 
 const Query = {
   users(parent, args, context) {
@@ -11,9 +12,7 @@ const Query = {
 
   inbox: async (parent, args, context) => {
     const userId = getUserId(context)
-    const interests = await context.prisma
-      .user({id: userId})
-      .interests()
+    const interests = await context.prisma.user({id: userId}).interests()
 
     return context.prisma.notes({
       where: {
@@ -49,6 +48,21 @@ const Query = {
   me(parent, args, context) {
     const id = getUserId(context)
     return context.prisma.user({id})
+  },
+
+  validateCity(parent, {city}, context) {
+    return CITIES.some(({name}) => name.toLowerCase() === city.toLowerCase())
+  },
+
+  getCityCoords(parent, {city}, context) {
+    const cityData = CITIES.find(
+      ({name}) => name.toLowerCase() === city.toLowerCase(),
+    )
+
+    if (!cityData) return null
+
+    const {lat, lng} = cityData
+    return {lat, lng}
   },
 }
 

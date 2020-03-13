@@ -1,10 +1,13 @@
 import client, {
   INBOX,
   OUTBOX,
+  VALIDATE_CITY,
+  GET_CITY_COORDS,
   SIGN_UP,
   LOG_IN,
   UPDATE_USER,
   CREATE_NOTE,
+  VIEW_NOTE,
 } from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
 import TagsContext, {TagsContextProvider} from './tags'
@@ -16,10 +19,13 @@ export {
   client,
   INBOX,
   OUTBOX,
+  VALIDATE_CITY,
+  GET_CITY_COORDS,
   SIGN_UP,
   LOG_IN,
   UPDATE_USER,
   CREATE_NOTE,
+  VIEW_NOTE,
   AuthContext,
   AuthContextProvider,
   TagsContext,

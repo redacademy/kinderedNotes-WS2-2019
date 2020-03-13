@@ -96,4 +96,12 @@ const CREATE_NOTE = gql`
   }
 `
 
-export {SIGN_UP, LOG_IN, UPDATE_USER, CREATE_NOTE}
+const VIEW_NOTE = gql`
+  mutation viewNote($id: String!) {
+    viewNote {
+      id
+    }
+  }
+`
+
+export {SIGN_UP, LOG_IN, UPDATE_USER, CREATE_NOTE, VIEW_NOTE}

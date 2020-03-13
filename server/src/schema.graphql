@@ -4,6 +4,8 @@ type Query {
   inbox: [Note]
   outbox: [Note]
   me: User
+  validateCity(city: String!): Boolean!
+  getCityCoords(city: String!): Coords
 }
 
 type Mutation {
@@ -80,4 +82,9 @@ type NoteResponse {
 type Interest {
   id: ID!
   title: String!
+}
+
+type Coords {
+  lat: String!
+  lng: String!
 }
