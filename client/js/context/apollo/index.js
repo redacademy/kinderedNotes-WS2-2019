@@ -12,6 +12,7 @@ import {
   CREATE_NOTE,
   VIEW_NOTE,
   CREATE_NOTE_RESPONSE,
+  FAVORITE_NOTE,
 } from './mutations'
 
 export default client
@@ -26,4 +27,5 @@ export {
   CREATE_NOTE,
   VIEW_NOTE,
   CREATE_NOTE_RESPONSE,
+  FAVORITE_NOTE,
 }

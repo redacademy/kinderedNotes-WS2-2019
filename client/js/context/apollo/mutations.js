@@ -25,8 +25,14 @@ const SIGN_UP = gql`
         interests {
           title
         }
+        favoriteNotes {
+          id
+          message
+          color
+          style
+          font
+        }
         # username
-        # favoriteNotes
       }
       token
     }
@@ -43,6 +49,13 @@ const LOG_IN = gql`
         city
         interests {
           title
+        }
+        favoriteNotes {
+          id
+          message
+          color
+          style
+          font
         }
         # username
         # favoriteNotes
@@ -72,6 +85,13 @@ const UPDATE_USER = gql`
       interests {
         title
       }
+      favoriteNotes {
+        id
+        message
+        color
+        style
+        font
+      }
     }
   }
 `
@@ -98,7 +118,7 @@ const CREATE_NOTE = gql`
 
 const VIEW_NOTE = gql`
   mutation viewNote($id: String!) {
-    viewNote {
+    viewNote(id: $id) {
       id
     }
   }
@@ -112,6 +132,14 @@ const CREATE_NOTE_RESPONSE = gql`
   }
 `
 
+const FAVORITE_NOTE = gql`
+  mutation favoriteNote($id: String!) {
+    favoriteNote(id: $id) {
+      id
+    }
+  }
+`
+
 export {
   SIGN_UP,
   LOG_IN,
@@ -119,4 +147,5 @@ export {
   VIEW_NOTE,
   CREATE_NOTE,
   CREATE_NOTE_RESPONSE,
+  FAVORITE_NOTE,
 }

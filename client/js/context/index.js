@@ -9,6 +9,7 @@ import client, {
   CREATE_NOTE,
   VIEW_NOTE,
   CREATE_NOTE_RESPONSE,
+  FAVORITE_NOTE,
 } from './apollo'
 import AuthContext, {AuthContextProvider} from './auth'
 import TagsContext, {TagsContextProvider} from './tags'
@@ -28,6 +29,7 @@ export {
   CREATE_NOTE,
   VIEW_NOTE,
   CREATE_NOTE_RESPONSE,
+  FAVORITE_NOTE,
   AuthContext,
   AuthContextProvider,
   TagsContext,
