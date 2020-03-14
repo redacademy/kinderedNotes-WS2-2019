@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     height: 280,
     marginTop: 45,
     marginBottom: 35,
-    backgroundColor: '#48a9c5',
   },
   messageContainer: {
     marginHorizontal: 45,

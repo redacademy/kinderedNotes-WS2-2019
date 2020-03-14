@@ -17,7 +17,12 @@ const SentNote = ({onPress}) => {
   return (
     <SafeAreaView style={styles.sentContainer}>
       <View style={styles.container}>
-        <View style={styles.sentNote}>
+        <View
+          style={{
+            ...styles.sentNote,
+            backgroundColor: `${activeNote.color}`,
+          }}
+        >
           <View style={styles.messageContainer}>
             <Text style={styles.message}>{activeNote.message}</Text>
           </View>
