@@ -19,6 +19,7 @@ const SIGN_UP = gql`
     ) {
       user {
         id
+        username
         avatar
         country
         city
@@ -44,6 +45,7 @@ const LOG_IN = gql`
     login(username: $username, password: $password) {
       user {
         id
+        username
         avatar
         country
         city
@@ -66,19 +68,10 @@ const LOG_IN = gql`
 `
 
 const UPDATE_USER = gql`
-  mutation updateUser(
-    $avatar: Int!
-    $country: String!
-    $city: String!
-    $interests: [String!]!
-  ) {
-    updateUser(
-      avatar: $avatar
-      country: $country
-      city: $city
-      interests: $interests
-    ) {
+  mutation updateUser($avatar: Int!, $interests: [String!]!) {
+    updateUser(avatar: $avatar, interests: $interests) {
       id
+      username
       avatar
       country
       city

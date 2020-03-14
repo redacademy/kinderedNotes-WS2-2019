@@ -13,16 +13,6 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: 'center',
   },
-  image: {
-    height: 120,
-    width: 120,
-    borderRadius: 90,
-    borderWidth: 2,
-    borderColor: '#ebf5f8',
-  },
-  imageContainer: {
-    alignSelf: 'center',
-  },
   blueText: {
     fontFamily: 'Nunito-SemiBold',
     fontSize: 14,

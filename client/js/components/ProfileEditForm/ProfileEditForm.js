@@ -1,24 +1,21 @@
-import React, {useEffect, useState, useContext} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Text, View, Image} from 'react-native'
 import {useMutation} from '@apollo/react-hooks'
 import {useAuth} from '../../hooks'
-import {UPDATE_USER, TagsContext} from '../../context'
+import {UPDATE_USER} from '../../context'
 import {TagsInput, TagsList, NotesGrid} from '../index'
 import {Header} from '../Typography'
 import AVATARS from '../AvatarSelect/avatars'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
 import styles from './ProfileEditForm.styles'
-
-// TODO
-const avatar = 2
-const username = 'Gabe'
+import AvatarSelect from '../AvatarSelect'
 
 const ProfileEditForm = ({navigation}) => {
   const [updateUser] = useMutation(UPDATE_USER)
-  const {tags, setTags} = useContext(TagsContext)
-
   const {user} = useAuth()
-  const [currentAvatar] = useState(user?.user?.avatar)
+  const [currentAvatar, setCurrentAvatar] = useState(
+    user?.user?.avatar,
+  )
   const [currentInterests, setCurrentInterests] = useState(
     user?.user?.interests.map(({title}) => title),
   )
@@ -40,21 +37,26 @@ const ProfileEditForm = ({navigation}) => {
       <View style={styles.container}>
         <GeneralStatusBarColor />
 
-        <View style={styles.imageContainer}>
-          <Image style={styles.image} source={AVATARS[avatar]} />
-        </View>
+        <AvatarSelect
+          currentAvatar={currentAvatar}
+          onChange={setCurrentAvatar}
+          large
+        />
 
-        <Text style={styles.blueText}>{username}</Text>
+        <Text style={styles.blueText}>{user.user.username}</Text>
 
         <Header>Topics of Interest</Header>
 
         <TagsInput
-          value={tags}
-          onChange={setTags}
+          value={currentInterests}
+          onChange={setCurrentInterests}
           placeholder="Anxiety"
         />
 
-        <TagsList tags={tags} setTags={setTags} />
+        <TagsList
+          tags={currentInterests}
+          setTags={setCurrentInterests}
+        />
       </View>
 
       <Header>Favourite Notes</Header>

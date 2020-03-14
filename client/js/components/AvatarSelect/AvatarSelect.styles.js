@@ -23,12 +23,16 @@ const styles = StyleSheet.create({
     left: -35,
   },
   avatarCurrent: {
+    borderColor: 'transparent',
     width: 100,
     height: 100,
-    borderRadius: 50,
     position: 'relative',
-    top: 0,
+    top: -4,
     left: 0,
+  },
+  avatarLarge: {
+    width: 120,
+    height: 120,
   },
   avatarButton: {
     position: 'absolute',
@@ -46,6 +50,14 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
+    overflow: 'hidden',
+    borderWidth: 2,
+    borderColor: COLORS.LIGHT_BLUE,
+  },
+  avatarCurrentContainerLarge: {
+    width: 122,
+    height: 122,
+    borderRadius: 60,
     overflow: 'hidden',
   },
   avatarLabel: {
