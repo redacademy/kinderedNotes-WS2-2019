@@ -59,7 +59,7 @@ const auth = {
     }
   },
 
-  async updateUser(parent, {avatar, country, city, interests}, context) {
+  async updateUser(parent, {avatar, interests}, context) {
     const userId = getUserId(context)
     const allInterests = await context.prisma.interests()
     const {existingInterests, newInterests} = interests.reduce(
@@ -88,8 +88,6 @@ const auth = {
       where: {id: userId},
       data: {
         avatar,
-        country,
-        city,
         // FIXME: deleted interests are not removed
         interests: {
           create: newInterests.map(title => ({title})),
