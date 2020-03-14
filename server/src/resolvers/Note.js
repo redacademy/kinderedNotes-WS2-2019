@@ -1,11 +1,9 @@
 const Note = {
   author: ({id}, args, context) => context.prisma.note({id}).author(),
 
-  viewers: ({id}, args, context) =>
-    context.prisma.note({id}).viewers(),
+  viewers: ({id}, args, context) => context.prisma.note({id}).viewers(),
 
-  responses: ({id}, args, context) =>
-    context.prisma.note({id}).responses(),
+  responses: ({id}, args, context) => context.prisma.note({id}).responses(),
 
   topic: ({id}, args, context) => context.prisma.note({id}).topic(),
 }

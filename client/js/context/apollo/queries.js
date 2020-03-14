@@ -23,6 +23,14 @@ const OUTBOX = gql`
       viewers {
         city
       }
+      responses {
+        id
+        message
+        author {
+          username
+          avatar
+        }
+      }
     }
   }
 `

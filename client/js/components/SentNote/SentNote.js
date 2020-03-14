@@ -27,28 +27,15 @@ const SentNote = ({onPress}) => {
         </View>
         <ScrollView style={{maxHeight: '100%', height: '45%'}}>
           <Header>Who appreciated your note</Header>
-          {/* TODO */}
           <View style={styles.notesContainer}>
-            <ReplyNote
-              avatarIndex={0}
-              message="thanks for the apple"
-            />
-            <ReplyNote
-              avatarIndex={2}
-              message="thanks for the grape"
-            />
-            <ReplyNote
-              avatarIndex={3}
-              message="thanks for the orange"
-            />
-            <ReplyNote
-              avatarIndex={4}
-              message="thanks for the banana"
-            />
-            <ReplyNote
-              avatarIndex={5}
-              message="thanks for the banana"
-            />
+            {activeNote.responses &&
+              activeNote.responses.map(({id, message, avatar}) => (
+                <ReplyNote
+                  key={id}
+                  avatarIndex={avatar}
+                  message={message}
+                />
+              ))}
           </View>
         </ScrollView>
       </View>

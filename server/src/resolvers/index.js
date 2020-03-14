@@ -4,6 +4,7 @@ const {note} = require('./Mutation/note')
 const {Subscription} = require('./Subscription')
 const {User} = require('./User')
 const {Note} = require('./Note')
+const {NoteResponse} = require('./NoteResponse')
 
 module.exports = {
   Query,
@@ -14,4 +15,5 @@ module.exports = {
   Subscription,
   User,
   Note,
+  NoteResponse,
 }

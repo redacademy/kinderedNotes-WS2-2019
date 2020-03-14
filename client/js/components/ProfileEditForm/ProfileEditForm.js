@@ -1,16 +1,19 @@
 import React, {useEffect, useState, useContext} from 'react'
 import {Text, View, Image} from 'react-native'
 import {useMutation} from '@apollo/react-hooks'
-import {UPDATE_USER} from '../../context'
-import {Header} from '../Typography'
-import {TagsInput, TagsList} from '../index'
 import {useAuth} from '../../hooks'
-import styles from './ProfileEditForm.styles'
+import {UPDATE_USER, TagsContext} from '../../context'
+import {TagsInput, TagsList, NotesGrid} from '../index'
+import {Header} from '../Typography'
 import AVATARS from '../AvatarSelect/avatars'
-import {TagsContext} from '../../context'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
+import styles from './ProfileEditForm.styles'
 
-const ProfileEditForm = ({avatarIndex = 4, name = 'Grazi'}) => {
+// TODO
+const avatar = 2
+const username = 'Gabe'
+
+const ProfileEditForm = ({navigation}) => {
   const [updateUser] = useMutation(UPDATE_USER)
   const {tags, setTags} = useContext(TagsContext)
 
@@ -30,26 +33,38 @@ const ProfileEditForm = ({avatarIndex = 4, name = 'Grazi'}) => {
     // TODO: set new user data in user context
   }, [currentAvatar, currentInterests, updateUser])
 
+  const onNotePress = () => navigation.navigate('ReceivedNote')
+
   return (
     <View style={styles.profileContainer}>
       <View style={styles.container}>
         <GeneralStatusBarColor />
 
         <View style={styles.imageContainer}>
-          <Image style={styles.image} source={AVATARS[avatarIndex]} />
+          <Image style={styles.image} source={AVATARS[avatar]} />
         </View>
-        <Text style={styles.blueText}>{name}</Text>
+
+        <Text style={styles.blueText}>{username}</Text>
+
         <Header>Topics of Interest</Header>
+
         <TagsInput
           value={tags}
           onChange={setTags}
           placeholder="Anxiety"
         />
+
         <TagsList tags={tags} setTags={setTags} />
-        <Header>Favourite Notes</Header>
-        <Text>TODO -> Favorites</Text>
-        {/* add grid */}
       </View>
+
+      <Header>Favourite Notes</Header>
+
+      <NotesGrid
+        data={user.user.favoriteNotes}
+        onNotePress={onNotePress}
+        loading={false}
+        error={null}
+      />
     </View>
   )
 }

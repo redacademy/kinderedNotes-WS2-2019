@@ -2,9 +2,9 @@ import React from 'react'
 import {SafeAreaView} from 'react-native'
 import {ProfileEditForm} from '../components'
 
-const Profile = () => (
+const Profile = ({navigation}) => (
   <SafeAreaView>
-    <ProfileEditForm />
+    <ProfileEditForm navigation={navigation} />
   </SafeAreaView>
 )
 
