@@ -18,8 +18,16 @@ const NotPrev = ({children}) => (
   <Text style={styles.prevSlides}>{children}</Text>
 )
 
-const Title = ({style, children}) => (
-  <Text style={{...styles.title, ...style}}>{children}</Text>
+const Title = ({style, blue = false, children}) => (
+  <Text
+    style={{
+      ...styles.title,
+      ...(blue ? styles.titleBlue : {}),
+      ...style,
+    }}
+  >
+    {children}
+  </Text>
 )
 
 export {AuthText, Header, NotPrev, Slides, Title}

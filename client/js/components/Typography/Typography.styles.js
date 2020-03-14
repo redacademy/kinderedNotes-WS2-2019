@@ -34,6 +34,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     fontSize: 30,
   },
+  titleBlue: {
+    color: COLORS.ACCENT_BLUE,
+  },
 })
 
 export default styles
