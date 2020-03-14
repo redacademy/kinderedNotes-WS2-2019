@@ -8,11 +8,14 @@ import {Header} from '../Typography'
 import AVATARS from '../AvatarSelect/avatars'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
 import styles from './ProfileEditForm.styles'
+import AvatarSelect from '../AvatarSelect'
 
 const ProfileEditForm = ({navigation}) => {
   const [updateUser] = useMutation(UPDATE_USER)
   const {user} = useAuth()
-  const [currentAvatar] = useState(user?.user?.avatar)
+  const [currentAvatar, setCurrentAvatar] = useState(
+    user?.user?.avatar,
+  )
   const [currentInterests, setCurrentInterests] = useState(
     user?.user?.interests.map(({title}) => title),
   )
@@ -34,12 +37,11 @@ const ProfileEditForm = ({navigation}) => {
       <View style={styles.container}>
         <GeneralStatusBarColor />
 
-        <View style={styles.imageContainer}>
-          <Image
-            style={styles.image}
-            source={AVATARS[user.user.avatar]}
-          />
-        </View>
+        <AvatarSelect
+          currentAvatar={currentAvatar}
+          onChange={setCurrentAvatar}
+          large
+        />
 
         <Text style={styles.blueText}>{user.user.username}</Text>
 

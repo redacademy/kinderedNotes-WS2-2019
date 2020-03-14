@@ -4,7 +4,7 @@ import styles from './AvatarSelect.styles'
 import AvatarOption from './AvatarOption'
 import AVATARS from './avatars'
 
-const AvatarSelect = ({currentAvatar, onChange}) => {
+const AvatarSelect = ({currentAvatar, onChange, large = false}) => {
   const [avatarAnimVals] = useState(
     Array.from({length: AVATARS.length}, () => new Animated.Value(0)),
   )
@@ -33,7 +33,7 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
 
   const labelOffset = avatarAnimVals[0].interpolate({
     inputRange: [0, 1],
-    outputRange: [-13, 0],
+    outputRange: [-15, 0],
   })
 
   const labelOpacity = avatarAnimVals[0].interpolate({
@@ -129,11 +129,18 @@ const AvatarSelect = ({currentAvatar, onChange}) => {
       />
 
       <TouchableOpacity
-        style={styles.avatarCurrentContainer}
+        style={{
+          ...styles.avatarCurrentContainer,
+          ...(large ? styles.avatarCurrentContainerLarge : {}),
+        }}
         onPress={toggleIsOpen}
       >
         <Image
-          style={{...styles.avatar, ...styles.avatarCurrent}}
+          style={{
+            ...styles.avatar,
+            ...styles.avatarCurrent,
+            ...(large ? styles.avatarLarge : {}),
+          }}
           source={AVATARS[currentAvatar]}
         />
         <Animated.Text
