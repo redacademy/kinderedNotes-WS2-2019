@@ -122,17 +122,13 @@ const Walkthrough = ({onComplete}) => {
   const [envelopeOffsetTop] = useState(new Animated.Value(-100))
   const [heartOffsetTop] = useState(new Animated.Value(-100))
   const [handsOffsetBottom] = useState(new Animated.Value(100))
-  const [circleScale] = useState(new Animated.Value(1))
+  const [circleScaleAnim] = useState(new Animated.Value(1))
 
   const {
     opacity: elementsOpacity,
     fadeIn: elementsFadeIn,
     fadeOut: elementsFadeOut,
   } = useOpacityFadeTransition(0)
-  // const {
-  //   opacity: bgOpacity,
-  //   fadeOut: bgFadeOut,
-  // } = useOpacityFadeTransition(1)
   const {
     opacity: wavesOpacity,
     fadeIn: wavesFadeIn,
@@ -243,7 +239,7 @@ const Walkthrough = ({onComplete}) => {
   }
 
   const circleFadeOut = () => {
-    Animated.timing(circleScale, {
+    Animated.timing(circleScaleAnim, {
       toValue: 0.6,
       duration: ANIMATION_OUT_DURATION,
     }).start()
@@ -310,6 +306,11 @@ const Walkthrough = ({onComplete}) => {
     }
   }, [event, state, dispatch, onComplete])
 
+  const circleScale = circleScaleAnim.interpolate({
+    inputRange: [0, 0.5, 1],
+    outputRange: [0, 0, 1],
+  })
+
   return (
     <SafeAreaView style={styles.wrapper}>
       <Animated.View
@@ -320,6 +321,7 @@ const Walkthrough = ({onComplete}) => {
       >
         <WaveTop style={styles.wave} />
       </Animated.View>
+
       {slideNum === 1 && (
         <FadeIn visible={slideNum === 1}>
           <Text style={styles.font}>Write a kind note</Text>
