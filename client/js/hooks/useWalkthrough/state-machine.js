@@ -6,13 +6,10 @@ const walkthroughMachine = {
     NEXT_VIEW: 'RECEIVE_FADING_IN',
   },
   RECEIVE_FADING_IN: {
-    DONE: 'MAIL_OPENING',
+    DONE: 'RECEIVE_VIEW',
   },
   RECEIVE_FADING_OUT: {
     DONE: 'WRITE_VIEW',
-  },
-  MAIL_OPENING: {
-    DONE: 'RECEIVE_VIEW',
   },
   RECEIVE_VIEW: {
     NEXT_VIEW: 'SPREAD_FADING_IN',

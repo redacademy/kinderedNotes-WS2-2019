@@ -1,7 +1,7 @@
 import useMachine from 'react-use-machine'
 import walkthroughMachine from './state-machine.js'
 
-const useWalkthrough = onComplete => {
+const useWalkthrough = () => {
   const {state, event, dispatch} = useMachine(
     walkthroughMachine,
     'WRITE_FADING_IN',
