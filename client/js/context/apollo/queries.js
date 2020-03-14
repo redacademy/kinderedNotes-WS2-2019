@@ -20,8 +20,26 @@ const OUTBOX = gql`
       color
       style
       font
+      viewers {
+        city
+      }
     }
   }
 `
 
-export {INBOX, OUTBOX}
+const VALIDATE_CITY = gql`
+  query validateCity($city: String!) {
+    validateCity(city: $city)
+  }
+`
+
+const GET_CITY_COORDS = gql`
+  query getCityCoords($city: String!) {
+    getCityCoords(city: $city) {
+      lat
+      lng
+    }
+  }
+`
+
+export {INBOX, OUTBOX, VALIDATE_CITY, GET_CITY_COORDS}

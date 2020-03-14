@@ -9,7 +9,7 @@ const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
   const {setActiveNote} = useActiveNote()
   const handleNotePress = item => {
     setActiveNote(item)
-    onNotePress()
+    onNotePress(item.id)
   }
 
   if (error) {
