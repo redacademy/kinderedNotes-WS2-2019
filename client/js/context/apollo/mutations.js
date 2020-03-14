@@ -104,4 +104,19 @@ const VIEW_NOTE = gql`
   }
 `
 
-export {SIGN_UP, LOG_IN, UPDATE_USER, CREATE_NOTE, VIEW_NOTE}
+const CREATE_NOTE_RESPONSE = gql`
+  mutation createNoteResponse($id: String!, $message: String!) {
+    createNoteResponse(id: $id, message: $message) {
+      id
+    }
+  }
+`
+
+export {
+  SIGN_UP,
+  LOG_IN,
+  UPDATE_USER,
+  VIEW_NOTE,
+  CREATE_NOTE,
+  CREATE_NOTE_RESPONSE,
+}
