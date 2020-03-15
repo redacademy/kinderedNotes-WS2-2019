@@ -33,7 +33,7 @@ const AvatarSelect = ({currentAvatar, onChange, large = false}) => {
 
   const labelOffset = avatarAnimVals[0].interpolate({
     inputRange: [0, 1],
-    outputRange: [-15, 0],
+    outputRange: [-17, 0],
   })
 
   const labelOpacity = avatarAnimVals[0].interpolate({
