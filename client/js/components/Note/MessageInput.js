@@ -12,7 +12,6 @@ const MessageInput = ({value, onChangeText, style, font}) => (
             : font === 'HANDWRITTEN'
             ? 'Playlist-Script'
             : 'PermanentMarker',
-
         fontSize: 18,
         marginBottom: 20,
         textAlign: 'center',

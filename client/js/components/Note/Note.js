@@ -33,7 +33,8 @@ const Note = ({value, onChangeText, options, onChangeOptions}) => {
       <View
         style={{
           ...styles.noteContainer,
-          ...styles[`noteContainer${color}`],
+          ...(style === 'BORDERED' &&
+            styles[`noteContainer${color}`]),
           ...(style === 'FILL' &&
             styles[`noteContainerFill${color}`]),
         }}
