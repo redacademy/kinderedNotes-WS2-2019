@@ -40,6 +40,12 @@ const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
               <Text
                 style={{
                   ...styles.itemText,
+                  fontFamily:
+                    item.font === 'DEFAULT'
+                      ? 'Nunito-SemiBold'
+                      : item.font === 'HANDWRITTEN'
+                      ? 'Playlist-Script'
+                      : 'PermanentMarker',
                   color:
                     item.style === 'FILL'
                       ? COLORS.TEXT_PRIMARY.INVERT
