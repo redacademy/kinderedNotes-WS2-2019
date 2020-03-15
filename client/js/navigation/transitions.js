@@ -1,20 +1,44 @@
 import React, {useState, useEffect} from 'react'
-import {Animated} from 'react-native'
+import {Animated, SafeAreaView, StyleSheet} from 'react-native'
 import {useAuth, useSiteTransition} from '../hooks'
+import WaveTop from '../../assets/icons/Wave_Up.svg'
+import WaveBottom from '../../assets/icons/Wave_Down.svg'
+
+const styles = StyleSheet.create({
+  container: {
+    height: '100%',
+  },
+  waveTop: {
+    marginHorizontal: -50,
+  },
+  waveBottom: {
+    position: 'absolute',
+    bottom: -50,
+    marginHorizontal: -50,
+  },
+})
 
 const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
-  const {isLoggedIn} = useAuth()
   const [activeScreen, setActiveScreen] = useState(
     isLoggedIn ? 'DEFAULT' : 'AUTH',
   )
   const [isTransitioningScreen, setIsTransitioningScreen] = useState(
     false,
   )
+  const {isLoggedIn} = useAuth()
   const {
     authScreenOpacity,
     fadeAuth,
+    defaultScreenOpacity,
+    fadeDefault,
+    wavesOpacity,
+    fadeWaves,
     FADE_DURATION,
   } = useSiteTransition()
+
+  useEffect(() => {
+    fadeAuth(1)
+  }, [])
 
   useEffect(() => {
     if (
@@ -24,8 +48,11 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
     ) {
       setIsTransitioningScreen(true)
       fadeAuth(0)
+      fadeWaves(0)
+
       setTimeout(() => {
         setActiveScreen('DEFAULT')
+        fadeDefault(1)
         setIsTransitioningScreen(false)
       }, FADE_DURATION)
     }
@@ -36,17 +63,39 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
     setActiveScreen,
     setIsTransitioningScreen,
     fadeAuth,
+    fadeDefault,
+    fadeWaves,
     FADE_DURATION,
   ])
 
   if (activeScreen === 'DEFAULT') {
-    return <DefaultView />
+    return (
+      <Animated.View
+        style={{...styles.container, opacity: defaultScreenOpacity}}
+      >
+        <DefaultView />
+      </Animated.View>
+    )
   }
 
   return (
-    <Animated.View style={{...style, opacity: authScreenOpacity}}>
-      <AuthView />
-    </Animated.View>
+    <SafeAreaView style={styles.container}>
+      <Animated.View
+        style={{...styles.waveTop, opacity: wavesOpacity}}
+      >
+        <WaveTop />
+      </Animated.View>
+
+      <Animated.View style={{...style, opacity: authScreenOpacity}}>
+        <AuthView />
+      </Animated.View>
+
+      <Animated.View
+        style={{...styles.waveBottom, opacity: wavesOpacity}}
+      >
+        <WaveBottom />
+      </Animated.View>
+    </SafeAreaView>
   )
 }
 
