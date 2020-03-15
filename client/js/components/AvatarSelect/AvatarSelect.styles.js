@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     top: -13,
     backgroundColor: '#33333399',
     color: '#eee',
+    paddingBottom: 20,
   },
 })
 
