@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     height: '100%',
+    backgroundColor: '#fff',
   },
   item: {
     flex: 1,
@@ -16,9 +17,9 @@ const styles = StyleSheet.create({
     maxWidth: '32.8%',
   },
   itemText: {
-    fontSize: 11,
+    fontSize: 13,
     fontWeight: '600',
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
     textAlign: 'center',
     overflow: 'hidden', // TODO: limit length and add ellipsis
   },
