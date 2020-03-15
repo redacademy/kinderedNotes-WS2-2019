@@ -29,10 +29,10 @@ const SentNote = ({onPress}) => {
           <Header>Who appreciated your note</Header>
           <View style={styles.notesContainer}>
             {activeNote.responses &&
-              activeNote.responses.map(({id, message, avatar}) => (
+              activeNote.responses.map(({id, message, author}) => (
                 <ReplyNote
                   key={id}
-                  avatarIndex={avatar}
+                  avatarIndex={author.avatar}
                   message={message}
                 />
               ))}

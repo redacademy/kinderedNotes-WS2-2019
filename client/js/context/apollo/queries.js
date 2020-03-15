@@ -22,6 +22,7 @@ const OUTBOX = gql`
       font
       viewers {
         city
+        avatar
       }
       responses {
         id
