@@ -23,7 +23,11 @@ const Map = () => {
             'mapbox://styles/shwilliam/ck7oe04v20veb1io9dapv39a7'
           }
         >
-          <MapboxGL.Camera zoomLevel={1} />
+          <MapboxGL.Camera
+            zoomLevel={1.25}
+            minZoomLevel={1.25}
+            maxZoomLevel={2}
+          />
           {activeNote.viewers.map((viewer, i) => (
             <Marker
               key={`${viewer.city}_${i}`}
