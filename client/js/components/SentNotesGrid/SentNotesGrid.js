@@ -13,6 +13,7 @@ const SentNotesGrid = ({navigation}) => {
       onNotePress={() => navigation.navigate('SentNote')}
       loading={loading}
       error={error}
+      noItemsMessage="Tap on the 'Write' tab in the bottom menu to send your first note!"
     />
   )
 }

@@ -20,6 +20,7 @@ const ReceivedNotesGrid = ({navigation}) => {
       loading={loading}
       error={error}
       Icon={MessageNote}
+      noItemsMessage="Add some more interests to your profile and start receiving kind notes!"
     />
   )
 }

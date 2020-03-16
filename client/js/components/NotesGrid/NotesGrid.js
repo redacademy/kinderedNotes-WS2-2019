@@ -2,10 +2,19 @@ import React from 'react'
 import {View, Text, FlatList, ActivityIndicator} from 'react-native'
 import {useActiveNote} from '../../hooks'
 import {COLORS} from '../styles'
+import {Header} from '../Typography'
 import NotesGridItem from './NotesGridItem'
 import styles from './NotesGrid.styles'
 
-const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
+const NotesGrid = ({
+  data,
+  loading,
+  error,
+  noItemsMessage,
+  Icon,
+  onNotePress,
+  bg,
+}) => {
   const {setActiveNote} = useActiveNote()
   const handleNotePress = item => {
     setActiveNote(item)
@@ -24,6 +33,8 @@ const NotesGrid = ({data, loading, error, Icon, onNotePress, bg}) => {
     <View style={styles.container}>
       {loading ? (
         <ActivityIndicator size="large" />
+      ) : data.length === 0 ? (
+        <Header style={styles.message}>{noItemsMessage}</Header>
       ) : (
         <FlatList
           data={data}
