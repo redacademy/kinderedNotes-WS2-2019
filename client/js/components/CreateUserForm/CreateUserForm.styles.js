@@ -26,6 +26,13 @@ const styles = StyleSheet.create({
     lineHeight: 27,
     marginBottom: 100,
   },
+  termsButton2: {
+    backgroundColor: '#ebf5f8',
+    width: 700,
+  },
+  fontButton: {
+    color: '#636e74',
+  },
 })
 
 export default styles
