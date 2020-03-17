@@ -5,6 +5,7 @@ import Button from './Button'
 import CreateUserForm from './CreateUserForm'
 import FadeIn from './FadeIn'
 import Input from './Input'
+import LogoutButton from './LogoutButton'
 import Map from './Map'
 import Note from './Note/Note'
 import NotesGrid from './NotesGrid'
@@ -27,6 +28,7 @@ export {
   CreateUserForm,
   FadeIn,
   Input,
+  LogoutButton,
   Map,
   Note,
   NotesGrid,
