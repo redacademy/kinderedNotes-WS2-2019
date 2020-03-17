@@ -25,7 +25,7 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
   const [isTransitioningScreen, setIsTransitioningScreen] = useState(
     false,
   )
-  const {isLoggedIn} = useAuth()
+  const {user, isLoggedIn, loading} = useAuth()
   const {
     authScreenOpacity,
     fadeAuth,
@@ -37,8 +37,21 @@ const SiteTransitionWrapper = ({AuthView, DefaultView, style}) => {
   } = useSiteTransition()
 
   useEffect(() => {
-    fadeAuth(1)
-  }, [])
+    if (loading) {
+      return
+    }
+
+    if (user) {
+      setActiveScreen('DEFAULT')
+      fadeDefault(1)
+      setIsTransitioningScreen(false)
+    } else {
+      // TODO: delay fade in on logout
+      fadeDefault(0)
+      fadeAuth(1)
+      setActiveScreen('AUTH')
+    }
+  }, [loading, user, fadeAuth, fadeDefault, FADE_DURATION])
 
   useEffect(() => {
     if (

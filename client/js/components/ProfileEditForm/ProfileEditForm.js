@@ -8,6 +8,7 @@ import {Header} from '../Typography'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
 import styles from './ProfileEditForm.styles'
 import AvatarSelect from '../AvatarSelect'
+import LogoutButton from '../LogoutButton'
 
 const ProfileEditForm = ({navigation}) => {
   const [updateUser] = useMutation(UPDATE_USER)
@@ -36,13 +37,15 @@ const ProfileEditForm = ({navigation}) => {
       <View style={styles.container}>
         <GeneralStatusBarColor />
 
+        <LogoutButton />
+
         <AvatarSelect
           currentAvatar={currentAvatar}
           onChange={setCurrentAvatar}
           large
         />
 
-        <Text style={styles.blueText}>{user.user.username}</Text>
+        <Text style={styles.blueText}>{user?.user?.username}</Text>
 
         <Header>Topics of Interest</Header>
 
@@ -61,7 +64,7 @@ const ProfileEditForm = ({navigation}) => {
       <Header>Favourite Notes</Header>
 
       <NotesGrid
-        data={user.user.favoriteNotes}
+        data={user?.user?.favoriteNotes}
         onNotePress={onNotePress}
         loading={false}
         error={null}

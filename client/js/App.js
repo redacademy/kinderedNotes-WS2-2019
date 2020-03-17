@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {StatusBar, SafeAreaView} from 'react-native'
 import {ApolloProvider} from '@apollo/react-hooks'
 import {Login, Walkthrough} from './screens'
@@ -14,35 +14,45 @@ import {SiteTransitionWrapper} from './navigation'
 // TODO: refactor to `navigation/routes.js`
 import Navigation from './Navigation'
 import {IntroTransitionWrapper} from './components'
+import {useAuth} from './hooks'
 
 const App = () => {
   const [isFirstTimeUser, setIsFirstTimeUser] = useState(true)
+  const {user, loading} = useAuth()
+
+  if (loading) {
+    return null
+  }
 
   return (
     <IntroTransitionWrapper>
-      {isFirstTimeUser ? (
+      {!user && isFirstTimeUser ? (
         <SafeAreaView>
           <Walkthrough onComplete={() => setIsFirstTimeUser(false)} />
         </SafeAreaView>
       ) : (
-        <ApolloProvider client={client}>
-          <AuthContextProvider>
-            <StatusBar barStyle="dark-content" />
-            {/* <GeneralStatusBarColor /> */}
-            <TagsContextProvider>
-              <ActiveNoteContextProvider>
-                {/* TODO: rename */}
-                <SiteTransitionWrapper
-                  AuthView={Login}
-                  DefaultView={Navigation}
-                />
-              </ActiveNoteContextProvider>
-            </TagsContextProvider>
-          </AuthContextProvider>
-        </ApolloProvider>
+        <>
+          <StatusBar barStyle="dark-content" />
+          {/* <GeneralStatusBarColor /> */}
+          <TagsContextProvider>
+            <ActiveNoteContextProvider>
+              {/* TODO: rename */}
+              <SiteTransitionWrapper
+                AuthView={Login}
+                DefaultView={Navigation}
+              />
+            </ActiveNoteContextProvider>
+          </TagsContextProvider>
+        </>
       )}
     </IntroTransitionWrapper>
   )
 }
 
-export default App
+export default () => (
+  <ApolloProvider client={client}>
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  </ApolloProvider>
+)

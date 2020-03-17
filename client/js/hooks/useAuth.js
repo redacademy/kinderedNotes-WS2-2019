@@ -30,9 +30,18 @@ const useAuth = () => {
     }
   }, [user, setUser, signupData, loginData, isLogin, setLocalUser])
 
+  useEffect(() => {
+    if (localUser === null) {
+      setUser(null)
+    } else if (localUser) {
+      setUser(localUser)
+    }
+  }, [localUser, setUser])
+
   return {
     user,
-    isLoggedIn: !!localUser && !!user,
+    loading: user === undefined,
+    isLoggedIn: !!user,
     signup,
     logout,
     login,
