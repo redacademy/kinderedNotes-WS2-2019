@@ -23,6 +23,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     overflow: 'hidden', // TODO: limit length and add ellipsis
   },
+  message: {
+    textAlign: 'center',
+    marginHorizontal: 60,
+  },
 })
 
 export default styles
