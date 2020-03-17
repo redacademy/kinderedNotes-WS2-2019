@@ -10,6 +10,7 @@ import {Bookmark, Input} from '../index'
 import styles from './ReceivedNote.styles'
 import {useMutation} from '@apollo/react-hooks'
 import {CREATE_NOTE_RESPONSE, FAVORITE_NOTE} from '../../context'
+import {COLORS} from '../styles'
 
 const ReceivedNote = () => {
   const [createNoteResponse] = useMutation(CREATE_NOTE_RESPONSE, {
@@ -44,8 +45,32 @@ const ReceivedNote = () => {
   return (
     <SafeAreaView style={styles.receivedContainer}>
       <View style={styles.container}>
-        <View style={styles.receivedNote}>
-          <Text style={styles.font}>{activeNote.message}</Text>
+        <View
+          style={{
+            ...styles.receivedNote,
+            ...(activeNote.style === 'BORDERED' &&
+              styles[`receivedNote${activeNote.color}`]),
+            ...(activeNote.style === 'FILL' &&
+              styles[`receivedNoteFill${activeNote.color}`]),
+          }}
+        >
+          <Text
+            style={{
+              ...styles.message,
+              fontFamily:
+                activeNote.font === 'DEFAULT'
+                  ? 'Nunito-SemiBold'
+                  : activeNote.font === 'HANDWRITTEN'
+                  ? 'Playlist-Script'
+                  : 'PermanentMarker',
+              color:
+                activeNote.style === 'FILL'
+                  ? COLORS.TEXT_PRIMARY.INVERT
+                  : COLORS.INPUT.PLACEHOLDER,
+            }}
+          >
+            {activeNote.message}
+          </Text>
           <Bookmark filled={isFavorite} onPress={toggleFavorite} />
         </View>
         <Input

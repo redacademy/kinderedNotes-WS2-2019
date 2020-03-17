@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import {COLORS} from '../styles'
 
 const styles = StyleSheet.create({
   receivedContainer: {
@@ -7,6 +8,7 @@ const styles = StyleSheet.create({
   },
   container: {
     width: 300,
+    height: '100%',
     marginRight: 'auto',
     marginLeft: 'auto',
   },
@@ -24,7 +26,22 @@ const styles = StyleSheet.create({
     height: 345,
     marginTop: 45,
     marginBottom: 35,
-    backgroundColor: '#48a9c5',
+  },
+  receivedNoteBLUE: {
+    borderColor: COLORS.ACCENT_BLUE,
+    borderWidth: 1.5,
+  },
+  receivedNoteGREEN: {
+    borderColor: COLORS.ACCENT_GREEN,
+    borderWidth: 1.5,
+  },
+  receivedNoteFillBLUE: {
+    backgroundColor: COLORS.ACCENT_BLUE,
+    borderColor: COLORS.ACCENT_BLUE,
+  },
+  receivedNoteFillGREEN: {
+    backgroundColor: COLORS.ACCENT_GREEN,
+    borderColor: COLORS.ACCENT_GREEN,
   },
   button: {
     position: 'absolute',
@@ -38,11 +55,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
   },
-  font: {
+  message: {
     color: '#fff',
-    fontWeight: '900',
-    fontFamily: 'Nunito-Bold',
     fontSize: 16,
+  },
+  response: {
+    marginVertical: 20,
   },
   replyButton: {
     width: '100%',
@@ -53,7 +71,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 30,
+    marginTop: 40,
+    alignSelf: 'flex-end',
   },
   reply: {
     color: '#fff',
