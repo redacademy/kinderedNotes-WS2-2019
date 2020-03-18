@@ -26,7 +26,10 @@ const Map = () => {
           <MapboxGL.Camera
             zoomLevel={1.25}
             minZoomLevel={1.25}
-            maxZoomLevel={2}
+            maxBounds={{
+              ne: [0],
+              sw: [75.079231, 150.151899],
+            }}
           />
           {activeNote.viewers.map((viewer, i) => (
             <Marker
