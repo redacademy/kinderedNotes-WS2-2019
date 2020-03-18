@@ -1,5 +1,11 @@
 import React, {useState} from 'react'
-import {View, SafeAreaView, ScrollView} from 'react-native'
+import {
+  View,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+  Text,
+} from 'react-native'
 import {Header} from '../Typography'
 import {
   AvatarSelect,
@@ -40,8 +46,8 @@ const CreateUserForm = ({authData}) => {
     <SafeAreaView
       style={{...globalStyles.noteArea, ...styles.container}}
     >
-      <ScrollView style={styles.scrollContainer}>
-        <View style={styles.profileContainer}>
+      <ScrollView>
+        <View>
           <Header>Profile Information</Header>
           <AvatarSelect
             currentAvatar={currentAvatar}
@@ -72,7 +78,9 @@ const CreateUserForm = ({authData}) => {
         {hasAcceptedTerms ? (
           <Button onPress={createUser}>Get Started</Button>
         ) : (
-          <Button onPress={openTerms}>Terms and conditions</Button>
+          <Button style={styles.termsButton2} onPress={openTerms}>
+            <Text style={styles.fontButton}>Terms & Conditions</Text>
+          </Button>
         )}
       </ScrollView>
 
