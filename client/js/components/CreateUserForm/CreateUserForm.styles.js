@@ -13,22 +13,25 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   termsContainer: {
-    position: 'absolute',
+    //position: 'absolute',
     top: 0,
     bottom: 0,
     width: '100%',
     backgroundColor: '#fff',
+    marginBottom: 250,
   },
   termsHeader: {
     marginVertical: 23,
   },
   termsText: {
     lineHeight: 27,
-    marginBottom: 100,
+    marginBottom: 50,
+  },
+  termsButton: {
+    backgroundColor: '#47b2d0',
   },
   termsButton2: {
     backgroundColor: '#ebf5f8',
-    width: 700,
   },
   fontButton: {
     color: '#636e74',
