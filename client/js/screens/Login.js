@@ -19,14 +19,14 @@ const Login = () => {
 
   return (
     <View style={styles.content}>
-      <Logo style={styles.logo} />
-
-      <Title blue>kindrednotes</Title>
-
       {tempUserData ? (
         <CreateUserForm authData={tempUserData} />
       ) : (
-        <AuthForm onSignUp={setTempUserData} />
+        <>
+          <Logo style={styles.logo} />
+          <Title blue>kindrednotes</Title>
+          <AuthForm onSignUp={setTempUserData} />
+        </>
       )}
     </View>
   )
