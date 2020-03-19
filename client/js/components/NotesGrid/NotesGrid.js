@@ -31,7 +31,7 @@ const NotesGrid = ({
 
   return (
     <View style={styles.container}>
-      {loading ? (
+      {loading || !data ? (
         <ActivityIndicator size="large" />
       ) : data.length === 0 ? (
         <Header style={styles.message}>{noItemsMessage}</Header>

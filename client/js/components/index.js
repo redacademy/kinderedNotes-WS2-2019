@@ -18,6 +18,7 @@ import {Step} from './Walkthrough'
 import TagsInput from './TagsInput'
 import TagsList from './TagsList'
 import IntroTransitionWrapper from './IntroTransitionWrapper'
+import UpdateLocalUser from './UpdateLocalUser'
 import styles from './Layout/Layout.styles'
 
 export {
@@ -41,5 +42,6 @@ export {
   TagsInput,
   TagsList,
   IntroTransitionWrapper,
+  UpdateLocalUser,
   styles,
 }

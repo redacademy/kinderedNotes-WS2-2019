@@ -42,11 +42,14 @@ const useAuth = () => {
     user,
     loading: user === undefined,
     isLoggedIn: !!user,
+    localUser,
     signup,
     logout,
     login,
     toggleIsLogin,
     isLogin,
+    setUser,
+    setLocalUser,
   }
 }
 

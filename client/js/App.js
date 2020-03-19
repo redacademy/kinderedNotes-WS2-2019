@@ -13,12 +13,12 @@ import {SiteTransitionWrapper} from './navigation'
 
 // TODO: refactor to `navigation/routes.js`
 import Navigation from './Navigation'
-import {IntroTransitionWrapper} from './components'
+import {IntroTransitionWrapper, UpdateLocalUser} from './components'
 import {useAuth} from './hooks'
 
 const App = () => {
   const [isFirstTimeUser, setIsFirstTimeUser] = useState(true)
-  const {user, loading} = useAuth()
+  const {localUser, user, loading} = useAuth()
 
   if (loading) {
     return null
@@ -26,7 +26,7 @@ const App = () => {
 
   return (
     <IntroTransitionWrapper>
-      {!user && isFirstTimeUser ? (
+      {!localUser && !user && isFirstTimeUser ? (
         <SafeAreaView>
           <Walkthrough onComplete={() => setIsFirstTimeUser(false)} />
         </SafeAreaView>
@@ -41,6 +41,7 @@ const App = () => {
                 AuthView={Login}
                 DefaultView={Navigation}
               />
+              {localUser && <UpdateLocalUser />}
             </ActiveNoteContextProvider>
           </TagsContextProvider>
         </>
