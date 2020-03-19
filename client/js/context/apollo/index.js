@@ -2,8 +2,9 @@ import client from './client'
 import {
   INBOX,
   OUTBOX,
-  VALIDATE_CITY,
+  GET_ACTIVE_USER,
   GET_CITY_COORDS,
+  VALIDATE_CITY,
 } from './queries'
 import {
   SIGN_UP,
@@ -19,8 +20,9 @@ export default client
 export {
   INBOX,
   OUTBOX,
-  VALIDATE_CITY,
+  GET_ACTIVE_USER,
   GET_CITY_COORDS,
+  VALIDATE_CITY,
   SIGN_UP,
   LOG_IN,
   UPDATE_USER,
