@@ -16,6 +16,10 @@ const MessageInput = ({value, onChangeText, style, font}) => (
         marginBottom: 20,
         textAlign: 'center',
         width: 220,
+        color:
+          style === 'FILL'
+            ? COLORS.TEXT_PRIMARY.INVERT
+            : COLORS.INPUT.PLACEHOLDER,
       }}
       type="text"
       name="note-message"
