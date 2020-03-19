@@ -1,11 +1,15 @@
-import React, {useState} from 'react'
+import React, {useState, useMemo} from 'react'
 import {
   SafeAreaView,
   View,
   Text,
   TouchableOpacity,
 } from 'react-native'
-import {useActiveNote, useAuth} from '../../hooks'
+import {
+  useActiveNote,
+  useAuth,
+  useUpdateActiveUser,
+} from '../../hooks'
 import {Bookmark, Input} from '../index'
 import styles from './ReceivedNote.styles'
 import {useMutation} from '@apollo/react-hooks'
@@ -13,15 +17,21 @@ import {CREATE_NOTE_RESPONSE, FAVORITE_NOTE} from '../../context'
 import {COLORS} from '../styles'
 
 const ReceivedNote = () => {
+  const triggerUpdateUser = useUpdateActiveUser()
   const [createNoteResponse] = useMutation(CREATE_NOTE_RESPONSE, {
     refetchQueries: ['inbox'],
   })
-  const [favoriteNote] = useMutation(FAVORITE_NOTE)
+  const [favoriteNote] = useMutation(FAVORITE_NOTE, {
+    refetchQueries: ['inbox', 'login'],
+  })
   const [replyInput, setReplyInput] = useState('')
   const {activeNote} = useActiveNote()
   const {user} = useAuth()
-  const isFavorite = user?.user?.favoriteNotes?.some(
-    ({id}) => id === activeNote.id,
+
+  const isFavorite = useMemo(
+    () =>
+      user?.user?.favoriteNotes?.some(({id}) => id === activeNote.id),
+    [user, activeNote],
   )
 
   const onReplySubmit = () => {
@@ -40,6 +50,7 @@ const ReceivedNote = () => {
     } else {
       favoriteNote({variables: {id: activeNote.id}})
     }
+    triggerUpdateUser()
   }
 
   return (

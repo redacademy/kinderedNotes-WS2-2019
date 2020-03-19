@@ -36,9 +36,25 @@ const OUTBOX = gql`
   }
 `
 
-const VALIDATE_CITY = gql`
-  query validateCity($city: String!) {
-    validateCity(city: $city)
+const GET_ACTIVE_USER = gql`
+  query getActiveUser {
+    me {
+      id
+      username
+      avatar
+      country
+      city
+      interests {
+        title
+      }
+      favoriteNotes {
+        id
+        message
+        color
+        style
+        font
+      }
+    }
   }
 `
 
@@ -51,4 +67,16 @@ const GET_CITY_COORDS = gql`
   }
 `
 
-export {INBOX, OUTBOX, VALIDATE_CITY, GET_CITY_COORDS}
+const VALIDATE_CITY = gql`
+  query validateCity($city: String!) {
+    validateCity(city: $city)
+  }
+`
+
+export {
+  INBOX,
+  OUTBOX,
+  GET_ACTIVE_USER,
+  GET_CITY_COORDS,
+  VALIDATE_CITY,
+}
