@@ -5,11 +5,7 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native'
-import {
-  useActiveNote,
-  useAuth,
-  useUpdateActiveUser,
-} from '../../hooks'
+import {useActiveNote, useAuth} from '../../hooks'
 import {Bookmark, Input} from '../index'
 import styles from './ReceivedNote.styles'
 import {useMutation} from '@apollo/react-hooks'
@@ -17,7 +13,6 @@ import {CREATE_NOTE_RESPONSE, FAVORITE_NOTE} from '../../context'
 import {COLORS} from '../styles'
 
 const ReceivedNote = () => {
-  const triggerUpdateUser = useUpdateActiveUser()
   const [createNoteResponse] = useMutation(CREATE_NOTE_RESPONSE, {
     refetchQueries: ['inbox'],
   })
@@ -50,7 +45,6 @@ const ReceivedNote = () => {
     } else {
       favoriteNote({variables: {id: activeNote.id}})
     }
-    triggerUpdateUser()
   }
 
   return (
