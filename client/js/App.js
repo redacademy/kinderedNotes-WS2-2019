@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {StatusBar, SafeAreaView} from 'react-native'
 import {ApolloProvider} from '@apollo/react-hooks'
 import {Login, Walkthrough} from './screens'
@@ -13,7 +13,7 @@ import {SiteTransitionWrapper} from './navigation'
 
 // TODO: refactor to `navigation/routes.js`
 import Navigation from './Navigation'
-import {IntroTransitionWrapper, UpdateLocalUser} from './components'
+import {IntroTransitionWrapper} from './components'
 import {useAuth} from './hooks'
 
 const App = () => {
@@ -41,7 +41,6 @@ const App = () => {
                 AuthView={Login}
                 DefaultView={Navigation}
               />
-              {localUser && <UpdateLocalUser />}
             </ActiveNoteContextProvider>
           </TagsContextProvider>
         </>
