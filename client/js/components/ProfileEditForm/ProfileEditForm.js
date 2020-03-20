@@ -4,13 +4,11 @@ import {useMutation} from '@apollo/react-hooks'
 import {useAuth} from '../../hooks'
 import {UPDATE_USER} from '../../context'
 import {TagsInput, TagsList, NotesGrid} from '../index'
-//import {Header} from '../Typography'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
 import styles from './ProfileEditForm.styles'
 import AvatarSelect from '../AvatarSelect'
 import LogoutButton from '../LogoutButton'
-import {AuthText, Header} from '../Typography'
-import {Button, Input} from '../index'
+import {Header} from '../Typography'
 
 const ProfileEditForm = ({navigation}) => {
   const [updateUser] = useMutation(UPDATE_USER)
