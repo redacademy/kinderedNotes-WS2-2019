@@ -9,25 +9,34 @@ import {useActiveNote, useAuth} from '../../hooks'
 import {Bookmark, Input} from '../index'
 import styles from './ReceivedNote.styles'
 import {useMutation} from '@apollo/react-hooks'
-import {CREATE_NOTE_RESPONSE, FAVORITE_NOTE} from '../../context'
+import {
+  CREATE_NOTE_RESPONSE,
+  FAVORITE_NOTE,
+  UNFAVORITE_NOTE,
+} from '../../context'
 import {COLORS} from '../styles'
 
 const ReceivedNote = () => {
+  const [replyInput, setReplyInput] = useState('')
+  const {activeNote} = useActiveNote()
+  const {user} = useAuth()
+  const isFavorite = useMemo(
+    () =>
+      user?.user?.favoriteNotes?.some(({id}) => id === activeNote.id),
+    [user, activeNote],
+  )
+  const [optimisticIsFavorite, setOptimisticIsFavorite] = useState(
+    isFavorite,
+  )
   const [createNoteResponse] = useMutation(CREATE_NOTE_RESPONSE, {
     refetchQueries: ['inbox'],
   })
   const [favoriteNote] = useMutation(FAVORITE_NOTE, {
     refetchQueries: ['inbox', 'login'],
   })
-  const [replyInput, setReplyInput] = useState('')
-  const {activeNote} = useActiveNote()
-  const {user} = useAuth()
-
-  const isFavorite = useMemo(
-    () =>
-      user?.user?.favoriteNotes?.some(({id}) => id === activeNote.id),
-    [user, activeNote],
-  )
+  const [unfavoriteNote] = useMutation(UNFAVORITE_NOTE, {
+    refetchQueries: ['inbox', 'login'],
+  })
 
   const onReplySubmit = () => {
     createNoteResponse({
@@ -40,10 +49,12 @@ const ReceivedNote = () => {
   }
 
   const toggleFavorite = () => {
-    if (isFavorite) {
-      console.log('TODO: remove note as favorite')
+    if (optimisticIsFavorite) {
+      unfavoriteNote({variables: {id: activeNote.id}})
+      setOptimisticIsFavorite(false)
     } else {
       favoriteNote({variables: {id: activeNote.id}})
+      setOptimisticIsFavorite(true)
     }
   }
 
@@ -76,7 +87,10 @@ const ReceivedNote = () => {
           >
             {activeNote.message}
           </Text>
-          <Bookmark filled={isFavorite} onPress={toggleFavorite} />
+          <Bookmark
+            filled={optimisticIsFavorite}
+            onPress={toggleFavorite}
+          />
         </View>
         <Input
           value={replyInput}

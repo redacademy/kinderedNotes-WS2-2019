@@ -133,6 +133,14 @@ const FAVORITE_NOTE = gql`
   }
 `
 
+const UNFAVORITE_NOTE = gql`
+  mutation unfavoriteNote($id: String!) {
+    unfavoriteNote(id: $id) {
+      id
+    }
+  }
+`
+
 export {
   SIGN_UP,
   LOG_IN,
@@ -141,4 +149,5 @@ export {
   CREATE_NOTE,
   CREATE_NOTE_RESPONSE,
   FAVORITE_NOTE,
+  UNFAVORITE_NOTE,
 }
