@@ -11,13 +11,15 @@ import AvatarSelect from '../AvatarSelect'
 import LogoutButton from '../LogoutButton'
 
 const ProfileEditForm = ({navigation}) => {
-  const [updateUser] = useMutation(UPDATE_USER)
+  const [updateUser] = useMutation(UPDATE_USER, {
+    refetchQueries: ['inbox', 'getActiveUser'],
+  })
   const {user} = useAuth()
   const [currentAvatar, setCurrentAvatar] = useState(
     user?.user?.avatar,
   )
   const [currentInterests, setCurrentInterests] = useState(
-    user?.user?.interests.map(({title}) => title),
+    user?.user?.interests?.map(({title}) => title) || [],
   )
 
   useEffect(() => {
