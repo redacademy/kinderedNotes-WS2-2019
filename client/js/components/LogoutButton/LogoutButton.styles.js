@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 190,
+    marginTop: 230,
   },
   click: {
     color: '#b2b2b2',
