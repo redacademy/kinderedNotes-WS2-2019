@@ -13,11 +13,19 @@ const Bookmark = ({onPress, filled = false}) => {
   const {activeNote} = useActiveNote()
   return (
     <TouchableOpacity style={styles.bookmark} onPress={onPress}>
-      {activeNote.style === 'BORDERED' ? (
+      {activeNote.style === 'BORDERED' &&
+      activeNote.color === 'BLUE' ? (
         filled ? (
           <BlueBookmarkIconFill />
         ) : (
           <BookmarkBlue />
+        )
+      ) : activeNote.style === 'BORDERED' &&
+        activeNote.color === 'GREEN' ? (
+        filled ? (
+          <GreenBookmarkIconFill />
+        ) : (
+          <BookmarkGreen />
         )
       ) : filled ? (
         <BookmarkIconFill />

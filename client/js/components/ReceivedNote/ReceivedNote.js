@@ -17,7 +17,7 @@ import {CREATE_NOTE_RESPONSE, FAVORITE_NOTE} from '../../context'
 import {COLORS} from '../styles'
 
 const ReceivedNote = () => {
-  // const triggerUpdateUser = useUpdateActiveUser()
+  const triggerUpdateUser = useUpdateActiveUser()
   const [createNoteResponse] = useMutation(CREATE_NOTE_RESPONSE, {
     refetchQueries: ['inbox'],
   })
