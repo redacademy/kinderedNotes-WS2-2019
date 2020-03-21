@@ -22,7 +22,7 @@ const ReceivedNote = () => {
     refetchQueries: ['inbox'],
   })
   const [favoriteNote] = useMutation(FAVORITE_NOTE, {
-    refetchQueries: ['inbox', 'login'],
+    refetchQueries: ['inbox', 'getActiveUser'],
   })
   const [replyInput, setReplyInput] = useState('')
   const {activeNote} = useActiveNote()

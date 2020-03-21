@@ -1,6 +1,11 @@
 import {useContext, useEffect, useState} from 'react'
-import {useMutation} from '@apollo/react-hooks'
-import {AuthContext, SIGN_UP, LOG_IN} from '../context'
+import {useMutation, useLazyQuery} from '@apollo/react-hooks'
+import {
+  AuthContext,
+  SIGN_UP,
+  LOG_IN,
+  GET_ACTIVE_USER,
+} from '../context'
 import {useAsyncStorage} from '../hooks'
 
 const useAuth = () => {
@@ -10,6 +15,9 @@ const useAuth = () => {
   const [signup, {data: signupData}] = useMutation(SIGN_UP)
   const [login, {data: loginData}] = useMutation(LOG_IN)
   const [localUser, setLocalUser] = useAsyncStorage('kindred-user')
+  const [updateUserData, {data: updatedUserData}] = useLazyQuery(
+    GET_ACTIVE_USER,
+  )
 
   const logout = () => {
     setUser(null)
@@ -34,9 +42,21 @@ const useAuth = () => {
     if (localUser === null) {
       setUser(null)
     } else if (localUser) {
-      setUser(localUser)
+      updateUserData()
     }
   }, [localUser, setUser])
+
+  useEffect(() => {
+    if (
+      localUser &&
+      updatedUserData &&
+      JSON.stringify(user?.user) !==
+        JSON.stringify(updatedUserData?.me)
+    ) {
+      setUser({...localUser, user: updatedUserData.me})
+      setLocalUser({...localUser, user: updatedUserData.me})
+    }
+  }, [updatedUserData])
 
   return {
     user,

@@ -13,13 +13,15 @@ import {AuthText, Header} from '../Typography'
 import {Button, Input} from '../index'
 
 const ProfileEditForm = ({navigation}) => {
-  const [updateUser] = useMutation(UPDATE_USER)
+  const [updateUser] = useMutation(UPDATE_USER, {
+    refetchQueries: ['inbox', 'getActiveUser'],
+  })
   const {user} = useAuth()
   const [currentAvatar, setCurrentAvatar] = useState(
     user?.user?.avatar,
   )
   const [currentInterests, setCurrentInterests] = useState(
-    user?.user?.interests.map(({title}) => title),
+    user?.user?.interests?.map(({title}) => title) || [],
   )
 
   useEffect(() => {
