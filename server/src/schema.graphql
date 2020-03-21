@@ -29,6 +29,7 @@ type Mutation {
   ): Note!
   viewNote(id: String!): Note!
   favoriteNote(id: String!): Note!
+  unfavoriteNote(id: String!): Note!
   createNoteResponse(id: String!, message: String!): Note!
   updateInterests(interests: [String!]!): User!
 }

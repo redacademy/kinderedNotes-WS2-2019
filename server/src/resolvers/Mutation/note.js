@@ -65,6 +65,19 @@ const note = {
     })
   },
 
+  async unfavoriteNote(parent, {id}, context) {
+    const userId = getUserId(context)
+
+    return context.prisma.updateUser({
+      where: {id: userId},
+      data: {
+        favoriteNotes: {
+          disconnect: {id},
+        },
+      },
+    })
+  },
+
   async createNoteResponse(parent, {id, message}, context) {
     const userId = getUserId(context)
 
