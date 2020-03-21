@@ -15,6 +15,13 @@ const useAuth = () => {
   const [signup, {data: signupData}] = useMutation(SIGN_UP)
   const [login, {data: loginData}] = useMutation(LOG_IN)
   const [localUser, setLocalUser] = useAsyncStorage('kindred-user')
+  const [
+    hasCompletedWalkthrough,
+    setHasCompletedWalkthrough,
+  ] = useState(false)
+  const [isReturningVisitor, setIsReturningVisitor] = useAsyncStorage(
+    'kindred-visitor',
+  )
   const [updateUserData, {data: updatedUserData}] = useLazyQuery(
     GET_ACTIVE_USER,
   )
@@ -58,6 +65,11 @@ const useAuth = () => {
     }
   }, [updatedUserData])
 
+  const onWalkthroughComplete = () => {
+    setIsReturningVisitor(true)
+    setHasCompletedWalkthrough(true)
+  }
+
   return {
     user,
     loading: user === undefined,
@@ -70,6 +82,8 @@ const useAuth = () => {
     isLogin,
     setUser,
     setLocalUser,
+    isReturningVisitor: hasCompletedWalkthrough || isReturningVisitor,
+    onWalkthroughComplete,
   }
 }
 
