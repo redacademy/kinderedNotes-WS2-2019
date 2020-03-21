@@ -61,7 +61,9 @@ const auth = {
 
   async updateUser(parent, {avatar, interests}, context) {
     const userId = getUserId(context)
+    const currentInterests = await context.prisma.user({id: userId}).interests()
     const allInterests = await context.prisma.interests()
+
     const {existingInterests, newInterests} = interests.reduce(
       (interestSummary, interest) => {
         const existingEntry =
@@ -84,14 +86,20 @@ const auth = {
       {existingInterests: [], newInterests: []},
     )
 
+    const removedInterests = currentInterests
+      .filter(
+        interest => interest.id && !existingInterests.includes(interest.id),
+      )
+      .map(({id}) => id)
+
     return context.prisma.updateUser({
       where: {id: userId},
       data: {
         avatar,
-        // FIXME: deleted interests are not removed
         interests: {
           create: newInterests.map(title => ({title})),
           connect: existingInterests.map(id => ({id})),
+          disconnect: removedInterests.map(id => ({id})),
         },
       },
     })

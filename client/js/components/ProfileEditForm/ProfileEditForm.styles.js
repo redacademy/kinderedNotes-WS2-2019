@@ -6,10 +6,9 @@ const styles = StyleSheet.create({
     height: '100%',
     display: 'flex',
     alignContent: 'center',
-    paddingTop: 50,
+    paddingTop: 20,
   },
   container: {
-    flex: 1,
     width: 300,
     alignSelf: 'center',
   },
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
     color: '#47b2d0',
     alignSelf: 'center',
     paddingTop: 20,
-    paddingBottom: 30,
+    paddingBottom: 35,
   },
 })
 export default styles

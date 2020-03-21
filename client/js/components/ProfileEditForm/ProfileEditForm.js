@@ -4,20 +4,24 @@ import {useMutation} from '@apollo/react-hooks'
 import {useAuth} from '../../hooks'
 import {UPDATE_USER} from '../../context'
 import {TagsInput, TagsList, NotesGrid} from '../index'
-import {Header} from '../Typography'
+//import {Header} from '../Typography'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
 import styles from './ProfileEditForm.styles'
 import AvatarSelect from '../AvatarSelect'
 import LogoutButton from '../LogoutButton'
+import {AuthText, Header} from '../Typography'
+import {Button, Input} from '../index'
 
 const ProfileEditForm = ({navigation}) => {
-  const [updateUser] = useMutation(UPDATE_USER)
+  const [updateUser] = useMutation(UPDATE_USER, {
+    refetchQueries: ['inbox', 'getActiveUser'],
+  })
   const {user} = useAuth()
   const [currentAvatar, setCurrentAvatar] = useState(
     user?.user?.avatar,
   )
   const [currentInterests, setCurrentInterests] = useState(
-    user?.user?.interests.map(({title}) => title),
+    user?.user?.interests?.map(({title}) => title) || [],
   )
 
   useEffect(() => {
@@ -36,8 +40,6 @@ const ProfileEditForm = ({navigation}) => {
     <View style={styles.profileContainer}>
       <View style={styles.container}>
         <GeneralStatusBarColor />
-
-        <LogoutButton />
 
         <AvatarSelect
           currentAvatar={currentAvatar}
@@ -60,15 +62,17 @@ const ProfileEditForm = ({navigation}) => {
           setTags={setCurrentInterests}
         />
       </View>
+      <View style={styles.container}>
+        <Header>Favourite Notes</Header>
 
-      <Header>Favourite Notes</Header>
-
-      <NotesGrid
-        data={user?.user?.favoriteNotes}
-        onNotePress={onNotePress}
-        loading={false}
-        error={null}
-      />
+        <NotesGrid
+          data={user?.user?.favoriteNotes}
+          onNotePress={onNotePress}
+          loading={false}
+          error={null}
+        />
+      </View>
+      <LogoutButton />
     </View>
   )
 }
