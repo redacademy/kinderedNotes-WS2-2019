@@ -3,8 +3,10 @@ import {TouchableOpacity} from 'react-native'
 import {useActiveNote} from '../../hooks'
 import BookmarkIcon from '../../../assets/icons/Bookmark.svg'
 import BookmarkBlue from '../../../assets/icons/BookmarkBlue.svg'
+import BookmarkGreen from '../../../assets/icons/BookmarkGreen.svg'
 import BookmarkIconFill from '../../../assets/icons/Bookmark_filled.svg'
 import BlueBookmarkIconFill from '../../../assets/icons/Bookmark_filledBlue.svg'
+import GreenBookmarkIconFill from '../../../assets/icons/Bookmark_filledGreen.svg'
 import styles from './Bookmark.styles'
 
 const Bookmark = ({onPress, filled = false}) => {
