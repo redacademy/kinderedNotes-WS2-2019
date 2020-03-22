@@ -2,10 +2,13 @@ import {StyleSheet} from 'react-native'
 
 const styles = StyleSheet.create({
   logoutContainer: {
+    position: 'absolute',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    marginTop: 230,
+    // alignContent: 'flex-end',
+    marginTop: 720,
+    marginLeft: 130,
   },
   click: {
     color: '#b2b2b2',

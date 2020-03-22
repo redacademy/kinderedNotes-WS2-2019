@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     width: 300,
     alignSelf: 'center',
   },
-  blueText: {
+  usernameTag: {
     fontFamily: 'Nunito-SemiBold',
     fontSize: 14,
     lineHeight: 19,

@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 
 const httpLink = createHttpLink({
   uri: `http://${
-    Platform.OS === 'ios' ? 'localhost:4000' : '10.0.0.184:4000'
+    Platform.OS === 'ios' ? 'localhost:4000' : '192.168.0.187'
   }`,
 })
 
