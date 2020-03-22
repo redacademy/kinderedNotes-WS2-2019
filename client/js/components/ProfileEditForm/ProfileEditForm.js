@@ -4,13 +4,12 @@ import {useMutation} from '@apollo/react-hooks'
 import {useAuth} from '../../hooks'
 import {UPDATE_USER} from '../../context'
 import {TagsInput, TagsList, NotesGrid} from '../index'
-//import {Header} from '../Typography'
 import GeneralStatusBarColor from '../GeneralStatusBarColor'
 import styles from './ProfileEditForm.styles'
 import AvatarSelect from '../AvatarSelect'
 import LogoutButton from '../LogoutButton'
-import {AuthText, Header} from '../Typography'
-import {Button, Input} from '../index'
+import {Header} from '../Typography'
+import {ScrollView} from 'react-native-gesture-handler'
 
 const ProfileEditForm = ({navigation}) => {
   const [updateUser] = useMutation(UPDATE_USER, {
@@ -39,7 +38,7 @@ const ProfileEditForm = ({navigation}) => {
   return (
     <View style={styles.profileContainer}>
       <View style={styles.container}>
-        <GeneralStatusBarColor />
+        {/* <GeneralStatusBarColor /> */}
 
         <AvatarSelect
           currentAvatar={currentAvatar}
@@ -47,7 +46,7 @@ const ProfileEditForm = ({navigation}) => {
           large
         />
 
-        <Text style={styles.blueText}>{user?.user?.username}</Text>
+        <Text style={styles.usernameTag}>{user?.user?.username}</Text>
 
         <Header>Topics of Interest</Header>
 
@@ -56,21 +55,19 @@ const ProfileEditForm = ({navigation}) => {
           onChange={setCurrentInterests}
           placeholder="Anxiety"
         />
-
-        <TagsList
-          tags={currentInterests}
-          setTags={setCurrentInterests}
-        />
-      </View>
-      <View style={styles.container}>
-        <Header>Favourite Notes</Header>
-
-        <NotesGrid
-          data={user?.user?.favoriteNotes}
-          onNotePress={onNotePress}
-          loading={false}
-          error={null}
-        />
+        <ScrollView>
+          <TagsList
+            tags={currentInterests}
+            setTags={setCurrentInterests}
+          />
+          <Header>Favourite Notes</Header>
+          <NotesGrid
+            data={user?.user?.favoriteNotes}
+            onNotePress={onNotePress}
+            loading={false}
+            error={null}
+          />
+        </ScrollView>
       </View>
       <LogoutButton />
     </View>
