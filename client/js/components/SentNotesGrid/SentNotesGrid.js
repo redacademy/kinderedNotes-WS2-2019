@@ -4,9 +4,10 @@ import {OUTBOX} from '../../context/apollo'
 import {NotesGrid} from '../index'
 
 const SentNotesGrid = ({navigation}) => {
-  const {loading, error, data} = useQuery(OUTBOX, {
-    fetchPolicy: 'network-only',
-  })
+  // const {loading, error, data} = useQuery(OUTBOX, {
+  //   fetchPolicy: 'network-only',
+  // })
+  const {loading, error, data} = useQuery(OUTBOX)
 
   // FIXME: sort in query
   return (
