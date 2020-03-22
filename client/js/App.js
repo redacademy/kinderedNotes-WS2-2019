@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {StatusBar, SafeAreaView} from 'react-native'
 import {ApolloProvider} from '@apollo/react-hooks'
 import {Login, Walkthrough} from './screens'
@@ -17,8 +17,11 @@ import {IntroTransitionWrapper} from './components'
 import {useAuth} from './hooks'
 
 const App = () => {
-  const [isFirstTimeUser, setIsFirstTimeUser] = useState(true)
-  const {localUser, user, loading} = useAuth()
+  const {
+    loading,
+    isReturningVisitor,
+    onWalkthroughComplete,
+  } = useAuth()
 
   if (loading) {
     return null
@@ -26,11 +29,7 @@ const App = () => {
 
   return (
     <IntroTransitionWrapper>
-      {!localUser && !user && isFirstTimeUser ? (
-        <SafeAreaView>
-          <Walkthrough onComplete={() => setIsFirstTimeUser(false)} />
-        </SafeAreaView>
-      ) : (
+      {isReturningVisitor ? (
         <>
           <StatusBar barStyle="dark-content" />
           {/* <GeneralStatusBarColor /> */}
@@ -44,6 +43,10 @@ const App = () => {
             </ActiveNoteContextProvider>
           </TagsContextProvider>
         </>
+      ) : (
+        <SafeAreaView>
+          <Walkthrough onComplete={() => onWalkthroughComplete()} />
+        </SafeAreaView>
       )}
     </IntroTransitionWrapper>
   )
