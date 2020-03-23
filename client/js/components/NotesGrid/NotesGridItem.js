@@ -11,6 +11,9 @@ const NotesGridItem = ({style, color, onPress, children}) => (
         style === 'BORDERED'
           ? COLORS.TEXT_PRIMARY.INVERT
           : COLORS[`ACCENT_${color}`],
+      borderColor:
+        style === 'BORDERED' ? COLORS[`ACCENT_${color}`] : 0,
+      borderWidth: style === 'BORDERED' ? 0.5 : 0,
     }}
     onPress={onPress}
   >

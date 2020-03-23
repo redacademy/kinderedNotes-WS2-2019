@@ -36,7 +36,7 @@ const ProfileEditForm = ({navigation}) => {
   const onNotePress = () => navigation.navigate('ReceivedNote')
 
   return (
-    <View style={styles.profileContainer}>
+    <ScrollView style={styles.profileContainer}>
       <View style={styles.container}>
         {/* <GeneralStatusBarColor /> */}
 
@@ -55,22 +55,29 @@ const ProfileEditForm = ({navigation}) => {
           onChange={setCurrentInterests}
           placeholder="Anxiety"
         />
-        <ScrollView>
+        <View>
           <TagsList
             tags={currentInterests}
             setTags={setCurrentInterests}
           />
-          <Header>Favourite Notes</Header>
-          <NotesGrid
-            data={user?.user?.favoriteNotes}
-            onNotePress={onNotePress}
-            loading={false}
-            error={null}
-          />
-        </ScrollView>
+
+          <LogoutButton />
+          {user?.user?.favoriteNotes.length >= 1 ? (
+            <Header style={{marginTop: 20, marginBottom: 30}}>
+              Favourite Notes
+            </Header>
+          ) : null}
+        </View>
       </View>
-      <LogoutButton />
-    </View>
+      <View>
+        <NotesGrid
+          data={user?.user?.favoriteNotes}
+          onNotePress={onNotePress}
+          loading={false}
+          error={null}
+        />
+      </View>
+    </ScrollView>
   )
 }
 

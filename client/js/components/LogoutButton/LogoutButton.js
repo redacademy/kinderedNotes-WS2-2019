@@ -9,7 +9,7 @@ const LogoutButton = () => {
 
   return (
     <View style={styles.logoutContainer}>
-      <Text style={styles.click}>Click here to </Text>
+      <Text style={styles.click}>Not your account? </Text>
       <TouchableOpacity onPress={logout} style={styles.authToggle}>
         <Text style={styles.logout}>Logout</Text>
       </TouchableOpacity>

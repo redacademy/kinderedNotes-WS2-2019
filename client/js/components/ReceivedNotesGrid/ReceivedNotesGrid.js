@@ -5,10 +5,9 @@ import {NotesGrid} from '../index'
 import MessageNote from '../../../assets/icons/Message_Note'
 
 const ReceivedNotesGrid = ({navigation}) => {
-  // const {loading, error, data} = useQuery(INBOX, {
-  //   fetchPolicy: 'network-only',
-  // })
-  const {loading, error, data} = useQuery(INBOX)
+  const {loading, error, data} = useQuery(INBOX, {
+    fetchPolicy: 'network-only',
+  })
   const [viewNote] = useMutation(VIEW_NOTE)
 
   // FIXME: sort in query

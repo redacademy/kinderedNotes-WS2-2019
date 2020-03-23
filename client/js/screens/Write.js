@@ -46,7 +46,9 @@ const Write = ({navigation}) => {
           options={options}
           onChangeOptions={handleOptionsChange}
         />
-        <Header>Tag related topics</Header>
+        <Header style={{alignSelf: 'flex-start', paddingBottom: 0}}>
+          Tag related topics
+        </Header>
         <TagsInput
           value={tags}
           onChange={setTags}
