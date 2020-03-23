@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     height: 345,
     marginTop: 45,
     marginBottom: 35,
+    backgroundColor: '#fff',
   },
   receivedNoteBLUE: {
     borderColor: COLORS.ACCENT_BLUE,
