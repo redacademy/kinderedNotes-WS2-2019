@@ -10,16 +10,17 @@ const Notes = () => (
     <View style={{height: '100%'}}>
       <Tab.Navigator
         tabBarOptions={{
+          activeTintColor: '#48a9c6',
+          inactiveTintColor: '#83c4d6',
           labelStyle: {
             fontSize: 16,
             textTransform: 'capitalize',
-            color: '#48a9c6',
             fontFamily: 'Nunito-Bold',
           },
-          tabStyle: {},
           style: {
             backgroundColor: '#eaf5f8',
           },
+
           indicatorStyle: {
             bottom: 0,
             backgroundColor: '#48a9c6',
