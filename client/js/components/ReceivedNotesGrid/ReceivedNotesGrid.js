@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useQuery, useMutation} from '@apollo/react-hooks'
 import {INBOX, VIEW_NOTE} from '../../context/apollo'
 import {NotesGrid} from '../index'
@@ -6,10 +6,14 @@ import MessageNote from '../../../assets/icons/Message_Note'
 import MessageNoteOpen from '../../../assets/icons/Message_Note_Open'
 
 const ReceivedNotesGrid = ({navigation}) => {
-  const {loading, error, data} = useQuery(INBOX, {
+  const {loading, error, data, startPolling} = useQuery(INBOX, {
     fetchPolicy: 'network-only',
   })
   const [viewNote] = useMutation(VIEW_NOTE)
+
+  useEffect(() => {
+    startPolling(1000)
+  }, [startPolling])
 
   // FIXME: sort in query
   return (
