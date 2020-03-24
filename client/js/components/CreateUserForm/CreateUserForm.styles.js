@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     bottom: 0,
   },
   termsContainer: {
-    //position: 'absolute',
+    position: 'absolute',
     top: 0,
     bottom: 0,
     width: '100%',
