@@ -121,8 +121,7 @@ export default function Navigation() {
           style: {
             backgroundColor: '#eaf5f8',
             height: 95,
-            borderBottomColor: 'red',
-            borderBottomWidth: 0,
+            paddingBottom: 20,
             shadowColor: 'transparent',
           },
         }}
