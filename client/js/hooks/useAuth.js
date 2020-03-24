@@ -46,12 +46,16 @@ const useAuth = () => {
   }, [user, setUser, signupData, loginData, isLogin, setLocalUser])
 
   useEffect(() => {
-    if (localUser === null) {
+    if (localUser === null && !user) {
       setUser(null)
-    } else if (localUser) {
+    }
+  }, [localUser])
+
+  useEffect(() => {
+    if (localUser || user) {
       updateUserData()
     }
-  }, [localUser, setUser])
+  }, [localUser])
 
   useEffect(() => {
     if (
