@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     width: 300,
     height: 280,
-    marginTop: 45,
+    marginTop: 30,
     marginBottom: 35,
   },
   messageContainer: {

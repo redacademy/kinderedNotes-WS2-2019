@@ -15,6 +15,7 @@ import {
   UNFAVORITE_NOTE,
 } from '../../context'
 import {COLORS} from '../styles'
+import {ScrollView} from 'react-native-gesture-handler'
 
 const ReceivedNote = () => {
   const [replyInput, setReplyInput] = useState('')
@@ -60,50 +61,52 @@ const ReceivedNote = () => {
 
   return (
     <SafeAreaView style={styles.receivedContainer}>
-      <View style={styles.container}>
-        <View
-          style={{
-            ...styles.receivedNote,
-            ...(activeNote.style === 'BORDERED' &&
-              styles[`receivedNote${activeNote.color}`]),
-            ...(activeNote.style === 'FILL' &&
-              styles[`receivedNoteFill${activeNote.color}`]),
-          }}
-        >
-          <Text
+      <ScrollView>
+        <View style={styles.container}>
+          <View
             style={{
-              ...styles.message,
-              fontFamily:
-                activeNote.font === 'DEFAULT'
-                  ? 'Nunito-SemiBold'
-                  : activeNote.font === 'HANDWRITTEN'
-                  ? 'Playlist-Script'
-                  : 'PermanentMarker',
-              color:
-                activeNote.style === 'FILL'
-                  ? COLORS.TEXT_PRIMARY.INVERT
-                  : COLORS.INPUT.PLACEHOLDER,
+              ...styles.receivedNote,
+              ...(activeNote.style === 'BORDERED' &&
+                styles[`receivedNote${activeNote.color}`]),
+              ...(activeNote.style === 'FILL' &&
+                styles[`receivedNoteFill${activeNote.color}`]),
             }}
           >
-            {activeNote.message}
-          </Text>
-          <Bookmark
-            filled={optimisticIsFavorite}
-            onPress={toggleFavorite}
+            <Text
+              style={{
+                ...styles.message,
+                fontFamily:
+                  activeNote.font === 'DEFAULT'
+                    ? 'Nunito-SemiBold'
+                    : activeNote.font === 'HANDWRITTEN'
+                    ? 'Playlist-Script'
+                    : 'PermanentMarker',
+                color:
+                  activeNote.style === 'FILL'
+                    ? COLORS.TEXT_PRIMARY.INVERT
+                    : COLORS.INPUT.PLACEHOLDER,
+              }}
+            >
+              {activeNote.message}
+            </Text>
+            <Bookmark
+              filled={optimisticIsFavorite}
+              onPress={toggleFavorite}
+            />
+          </View>
+          <Input
+            value={replyInput}
+            onChangeText={setReplyInput}
+            placeholder={'Thanks for this note.'}
           />
+          <TouchableOpacity
+            onPress={onReplySubmit}
+            style={styles.replyButton}
+          >
+            <Text style={styles.reply}>Reply</Text>
+          </TouchableOpacity>
         </View>
-        <Input
-          value={replyInput}
-          onChangeText={setReplyInput}
-          placeholder={'Thanks for this note.'}
-        />
-        <TouchableOpacity
-          onPress={onReplySubmit}
-          style={styles.replyButton}
-        >
-          <Text style={styles.reply}>Reply</Text>
-        </TouchableOpacity>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }
