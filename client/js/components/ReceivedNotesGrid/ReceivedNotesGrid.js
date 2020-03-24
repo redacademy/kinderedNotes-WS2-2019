@@ -3,6 +3,7 @@ import {useQuery, useMutation} from '@apollo/react-hooks'
 import {INBOX, VIEW_NOTE} from '../../context/apollo'
 import {NotesGrid} from '../index'
 import MessageNote from '../../../assets/icons/Message_Note'
+import MessageNoteOpen from '../../../assets/icons/Message_Note_Open'
 
 const ReceivedNotesGrid = ({navigation}) => {
   const {loading, error, data} = useQuery(INBOX, {
@@ -22,6 +23,7 @@ const ReceivedNotesGrid = ({navigation}) => {
       loading={loading}
       error={error}
       Icon={MessageNote}
+      OpenIcon={MessageNoteOpen}
       noItemsMessage="Add some more interests to your profile and start receiving kind notes!"
     />
   )

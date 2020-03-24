@@ -1,6 +1,6 @@
 import React from 'react'
 import {View, Text, FlatList, ActivityIndicator} from 'react-native'
-import {useActiveNote} from '../../hooks'
+import {useActiveNote, useAuth} from '../../hooks'
 import {COLORS} from '../styles'
 import {Header} from '../Typography'
 import NotesGridItem from './NotesGridItem'
@@ -12,9 +12,11 @@ const NotesGrid = ({
   error,
   noItemsMessage,
   Icon,
+  OpenIcon,
   onNotePress,
   bg,
 }) => {
+  const {user} = useAuth()
   const {setActiveNote} = useActiveNote()
   const handleNotePress = item => {
     setActiveNote(item)
@@ -41,11 +43,17 @@ const NotesGrid = ({
           renderItem={({item}) => (
             <NotesGridItem
               color={bg || item.color}
-              style={item.style}
+              style={!bg && item.style}
               onPress={() => handleNotePress(item)}
             >
               {Icon ? (
-                <Icon width="95" />
+                item.viewers?.some(
+                  ({id}) => id === user?.user?.id,
+                ) ? (
+                  <OpenIcon width="95" />
+                ) : (
+                  <Icon width="95" />
+                )
               ) : (
                 <Text
                   style={{
