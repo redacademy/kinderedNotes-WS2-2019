@@ -8,6 +8,9 @@ const INBOX = gql`
       color
       style
       font
+      viewers {
+        id
+      }
     }
   }
 `
