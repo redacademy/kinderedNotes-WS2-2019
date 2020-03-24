@@ -23,9 +23,9 @@ const App = () => {
     onWalkthroughComplete,
   } = useAuth()
 
-  if (loading) {
-    return null
-  }
+  // if (loading) {
+  //   return null
+  // }
 
   return (
     <IntroTransitionWrapper>
