@@ -10,6 +10,7 @@ import {
 import {Header} from '../components/Typography'
 import {TagsContext} from '../context'
 import {useCreateNote} from '../hooks'
+import {ScrollView} from 'react-native-gesture-handler'
 
 const Write = ({navigation}) => {
   const [messageInput, setMessageInput] = useState('')
@@ -39,24 +40,26 @@ const Write = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.noteArea}>
-        <Note
-          value={messageInput}
-          onChangeText={setMessageInput}
-          options={options}
-          onChangeOptions={handleOptionsChange}
-        />
-        <Header style={{alignSelf: 'flex-start', paddingBottom: 0}}>
-          Tag related topics
-        </Header>
-        <TagsInput
-          value={tags}
-          onChange={setTags}
-          placeholder="Anxiety"
-        />
-        <TagsList tags={tags} setTags={setTags} />
-        <Button onPress={submitNote}>Post</Button>
-      </View>
+      <ScrollView>
+        <View style={styles.noteArea}>
+          <Note
+            value={messageInput}
+            onChangeText={setMessageInput}
+            options={options}
+            onChangeOptions={handleOptionsChange}
+          />
+          <Header style={{alignSelf: 'flex-start', paddingBottom: 0}}>
+            Tag related topics
+          </Header>
+          <TagsInput
+            value={tags}
+            onChange={setTags}
+            placeholder="Anxiety"
+          />
+          <TagsList tags={tags} setTags={setTags} />
+          <Button onPress={submitNote}>Post</Button>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   )
 }
