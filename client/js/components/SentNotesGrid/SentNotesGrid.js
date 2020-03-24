@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {useQuery} from '@apollo/react-hooks'
 import {OUTBOX} from '../../context/apollo'
 import {NotesGrid} from '../index'
 
 const SentNotesGrid = ({navigation}) => {
-  const {loading, error, data} = useQuery(OUTBOX, {
+  const {loading, error, data, startPolling} = useQuery(OUTBOX, {
     fetchPolicy: 'network-only',
   })
+
+  useEffect(() => {
+    startPolling(1000)
+  }, [startPolling])
 
   // FIXME: sort in query
   return (
