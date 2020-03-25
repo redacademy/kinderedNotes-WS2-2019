@@ -18,14 +18,15 @@ const styles = StyleSheet.create({
   },
   replyNote: {
     flexDirection: 'column',
-    paddingTop: 20,
-    paddingLeft: 20,
+    justifyContent: 'center',
+    paddingLeft: 30,
   },
   nameReply: {
     fontFamily: 'Nunito-SemiBold',
     fontSize: 16,
     color: '#272727',
     lineHeight: 22,
+    paddingBottom: 5,
   },
   messageReply: {
     color: 'gray',
