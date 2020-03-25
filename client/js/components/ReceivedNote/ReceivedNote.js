@@ -33,10 +33,10 @@ const ReceivedNote = () => {
     refetchQueries: ['inbox'],
   })
   const [favoriteNote] = useMutation(FAVORITE_NOTE, {
-    refetchQueries: ['inbox', 'login'],
+    refetchQueries: ['inbox', 'getActiveUser'],
   })
   const [unfavoriteNote] = useMutation(UNFAVORITE_NOTE, {
-    refetchQueries: ['inbox', 'login'],
+    refetchQueries: ['inbox', 'getActiveUser'],
   })
 
   const onReplySubmit = () => {
