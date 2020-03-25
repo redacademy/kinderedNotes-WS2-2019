@@ -67,13 +67,16 @@ const SentNote = ({onPress}) => {
           </TouchableOpacity>
         </View>
         <ScrollView style={{maxHeight: '100%', height: '45%'}}>
-          <Header>Who appreciated your note</Header>
+          <Header style={{alignSelf: 'flex-start'}}>
+            Who appreciated your note
+          </Header>
           <View style={styles.notesContainer}>
             {activeNote.responses &&
               activeNote.responses.map(({id, message, author}) => (
                 <ReplyNote
                   key={id}
                   avatarIndex={author.avatar}
+                  name={author.username}
                   message={message}
                 />
               ))}
