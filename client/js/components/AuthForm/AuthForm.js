@@ -25,7 +25,7 @@ const AuthForm = ({onSignUp}) => {
   return (
     <Formik
       // TODO: clear dev auth details
-      initialValues={{username: 'user', password: 'password'}}
+      initialValues={{username: '', password: ''}}
       validate={validateInputs}
       onSubmit={onAuth}
     >
